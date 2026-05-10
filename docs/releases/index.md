@@ -14,19 +14,27 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-Fixed packaging breakage from the Electron 41 upgrade, restored Google sign-in by refreshing Firefox UA cap and Chrome preset, and softened the new-tab gradient background.
+A `nav0` CLI for launching from the terminal, audited keyboard shortcuts across platforms, a stop-loading button in the address bar, and fixes for Gmail PDF downloads, blurry favicons, and the macOS dock icon.
 
 <template #summary>
 
-- Restored `package.json` `main` to `.webpack/main` so `electron-forge package` works again
-- Refreshed Firefox UA cap and widened Google sign-in host match
-- Bumped Chrome preset to Electron 41's Chromium 146
-- Softened new-tab pastel gradient to read essentially white at a glance
+- New `nav0` CLI with `--private` and `--url` flags, single-instance routing, and an "Install nav0 in PATH" menu item on macOS and Windows
+- Cmd+[ / Cmd+] back/forward on macOS, tooltips with platform-correct shortcuts, and an audited menu shortcut map
+- Refresh button toggles to a stop button while pages are loading
+- Fixed Gmail PDF attachment downloads, fuzzy Retina favicons, the near-blank macOS dock icon, and dock-click restoring the existing window
 
 </template>
 </ReleasesLatestHero>
 
 <div class="releases-timeline">
+
+<div class="release-list-item">
+  <a href="/releases/v0.2.6">
+    <h2>v0.2.6</h2>
+  </a>
+  <div class="release-meta">May 6, 2026</div>
+  <p class="release-excerpt">Fixed packaging breakage from the Electron 41 upgrade, restored Google sign-in by refreshing Firefox UA cap and Chrome preset, and softened the new-tab gradient background.</p>
+</div>
 
 <div class="release-list-item">
   <a href="/releases/v0.2.5">
