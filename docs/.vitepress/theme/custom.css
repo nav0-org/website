@@ -2243,6 +2243,15 @@ a.blog-card:hover {
   max-width: 1080px;
 }
 
+/* On layout:page, VitePress's default theme leaves the navbar's
+   .content-body transparent (via :not(.has-sidebar):not(.home.top)),
+   which lets the dark .rel-latest-hero card bleed through the navbar
+   as the user scrolls. Restore an opaque navbar so the hero scrolls
+   cleanly under it. */
+.releases-index-page .VPNavBar .content-body {
+  background-color: var(--vp-nav-bg-color);
+}
+
 /* ========== Release Detail Page (Redesigned) ========== */
 /* Layout: hero spans full width, then 2-col (content + sidebar) below */
 .release-detail-page .VPPage {
