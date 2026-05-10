@@ -1,0 +1,35 @@
+{
+  "name": "Nav0 Website",
+  "version": "0.2.6",
+  "description": "A minimal, privacy-focused web browser built on Electron",
+  "private": true,
+  "main": ".webpack/main",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": [
+    "browser",
+    "electron",
+    "privacy",
+    "minimal",
+    "open-source"
+  ],
+  "author": {
+    "name": "Ketan Patil",
+    "email": "100.percent.ketan@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nav0-org/nav0-browser"
+  },
+  "devDependencies": {
+      "vitepress": "^1.5.0"
+  },
+  "dependencies": {
+    "lucide": "0.503.0",
+    "marked": "15.0.11"
+  }
+}
