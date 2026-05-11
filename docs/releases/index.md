@@ -14,19 +14,27 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-A `nav0` CLI for launching from the terminal, audited keyboard shortcuts across platforms, a stop-loading button in the address bar, and fixes for Gmail PDF downloads, blurry favicons, and the macOS dock icon.
+Fixed macOS cookie persistence so users stop getting logged out of Gmail, LinkedIn, and other cookie-auth sites after every quit, plus a favicon fallback fix, a Linux packaging fix, and a cleaner dev workflow.
 
 <template #summary>
 
-- New `nav0` CLI with `--private` and `--url` flags, single-instance routing, and an "Install nav0 in PATH" menu item on macOS and Windows
-- Cmd+[ / Cmd+] back/forward on macOS, tooltips with platform-correct shortcuts, and an audited menu shortcut map
-- Refresh button toggles to a stop button while pages are loading
-- Fixed Gmail PDF attachment downloads, fuzzy Retina favicons, the near-blank macOS dock icon, and dock-click restoring the existing window
+- macOS cookie-encryption fuse turned off (matching other unsigned Electron browsers) so cookies survive across launches; Windows DPAPI and Linux libsecret encryption unchanged
+- Favicon handler now walks a size-ranked list and falls back when the sharpest icon 404s, instead of leaving the tab favicon blank
+- Linux `.deb` and `.rpm` builds succeed again after lowercasing `executableName`
+- Dev sessions use an isolated `userData` directory and `--use-mock-keychain`, so cookies no longer vanish on every relaunch
 
 </template>
 </ReleasesLatestHero>
 
 <div class="releases-timeline">
+
+<div class="release-list-item">
+  <a href="/releases/v0.2.7">
+    <h2>v0.2.7</h2>
+  </a>
+  <div class="release-meta">May 10, 2026</div>
+  <p class="release-excerpt">A `nav0` CLI for launching from the terminal, audited keyboard shortcuts across platforms, a stop-loading button in the address bar, and fixes for Gmail PDF downloads, blurry favicons, and the macOS dock icon.</p>
+</div>
 
 <div class="release-list-item">
   <a href="/releases/v0.2.6">
