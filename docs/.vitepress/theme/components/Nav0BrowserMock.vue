@@ -255,7 +255,6 @@ function addTab() {
 }
 
 .nv-br-meta {
-  font-family: var(--nv-mono);
   font-size: 11px;
   color: var(--nv-ink-3);
   letter-spacing: 0.04em;
@@ -358,7 +357,6 @@ function addTab() {
 }
 
 .nv-br-eyebrow {
-  font-family: var(--nv-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -413,7 +411,6 @@ function addTab() {
   gap: 14px;
   opacity: 0.55;
   font-size: 11px;
-  font-family: var(--nv-mono);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }

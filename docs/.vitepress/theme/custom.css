@@ -388,7 +388,6 @@ a.blog-card:hover {
   --blog-shadow-md: var(--ds-shadow-md);
   --blog-shadow-lg: var(--ds-shadow-lg);
   --blog-serif: var(--ds-font-serif);
-  --blog-mono: var(--ds-font-mono);
 }
 
 
@@ -1303,7 +1302,6 @@ a.blog-card:hover {
 }
 
 .rel-stat-value {
-  font-family: var(--vp-font-family-mono);
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -1319,7 +1317,6 @@ a.blog-card:hover {
 }
 
 .rel-stat-sub {
-  font-family: var(--vp-font-family-mono);
   font-size: 0.78rem;
   color: var(--vp-c-text-3);
   margin-top: 0.4rem;
@@ -1493,7 +1490,6 @@ a.blog-card:hover {
   left: 0;
   top: 0.32rem;
   color: var(--ds-on-dark-accent);
-  font-family: var(--vp-font-family-mono);
   font-size: 0.85rem;
 }
 
@@ -1597,7 +1593,6 @@ a.blog-card:hover {
 }
 
 .release-list-item h2 {
-  font-family: var(--vp-font-family-mono);
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -1613,7 +1608,6 @@ a.blog-card:hover {
 }
 
 .release-list-item .release-meta {
-  font-family: var(--vp-font-family-mono);
   font-size: 0.78rem;
   color: var(--vp-c-text-3);
   display: flex;
@@ -2417,7 +2411,6 @@ a.blog-card:hover {
   color: var(--vp-c-brand-1);
   text-decoration: none;
   font-weight: 500;
-  font-family: var(--vp-font-family-mono);
   font-size: 0.8rem;
 }
 
@@ -2510,7 +2503,6 @@ a.blog-card:hover {
 
 /* Legacy date-meta styling for any non-detail context */
 .release-date-meta {
-  font-family: var(--vp-font-family-mono);
   font-size: 0.875rem;
   color: var(--vp-c-text-3);
   margin: 0.5rem 0 2.5rem;
@@ -2838,7 +2830,6 @@ html.dark .release-badge.alpha {
   gap: 12px;
   flex-wrap: wrap;
   align-items: center;
-  font-family: var(--ds-font-mono);
   font-size: 12.5px;
   color: var(--ds-ink-3);
 }
@@ -2856,9 +2847,6 @@ html.dark .release-badge.alpha {
   color: var(--ds-ink);
   font-weight: 500;
   font-family: var(--ds-font-sans);
-}
-.lp-pill .lp-pill-mono {
-  font-family: var(--ds-font-mono);
 }
 .lp-pill .lp-pill-ico {
   flex: none;
@@ -2943,7 +2931,6 @@ html.dark .release-badge.alpha {
   background: var(--ds-accent-soft);
 }
 .lp-toc-num {
-  font-family: var(--ds-font-mono);
   font-size: 11px;
   color: var(--ds-ink-4);
   flex: none;
@@ -3248,7 +3235,7 @@ html.dark .release-badge.alpha {
    ============================================================ */
 
 .guide-page .vp-doc kbd {
-  font-family: var(--ds-font-mono);
+  font-family: var(--ds-font-sans);
   font-size: 12px;
   background: var(--ds-bg-muted);
   border: 1px solid var(--ds-rule-soft);
@@ -3509,7 +3496,6 @@ html.dark .ip-mac-icon {
 .ip-terminal-title {
   flex: 1;
   text-align: center;
-  font-family: var(--ds-font-mono);
   font-size: 11px;
   color: #6e7681;
   letter-spacing: 0.02em;
@@ -3518,7 +3504,6 @@ html.dark .ip-mac-icon {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #d2d2d7;
-  font-family: var(--ds-font-mono);
   font-size: 11px;
   padding: 4px 10px;
   border-radius: 6px;
@@ -3976,7 +3961,6 @@ body:has(.install-page-v2) .VPDocFooter {
 }
 .faq-cat-count {
   margin-left: auto;
-  font-family: var(--ds-font-mono);
   font-size: 11px;
   color: var(--ds-ink-4);
   background: var(--ds-bg-soft);
@@ -4044,7 +4028,6 @@ body:has(.install-page-v2) .VPDocFooter {
   border-bottom: 1px solid var(--ds-rule-soft);
 }
 .faq-section-num {
-  font-family: var(--ds-font-mono);
   font-size: 13px;
   color: var(--ds-accent);
   font-weight: 500;
@@ -4062,7 +4045,6 @@ body:has(.install-page-v2) .VPDocFooter {
 .faq-section-meta {
   font-size: 12px;
   color: var(--ds-ink-3);
-  font-family: var(--ds-font-mono);
 }
 
 /* ACCORDION ITEM ---------------------------------------------- */
@@ -4102,7 +4084,6 @@ body:has(.install-page-v2) .VPDocFooter {
   display: none;
 }
 .faq-q-tag {
-  font-family: var(--ds-font-mono);
   font-size: 11px;
   color: var(--ds-ink-4);
   flex-shrink: 0;
@@ -4375,7 +4356,7 @@ body:has(.install-page-v2) .VPDocFooter {
   padding-top: 12px;
 }
 .VPLocalSearchBox .search-keyboard-shortcuts kbd {
-  font-family: var(--ds-font-mono);
+  font-family: var(--ds-font-sans);
   font-size: 11px;
   background: var(--ds-bg-soft);
   border: 1px solid var(--ds-rule-soft);

@@ -406,7 +406,6 @@ const featuredPosts = computed(() => posts.slice(0, 5));
   --nv-shadow-md: var(--ds-shadow-md);
   --nv-shadow-lg: var(--ds-shadow-lg);
   --nv-sans: var(--ds-font-sans);
-  --nv-mono: var(--ds-font-mono);
 
   font-family: var(--nv-sans);
   font-size: 17px;
@@ -824,7 +823,6 @@ const featuredPosts = computed(() => posts.slice(0, 5));
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--nv-mono);
   font-size: 12px;
   color: var(--nv-ink-3);
   margin: 6px 0;
@@ -922,7 +920,6 @@ const featuredPosts = computed(() => posts.slice(0, 5));
   line-height: 1;
 }
 .nv-ipa {
-  font-family: var(--nv-mono);
   font-size: 13px;
   color: var(--nv-ink-3);
   margin-bottom: 18px;
