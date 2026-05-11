@@ -4,7 +4,6 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 ---
 
 <div class="releases-page-head">
-  <div class="releases-eyebrow">Release notes</div>
 
 # Every <em>shipped</em> change, in one place.
 

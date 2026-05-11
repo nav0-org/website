@@ -13,15 +13,15 @@ const version = computed(() => (frontmatter.value.title as string) || '');
       <h5>Quick download</h5>
       <div class="rel-detail-download-row">
         <span class="rel-detail-download-name">macOS</span>
-        <a href="/install#macos">.dmg</a>
+        <a href="/install#mac">.dmg</a>
       </div>
       <div class="rel-detail-download-row">
         <span class="rel-detail-download-name">Linux</span>
-        <a href="/install#linux">.deb</a>
+        <a href="/install#lin">.deb</a>
       </div>
       <div class="rel-detail-download-row">
         <span class="rel-detail-download-name">Windows</span>
-        <a href="/install#windows">.exe</a>
+        <a href="/install#win">.exe</a>
       </div>
       <div class="rel-detail-download-row">
         <span class="rel-detail-download-name">Source</span>

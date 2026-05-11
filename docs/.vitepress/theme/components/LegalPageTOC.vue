@@ -21,10 +21,7 @@ function buildEntries() {
     .map((h) => {
       const id = h.id || '';
       // Use innerText so we drop the auto-injected anchor "#" character.
-      const text = (h.textContent || '')
-        .replace(/^[0-9]+\s+/, '') // drop the CSS-counter "01" prefix if present in textContent
-        .replace(/#$/, '')
-        .trim();
+      const text = (h.textContent || '').replace(/#$/, '').trim();
       return { id, text };
     })
     .filter((e) => e.id && e.text);

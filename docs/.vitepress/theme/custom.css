@@ -1,5 +1,52 @@
 /* Nav0 Custom Theme Styles */
 
+/* Navbar: keep the title close to the search/menu on sidebar pages,
+   matching the home page layout. VitePress's default takes the outer
+   .title div out of flex flow (position: absolute) and uses a large
+   padding-left on .content equal to the sidebar width, which pushes
+   search far right. We put the title back in flex flow and remove
+   the content padding. The `.container > .title` child combinator
+   makes sure we don't also hit the inner anchor inside VPNavBarTitle. */
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar .container > .title {
+    position: static !important;
+    width: auto !important;
+    padding: 0 0 0 24px !important;
+  }
+  .VPNavBar.has-sidebar .content {
+    padding-left: 0 !important;
+  }
+  .VPNavBar.has-sidebar .divider {
+    padding-left: 0 !important;
+  }
+  /* VPNavBarTitle on has-sidebar adds a divider line under the title;
+     hide it so the navbar bottom border can span uniformly. */
+  .VPNavBarTitle.has-sidebar .title {
+    border-bottom-color: transparent !important;
+  }
+  /* On pages with a dark hero that bleeds under a transparent navbar
+     (release detail), the title section previously had a transparent
+     background because it sat over content-body. Now that we put it
+     in flex flow, give it the same nav background so it doesn't
+     reveal the dark hero. */
+  .VPNavBar.has-sidebar:not(.home.top) .container > .title {
+    background-color: var(--vp-nav-bg-color) !important;
+  }
+}
+@media (min-width: 1440px) {
+  .VPNavBar.has-sidebar .container > .title {
+    padding-left: max(24px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2)) !important;
+    padding-right: 0 !important;
+    width: auto !important;
+  }
+  .VPNavBar.has-sidebar .content {
+    padding-left: 0 !important;
+  }
+  .VPNavBar.has-sidebar .divider {
+    padding-left: 0 !important;
+  }
+}
+
 :root {
   --nav0-color-1: #000000;
   --nav0-color-2: #333333;
@@ -398,88 +445,6 @@ a.blog-card:hover {
   padding: 56px 32px 96px;
 }
 
-/* FILTERS */
-.bl-filters {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 48px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--blog-rule-soft);
-}
-
-.bl-filter-label {
-  font-size: 12px;
-  color: var(--blog-ink-3);
-  margin-right: 8px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.bl-chip {
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--blog-ink-2);
-  background: var(--blog-bg-card);
-  border: 1px solid var(--blog-rule-soft);
-  border-radius: 999px;
-  cursor: pointer;
-  transition:
-    background 120ms,
-    color 120ms,
-    border-color 120ms;
-  font-family: var(--vp-font-family-base);
-  letter-spacing: -0.005em;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.bl-chip:hover {
-  background: var(--blog-bg-muted);
-}
-
-.bl-chip.is-active {
-  background: var(--blog-ink);
-  color: var(--blog-bg);
-  border-color: var(--blog-ink);
-}
-
-.bl-chip-count {
-  font-size: 11px;
-  color: var(--blog-ink-3);
-  font-family: var(--blog-mono);
-}
-
-.bl-chip.is-active .bl-chip-count {
-  color: var(--blog-ink-3);
-}
-
-.bl-search {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: var(--blog-bg-card);
-  border: 1px solid var(--blog-rule-soft);
-  border-radius: 999px;
-  font-size: 13px;
-  color: var(--blog-ink-3);
-}
-
-.bl-kbd {
-  font-family: var(--blog-mono);
-  font-size: 11px;
-  background: var(--blog-bg-muted);
-  border: 1px solid var(--blog-rule-soft);
-  padding: 1px 6px;
-  border-radius: 4px;
-}
-
 /* FEATURED POST */
 .bl-featured {
   display: grid;
@@ -733,90 +698,6 @@ a.blog-card:hover {
   border-top: 1px solid var(--blog-rule-soft);
 }
 
-/* SUBSCRIBE */
-.bl-subscribe {
-  margin-top: 64px;
-  padding: 48px;
-  background: linear-gradient(135deg, var(--blog-bg-muted) 0%, var(--blog-bg) 100%);
-  border: 1px solid var(--blog-rule-soft);
-  border-radius: 24px;
-  text-align: center;
-}
-
-.bl-subscribe h3 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  margin: 0 0 8px;
-  color: var(--blog-ink);
-}
-
-.bl-subscribe > p {
-  font-size: 16px;
-  color: var(--blog-ink-2);
-  margin: 0 auto 24px;
-  max-width: 48ch;
-  letter-spacing: -0.005em;
-  line-height: 1.5;
-}
-
-.bl-subscribe-form {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.bl-subscribe-input {
-  flex: 1;
-  min-width: 220px;
-  padding: 0 18px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid var(--blog-rule);
-  background: var(--blog-bg-card);
-  color: var(--blog-ink);
-  font-family: var(--vp-font-family-base);
-  font-size: 15px;
-  letter-spacing: -0.005em;
-}
-
-.bl-subscribe-input:focus {
-  outline: 2px solid var(--blog-accent);
-  outline-offset: 1px;
-}
-
-.bl-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 44px;
-  padding: 0 22px;
-  background: var(--blog-accent);
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  font-family: var(--vp-font-family-base);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  cursor: pointer;
-  transition: background 160ms ease;
-}
-
-.bl-btn-primary:hover {
-  background: var(--blog-accent-hover);
-}
-
-.bl-subscribe-note {
-  margin-top: 14px;
-  font-size: 12px;
-  color: var(--blog-ink-3);
-  font-family: var(--blog-mono);
-}
-
 @media (max-width: 980px) {
   .bl-featured {
     grid-template-columns: 1fr;
@@ -836,17 +717,11 @@ a.blog-card:hover {
   .bl-shell {
     padding: 32px 16px 64px;
   }
-  .bl-search {
-    display: none;
-  }
   .bl-featured-body {
     padding: 32px 24px;
   }
   .bl-page-head {
     padding: 64px 16px 48px;
-  }
-  .bl-subscribe {
-    padding: 32px 20px;
   }
 }
 
@@ -2566,13 +2441,7 @@ a.blog-card:hover {
   display: none;
 }
 
-/* Section headings — numbered cards effect */
-.release-detail-page .VPPage > div > div {
-  counter-reset: rel-section;
-}
-
 .release-detail-page .VPPage > div h2 {
-  counter-increment: rel-section;
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -2581,25 +2450,7 @@ a.blog-card:hover {
   padding-top: 0;
   padding-bottom: 0;
   border-top: none;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   color: var(--vp-c-text-1);
-}
-
-.release-detail-page .VPPage > div h2::before {
-  content: counter(rel-section, decimal-leading-zero);
-  font-family: var(--vp-font-family-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 10px;
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-brand-1);
-  display: inline-grid;
-  place-items: center;
-  flex-shrink: 0;
 }
 
 .release-detail-page .VPPage > div h2:first-of-type {
@@ -3183,7 +3034,6 @@ html.dark .release-badge.alpha {
 :is(.legal-page, .guide-page) .vp-doc {
   min-width: 0;
   max-width: 760px;
-  counter-reset: legal-section;
 }
 :is(.legal-page, .guide-page) .vp-doc > div > p:first-of-type {
   /* Lead paragraph after hero — slightly larger. */
@@ -3202,24 +3052,11 @@ html.dark .release-badge.alpha {
   padding-top: 24px;
   border-top: 1px solid var(--ds-rule-soft);
   scroll-margin-top: 80px;
-  counter-increment: legal-section;
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
 }
 :is(.legal-page, .guide-page) .vp-doc h2:first-of-type {
   border-top: 0;
   padding-top: 0;
   margin-top: 0;
-}
-:is(.legal-page, .guide-page) .vp-doc h2::before {
-  content: counter(legal-section, decimal-leading-zero);
-  font-family: var(--ds-font-mono);
-  font-size: 13px;
-  color: var(--ds-ink-3);
-  font-weight: 500;
-  letter-spacing: 0;
-  flex: none;
 }
 :is(.legal-page, .guide-page) .vp-doc h3 {
   font-family: var(--ds-font-sans);

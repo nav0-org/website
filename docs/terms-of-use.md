@@ -1,5 +1,5 @@
 ---
-title: 'Nav0 Terms of Use — End User License Agreement'
+title: 'Terms of Use'
 description: 'Terms of Use and End User License Agreement (EULA) for the Nav0 Browser. Read the terms governing your use of Nav0, an open-source, privacy-focused web browser.'
 eyebrow: Legal
 tagline: 'A legally binding agreement between you and the Nav0 Contributors governing your use of the Nav0 Browser and the Nav0 website. By installing or using Nav0, you agree to these terms.'

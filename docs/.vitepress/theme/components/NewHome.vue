@@ -11,7 +11,7 @@
           A minimal, privacy-focused web browser. Zero telemetry. No bloat. No AI gimmicks.
         </p>
         <div class="nv-cta-row">
-          <a class="nv-btn nv-btn--primary nv-btn--lg" href="#install">Download for Mac</a>
+          <a class="nv-btn nv-btn--primary nv-btn--lg" href="/install">Download Nav0</a>
           <a class="nv-btn nv-btn--ghost" href="https://github.com/nav0-org/nav0-browser"
             >View on GitHub</a
           >
@@ -48,7 +48,6 @@
     <!-- PILLARS -->
     <section class="nv-block nv-tinted" id="features">
       <div class="nv-wrap">
-        <div class="nv-section-eyebrow">Six pillars</div>
         <h2 class="nv-section-title">
           A browser built on <em class="accent">fewer ideas,</em> executed properly.
         </h2>
@@ -62,10 +61,6 @@
             </div>
             <h3 class="nv-pillar-title">{{ p.title }}</h3>
             <p class="nv-pillar-body">{{ p.body }}</p>
-            <div class="nv-pillar-glyph">
-              <span>{{ p.metric }}</span>
-              <span class="arrow"><IconArrowRight /></span>
-            </div>
           </div>
         </div>
       </div>
@@ -74,25 +69,22 @@
     <!-- PACKAGE -->
     <section class="nv-block" id="package">
       <div class="nv-wrap">
-        <div class="nv-section-eyebrow">The complete package</div>
         <h2 class="nv-section-title">Everything you need. <em>Nothing you don't.</em></h2>
-        <p class="nv-section-sub">Two lists. One short, one shorter. Both deliberate.</p>
       </div>
     </section>
 
     <!-- PERF -->
     <section class="nv-block nv-tinted" id="perf">
       <div class="nv-wrap">
-        <div class="nv-section-eyebrow">Benchmarks</div>
         <h2 class="nv-section-title">Lighter, by design. <em>Measured, not promised.</em></h2>
-        <p class="nv-section-sub">Same hardware. Same five tabs. Half the appetite.</p>
+        <p class="nv-section-sub">Same hardware. Same 50 tabs. Half the appetite.</p>
         <div class="nv-perf-hero">
           <div class="nv-perf-card">
             <div class="nv-perf-label">Memory used</div>
             <h3 class="nv-perf-stat">&minus;45%</h3>
             <div class="nv-perf-headline">Less RAM, more headroom</div>
             <p class="nv-perf-detail">
-              Nav0 holds five typical tabs in roughly half the RAM Chrome wants for the same
+              Nav0 holds 50 typical tabs in roughly half the RAM Chrome wants for the same
               workload.
             </p>
             <div class="nv-perf-bar-row">
@@ -135,7 +127,7 @@
           </div>
         </div>
         <div class="nv-perf-foot">
-          <span>M1 MacBook Pro · 5 tabs · 30-minute session ·&nbsp;</span>
+          <span>M1 MacBook Pro · 50 tabs · 30-minute session ·&nbsp;</span>
           <a href="/blog/nav0-vs-chrome-performance-benchmark">Read the full report ›</a>
         </div>
       </div>
@@ -211,11 +203,9 @@
         <div class="nv-wrap">
           <div class="nv-section-eyebrow nv-endcap-eyebrow">Ready when you are</div>
           <h2 class="nv-endcap-title">Take back your browsing experience.</h2>
-          <p class="nv-endcap-sub">Free. Open source. No account. 38 MB. Sha-256 verified.</p>
+          <p class="nv-endcap-sub">Free. Open source. No account.</p>
           <div class="nv-download-row">
-            <a class="nv-btn nv-btn--primary nv-btn--lg" href="/install">Download for macOS</a>
-            <a class="nv-btn nv-btn--secondary nv-btn--lg" href="/install">Linux .deb</a>
-            <a class="nv-btn nv-btn--secondary nv-btn--lg" href="/install">Windows .exe</a>
+            <a class="nv-btn nv-btn--primary nv-btn--lg" href="/install">Download Nav0</a>
           </div>
         </div>
       </div>
@@ -352,55 +342,42 @@ const IconGitBranch = Icon(
   ],
   PILLAR_ICON_OPTS
 );
-const IconArrowRight = Icon([
-  { tag: 'line', x1: 5, y1: 12, x2: 19, y2: 12 },
-  { tag: 'polyline', points: '12 5 19 12 12 19' },
-]);
-
-// Pillar order matches design's PILLAR_LUCIDE positional mapping:
-// [shield, zap, feather, lock, wifi-off, git-branch]
 const pillars = [
   {
     id: 'lightweight',
     icon: IconShield,
     title: 'Lightweight',
     body: 'Built for speed and efficiency. Minimal system resources, fast startup, no idle network chatter.',
-    metric: '~120 MB cold start',
   },
   {
     id: 'privacy',
     icon: IconZap,
     title: 'Privacy First',
     body: "Your data stays yours. No telemetry, no tracking, no analytics. We don't know who you are, and we like it that way.",
-    metric: '0 phone-home requests',
   },
   {
     id: 'no-ai',
     icon: IconFeather,
     title: 'No AI Bloat',
     body: 'No forced assistants, no chatbots, no "smart" features you never asked for. Just a browser that browses.',
-    metric: '0 LLMs onboard',
   },
   {
     id: 'safe',
     icon: IconLock,
     title: 'Safe Browsing',
     body: 'Built-in protection against malicious sites and downloads. Local-only blocklists. Security without surveillance.',
-    metric: 'Local blocklists',
   },
   {
     id: 'open',
     icon: IconWifiOff,
     title: 'Open Source',
     body: "Fully transparent. Audit it, fork it, contribute. Your browser should have nothing to hide — ours doesn’t.",
-    metric: 'MIT licensed',
   },
   {
     id: 'modern',
     icon: IconGitBranch,
     title: 'Modern Engine',
     body: 'Powered by Electron and Chromium for compatibility with the modern web while respecting your privacy.',
-    metric: 'Chromium 130',
   },
 ];
 
@@ -780,31 +757,6 @@ const featuredPosts = computed(() => posts.slice(0, 5));
   margin: 0;
   letter-spacing: -0.005em;
 }
-.nv-pillar-glyph {
-  margin-top: auto;
-  padding-top: 22px;
-  font-family: var(--nv-mono);
-  font-size: 12px;
-  color: var(--nv-ink-3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  letter-spacing: 0.01em;
-}
-.nv-pillar-glyph .arrow {
-  color: var(--nv-accent);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition:
-    opacity 200ms,
-    transform 200ms;
-  display: inline-flex;
-}
-.nv-pillar:hover .nv-pillar-glyph .arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
 /* ====== PERF ====== */
 .nv-perf-hero {
   display: grid;

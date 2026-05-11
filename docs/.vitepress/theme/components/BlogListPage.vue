@@ -1,56 +1,15 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { data as posts } from '../posts.data';
 
-const activeCategory = ref('All');
-const copied = ref(false);
-
-const rssUrl = 'https://nav0.org/blog/feed.xml';
-
-const categories = computed(() => {
-  const counts: Record<string, number> = {};
-  for (const p of posts) {
-    counts[p.category] = (counts[p.category] || 0) + 1;
-  }
-  const order = ['Privacy', 'Comparisons', 'Performance', 'Indie web', 'Engineering'];
-  const sorted = Object.entries(counts).sort(([a], [b]) => {
-    const ai = order.indexOf(a);
-    const bi = order.indexOf(b);
-    if (ai === -1 && bi === -1) return a.localeCompare(b);
-    if (ai === -1) return 1;
-    if (bi === -1) return -1;
-    return ai - bi;
-  });
-  return [
-    { name: 'All', count: posts.length },
-    ...sorted.map(([name, count]) => ({ name, count })),
-  ];
-});
-
-const filteredPosts = computed(() =>
-  activeCategory.value === 'All' ? posts : posts.filter((p) => p.category === activeCategory.value)
-);
-
-const featured = computed(() => filteredPosts.value[0]);
-const gridPosts = computed(() => filteredPosts.value.slice(1));
+const featured = computed(() => posts[0]);
+const gridPosts = computed(() => posts.slice(1));
 
 const featuredIsIndieRenaissance = computed(
   () => featured.value?.slug === 'the-indie-browser-renaissance'
 );
 
 const indieMarks = ['M', 'H', 'L', 'Z', 'O', 'Q', 'S', 'F', 'LF', 'B', 'N0', '+'];
-
-async function copyRss() {
-  try {
-    await navigator.clipboard?.writeText(rssUrl);
-    copied.value = true;
-    setTimeout(() => {
-      copied.value = false;
-    }, 1500);
-  } catch {
-    // No telemetry per Nav0 privacy principles
-  }
-}
 </script>
 
 <template>
@@ -65,24 +24,6 @@ async function copyRss() {
     </section>
 
     <div class="bl-shell">
-      <!-- FILTERS -->
-      <div class="bl-filters">
-        <span class="bl-filter-label">Topic</span>
-        <button
-          v-for="cat in categories"
-          :key="cat.name"
-          class="bl-chip"
-          :class="{ 'is-active': activeCategory === cat.name }"
-          @click="activeCategory = cat.name"
-        >
-          {{ cat.name }} <span class="bl-chip-count">{{ cat.count }}</span>
-        </button>
-        <div class="bl-search" aria-hidden="true">
-          <span>Search posts</span>
-          <span class="bl-kbd">/</span>
-        </div>
-      </div>
-
       <!-- FEATURED -->
       <a v-if="featured" :href="featured.url" class="bl-featured">
         <div
@@ -144,23 +85,6 @@ async function copyRss() {
         </a>
       </div>
 
-      <!-- SUBSCRIBE -->
-      <div class="bl-subscribe">
-        <h3>Subscribe to the RSS feed</h3>
-        <p>
-          No newsletter, no email collection — just an RSS feed that updates when we ship a post. We
-          don't even know if you're reading.
-        </p>
-        <div class="bl-subscribe-form">
-          <input class="bl-subscribe-input" type="text" :value="rssUrl" readonly />
-          <button class="bl-btn-primary" type="button" @click="copyRss">
-            {{ copied ? 'Copied' : 'Copy URL' }}
-          </button>
-        </div>
-        <div class="bl-subscribe-note">
-          No tracking pixels. No open-rate analytics. No "what's hot" recommendations.
-        </div>
-      </div>
     </div>
   </div>
 </template>

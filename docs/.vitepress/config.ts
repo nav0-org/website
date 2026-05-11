@@ -280,7 +280,6 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright Ketan Patil',
     },
 
     search: {

@@ -1,5 +1,5 @@
 ---
-title: 'Nav0 Browser Disclaimer — Important Legal Information'
+title: 'Disclaimer'
 description: 'Read the full disclaimer for Nav0 Browser. Understand the terms of use, limitations, and legal notices for this open-source, privacy-focused web browser.'
 eyebrow: Legal
 tagline: 'Important legal information governing your use of the Nav0 Browser software and the Nav0 website. By using Nav0, you acknowledge that you have read and accept the terms below.'
