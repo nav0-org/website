@@ -321,24 +321,24 @@ const IconLock = Icon(
   ],
   PILLAR_ICON_OPTS
 );
-const IconWifiOff = Icon(
+const IconGitFork = Icon(
   [
-    { tag: 'line', x1: 1, y1: 1, x2: 23, y2: 23 },
-    { tag: 'path', d: 'M16.72 11.06A10.94 10.94 0 0 1 19 12.55' },
-    { tag: 'path', d: 'M5 12.55a10.94 10.94 0 0 1 5.17-2.39' },
-    { tag: 'path', d: 'M10.71 5.05A16 16 0 0 1 22.58 9' },
-    { tag: 'path', d: 'M1.42 9a15.91 15.91 0 0 1 4.7-2.88' },
-    { tag: 'path', d: 'M8.53 16.11a6 6 0 0 1 6.95 0' },
-    { tag: 'line', x1: 12, y1: 20, x2: 12.01, y2: 20 },
+    { tag: 'circle', cx: 12, cy: 18, r: 3 },
+    { tag: 'circle', cx: 6, cy: 6, r: 3 },
+    { tag: 'circle', cx: 18, cy: 6, r: 3 },
+    { tag: 'path', d: 'M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9' },
+    { tag: 'path', d: 'M12 12v3' },
   ],
   PILLAR_ICON_OPTS
 );
-const IconGitBranch = Icon(
+const IconGlobe = Icon(
   [
-    { tag: 'line', x1: 6, y1: 3, x2: 6, y2: 15 },
-    { tag: 'circle', cx: 18, cy: 6, r: 3 },
-    { tag: 'circle', cx: 6, cy: 18, r: 3 },
-    { tag: 'path', d: 'M18 9a9 9 0 0 1-9 9' },
+    { tag: 'circle', cx: 12, cy: 12, r: 10 },
+    { tag: 'line', x1: 2, y1: 12, x2: 22, y2: 12 },
+    {
+      tag: 'path',
+      d: 'M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z',
+    },
   ],
   PILLAR_ICON_OPTS
 );
@@ -369,13 +369,13 @@ const pillars = [
   },
   {
     id: 'open',
-    icon: IconWifiOff,
+    icon: IconGitFork,
     title: 'Open Source',
     body: "Fully transparent. Audit it, fork it, contribute. Your browser should have nothing to hide — ours doesn’t.",
   },
   {
     id: 'modern',
-    icon: IconGitBranch,
+    icon: IconGlobe,
     title: 'Modern Engine',
     body: 'Powered by Electron and Chromium for compatibility with the modern web while respecting your privacy.',
   },
