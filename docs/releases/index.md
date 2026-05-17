@@ -13,19 +13,27 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-Fixed macOS cookie persistence so users stop getting logged out of Gmail, LinkedIn, and other cookie-auth sites after every quit, plus a favicon fallback fix, a Linux packaging fix, and a cleaner dev workflow.
+A unified address bar autocomplete that ranks bookmarks above history, new `Cmd/Ctrl+L` and corrected `Ctrl+W` shortcuts, a fully in-memory private-mode database with startup cleanup of leftover data, and fixes for ad blocker false positives on first-party requests and the empty About-page checksum row.
 
 <template #summary>
 
-- macOS cookie-encryption fuse turned off (matching other unsigned Electron browsers) so cookies survive across launches; Windows DPAPI and Linux libsecret encryption unchanged
-- Favicon handler now walks a size-ranked list and falls back when the sharpest icon 404s, instead of leaving the tab favicon blank
-- Linux `.deb` and `.rpm` builds succeed again after lowercasing `executableName`
-- Dev sessions use an isolated `userData` directory and `--use-mock-keychain`, so cookies no longer vanish on every relaunch
+- Address bar gets a unified autocomplete dropdown — flattened ranked results that prefer bookmarks over history, rendered through the shared overlay pipeline
+- `Cmd/Ctrl+L` now focuses the URL input, and `Ctrl+W` on Linux/Windows closes the active tab instead of the whole window
+- Private-mode SQLite runs entirely in memory, and any leftover private data from previous sessions is cleared on startup
+- Ad blocker no longer applies generic URL patterns to first-party requests, and the About page hides the integrity checksum row when empty
 
 </template>
 </ReleasesLatestHero>
 
 <div class="releases-timeline">
+
+<div class="release-list-item">
+  <a href="/releases/v0.2.8">
+    <h2>v0.2.8</h2>
+  </a>
+  <div class="release-meta">May 11, 2026</div>
+  <p class="release-excerpt">Fixed macOS cookie persistence so users stop getting logged out of Gmail, LinkedIn, and other cookie-auth sites after every quit, plus a favicon fallback fix, a Linux packaging fix, and a cleaner dev workflow.</p>
+</div>
 
 <div class="release-list-item">
   <a href="/releases/v0.2.7">
