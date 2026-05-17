@@ -81,7 +81,7 @@
         <div class="nv-perf-hero">
           <div class="nv-perf-card">
             <div class="nv-perf-label">Memory used</div>
-            <h3 class="nv-perf-stat">&minus;45%</h3>
+            <h3 class="nv-perf-stat">&minus;57%</h3>
             <div class="nv-perf-headline">Less RAM, more headroom</div>
             <p class="nv-perf-detail">
               Nav0 holds 50 typical tabs in roughly half the RAM Chrome wants for the same
@@ -90,44 +90,44 @@
             <div class="nv-perf-bar-row">
               <span class="nv-perf-name">Nav0</span>
               <span class="nv-perf-track"
-                ><span class="nv-perf-fill nav0" style="width: 55%" /></span
+                ><span class="nv-perf-fill nav0" style="width: 43%" /></span
               >
-              <span class="nv-perf-num">612 MB</span>
+              <span class="nv-perf-num">4,294 MB</span>
             </div>
             <div class="nv-perf-bar-row">
               <span class="nv-perf-name">Chrome</span>
               <span class="nv-perf-track"
                 ><span class="nv-perf-fill chrome" style="width: 100%" /></span
               >
-              <span class="nv-perf-num">1,115 MB</span>
+              <span class="nv-perf-num">10,076 MB</span>
             </div>
           </div>
           <div class="nv-perf-card warm">
-            <div class="nv-perf-label">CPU at idle</div>
-            <h3 class="nv-perf-stat">&minus;77%</h3>
-            <div class="nv-perf-headline">Idle means idle</div>
+            <div class="nv-perf-label">CPU usage</div>
+            <h3 class="nv-perf-stat">&minus;76%</h3>
+            <div class="nv-perf-headline">Quieter under load</div>
             <p class="nv-perf-detail">
-              No background sync. No recommendation engine. No idle network requests. Just an idle
+              No background sync. No recommendation engine. No idle network requests. Just a
               browser.
             </p>
             <div class="nv-perf-bar-row">
               <span class="nv-perf-name">Nav0</span>
               <span class="nv-perf-track"
-                ><span class="nv-perf-fill warm" style="width: 23%" /></span
+                ><span class="nv-perf-fill warm" style="width: 24%" /></span
               >
-              <span class="nv-perf-num">0.9%</span>
+              <span class="nv-perf-num">24.4%</span>
             </div>
             <div class="nv-perf-bar-row">
               <span class="nv-perf-name">Chrome</span>
               <span class="nv-perf-track"
                 ><span class="nv-perf-fill chrome" style="width: 100%" /></span
               >
-              <span class="nv-perf-num">3.9%</span>
+              <span class="nv-perf-num">101.7%</span>
             </div>
           </div>
         </div>
         <div class="nv-perf-foot">
-          <span>M1 MacBook Pro · 50 tabs · 30-minute session ·&nbsp;</span>
+          <span>M1 MacBook Pro · 50 tabs ·&nbsp;</span>
           <a href="/blog/nav0-vs-chrome-performance-benchmark">Read the full report ›</a>
         </div>
       </div>
