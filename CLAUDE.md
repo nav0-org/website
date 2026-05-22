@@ -1,274 +1,185 @@
-# CLAUDE.md - Nav0 Browser
+# CLAUDE.md - Nav0 Website
 
 ## Project Overview
 
-Nav0 is a minimal, privacy-focused web browser built on Electron. The philosophy is **"Browse. Nothing More."** — a lightweight, open-source browser with zero telemetry, zero tracking, and zero data collection.
+This repository is the source for **nav0.org** — the public website for the Nav0
+browser. It is a static documentation site built with **VitePress**. The Nav0
+browser application itself lives in a separate repository
+([nav0-org/nav0-browser](https://github.com/nav0-org/nav0-browser)); this repo
+ships marketing pages, the user guide, blog posts, release notes, the FAQ, and
+legal pages.
 
-- **Version**: 0.1.1
+- **Site**: https://nav0.org
+- **Version**: 0.2.9 (tracks the browser's currently-shipping version)
 - **License**: MIT
 - **Author**: Ketan Patil
-- **Repo**: https://github.com/nav0-org/nav0-browser
+- **Stack**: VitePress 1.5 + Vue 3 SFCs, deployed to GitHub Pages
+- **Deployed via**: `.github/workflows/docs.yml` on every push to `main`
 
 ## Quick Reference
 
 ```bash
-npm run start          # Run in development mode (electron-forge start)
-npm run make           # Build distributable packages
-npm run package        # Package without creating distributables
-npm run lint           # Run ESLint on .ts/.tsx files
-npm run test:perf      # Run Puppeteer-based performance tests
-npm run test:data      # Run data consumption tests
-npm run rebuild        # Rebuild native modules (better-sqlite3)
-npm run docs:dev       # Start VitePress docs dev server
-npm run docs:build     # Build documentation site
+npm ci                 # Install dependencies
+npm run docs:dev       # Start VitePress dev server (hot reload)
+npm run docs:build     # Build the static site into docs/.vitepress/dist
+npm run docs:preview   # Preview the production build locally
 ```
 
-## Architecture
+There is no test or lint script — the deploy workflow just runs `docs:build`.
+If `docs:build` succeeds, the site ships.
 
-### Multi-Process Model (Electron)
-
-```
-Main Process (src/main/)          Renderer Process (src/renderer/)
-├── Browser managers              ├── Browser layout (tabs, nav)
-├── Database (SQLite)             ├── Built-in pages (history, etc.)
-├── Settings enforcement          ├── Overlays (command-k, find, etc.)
-├── Ad blocker                    └── Common utilities
-└── Window/tab lifecycle
-        ↕ IPC via preload scripts (src/preload/)
-```
-
-- **Main process** (`src/main/`): System-level operations — window management, database, settings, downloads, permissions, ad blocking, SSL
-- **Renderer process** (`src/renderer/`): All UI — browser chrome, built-in pages, overlays, menus
-- **Preload scripts** (`src/preload/`): IPC bridges exposing safe APIs to renderer via `contextBridge`
-
-### Manager Pattern
-
-Every feature is encapsulated in a manager class:
-
-| Manager                  | Location             | Purpose                                       |
-| ------------------------ | -------------------- | --------------------------------------------- |
-| `AppWindowManager`       | `src/main/browser/`  | Window lifecycle, multi-window support        |
-| `AppWindow`              | `src/main/browser/`  | Single window with tabs and overlays          |
-| `Tab`                    | `src/main/browser/`  | Individual tab (WebContentsView)              |
-| `DatabaseManager`        | `src/main/database/` | SQLite connection management                  |
-| `SchemaManager`          | `src/main/database/` | Database schema versioning                    |
-| `DataStoreManager`       | `src/main/database/` | electron-store key-value wrapper              |
-| `DownloadManager`        | `src/main/browser/`  | Download tracking and control                 |
-| `BookmarkManager`        | `src/main/browser/`  | Bookmark CRUD operations                      |
-| `PermissionManager`      | `src/main/browser/`  | Site permission policies                      |
-| `SettingsEnforcer`       | `src/main/settings/` | Applies user preferences to sessions          |
-| `ReaderModeManager`      | `src/main/browser/`  | Reader mode extraction (@mozilla/readability) |
-| `SSLManager`             | `src/main/browser/`  | Certificate validation                        |
-| `FindInPageManager`      | `src/main/browser/`  | In-page text search                           |
-| `CommandKOverlayManager` | `src/main/browser/`  | Command palette overlay                       |
-| `CommandOOverlayManager` | `src/main/browser/`  | File opener overlay                           |
-
-### IPC Communication
-
-All IPC channels are defined as string constants in `src/constants/app-constants.ts`:
-
-- `RendererToMainEventsForBrowserIPC` — renderer-initiated browser actions
-- `MainToRendererEventsForBrowserIPC` — main process responses to renderer
-- `RendererToMainEventsForDataStoreIPC` — data operations (CRUD for bookmarks, history, etc.)
-
-Always use these constants for IPC channel names — never hardcode strings.
-
-### Database Architecture
-
-- **Engine**: better-sqlite3 (native SQLite bindings)
-- **Dual database system**: Separate databases for normal and private browsing
-  - Private database is deleted when the private window closes
-- **Schemas** defined in `src/main/database/schema/`:
-  - `bookmark-schema.ts`
-  - `browsing-history-schema.ts`
-  - `download-schema.ts`
-  - `permission-schema.ts`
-
-### Settings System
-
-- Settings interface: `BrowserSettings` in `src/types/settings-types.ts` (~80+ configurable options)
-- Stored via `electron-store` (DataStoreManager)
-- Applied centrally through `SettingsEnforcer` which handles:
-  - Cookie policies, proxy config, user agent
-  - Ad blocker toggle, auto-deletion scheduling
-
-## Source Structure
+## Repository Layout
 
 ```
-src/
-├── main/                          # Electron main process
-│   ├── index.ts                   # App entry point
-│   ├── browser/                   # Core browser managers (19 files)
-│   ├── database/                  # SQLite layer + schemas
-│   ├── settings/                  # Settings enforcement
-│   ├── web/                       # Search engine configuration
-│   └── ad-blocker/                # Domain lists, URL patterns, CSS injection
-├── renderer/                      # Electron renderer process
-│   ├── browser-layout/            # Main browser UI (tabs, navigation bar)
-│   ├── pages/                     # Built-in pages
-│   │   ├── about/                 #   About page
-│   │   ├── bookmarks/             #   Bookmarks viewer
-│   │   ├── browser-settings/      #   Settings UI
-│   │   ├── command-k/             #   Command palette
-│   │   ├── command-o/             #   File opener
-│   │   ├── downloads/             #   Downloads viewer
-│   │   ├── history/               #   History viewer
-│   │   └── new-tab/               #   New tab page
-│   ├── options-menu/              # Browser menu
-│   ├── permission-prompt/         # Permission request dialogs
-│   ├── issue-report/              # Bug report UI
-│   ├── web-content/               # Web page rendering
-│   ├── find-in-page/              # Find in page UI
-│   ├── ssl-info/                  # SSL certificate info
-│   ├── common/                    # Shared utilities (theme, html, format)
-│   ├── assets/                    # Images, icons, logos
-│   └── styles/                    # CSS stylesheets
-├── preload/                       # IPC bridge scripts
-│   ├── internals-api.ts           # Main API for internal pages
-│   ├── externals-api.ts           # External-facing API
-│   └── web-content-preload.ts     # Web content preload
-├── types/                         # Shared TypeScript interfaces
-│   ├── bookmark-record.ts
-│   ├── browsing-history-record.ts
-│   ├── download-record.ts
-│   └── settings-types.ts
-└── constants/
-    └── app-constants.ts           # IPC channels, URLs, data store keys
-
-tests/
-└── performance/                   # Puppeteer-based tests
-    ├── browser-perf-test.js       # CPU/memory/frame benchmarks (10-50 tabs)
-    └── data-consumption-test.js   # Network usage metrics
-
-docs/                              # VitePress documentation site
-├── .vitepress/                    # VitePress config and theme
-├── blog/                          # Privacy-focused blog posts
-├── releases/                      # Release notes (v0.0.4 - v0.0.9)
-└── guide/                         # User documentation
+website/
+├── CLAUDE.md                       # This file
+├── LICENSE.md
+├── package.json                    # Just VitePress + marked + lucide
+├── .github/workflows/docs.yml      # Build + deploy to GitHub Pages
+└── docs/
+    ├── index.md                    # Homepage — renders <NewHome />
+    ├── install.md                  # Downloads page — renders <DownloadsPage />
+    ├── faq.md                      # FAQ — renders <FaqPage />
+    ├── 404.md                      # Not-found page
+    ├── privacy-policy.md           # Legal
+    ├── terms-of-use.md             # Legal
+    ├── disclaimer.md               # Legal
+    ├── package.json                # { "type": "module" } — needed for ESM config
+    ├── public/                     # Static assets served at site root
+    │   ├── CNAME                   # nav0.org
+    │   ├── llms.txt, llms-full.txt # AI-readable site summaries
+    │   ├── robots.txt
+    │   ├── logo.svg / logo.webp
+    │   ├── og-image.png            # Default Open Graph image
+    │   ├── favicon.png, apple-touch-icon.png
+    │   └── *.svg / *.webp          # Inline images used in blog posts
+    ├── guide/                      # Feature & concept documentation
+    │   ├── getting-started.md
+    │   ├── features.md
+    │   ├── ad-blocker.md
+    │   ├── privacy-protection.md
+    │   ├── private-browsing.md
+    │   ├── tab-management.md
+    │   ├── keyboard-shortcuts.md
+    │   ├── un-features.md          # What Nav0 deliberately does NOT do
+    │   ├── privacy.md              # Core principle: privacy
+    │   ├── philosophy.md           # Core principle: philosophy
+    │   └── contributing.md         # Community contribution guide
+    ├── blog/                       # Long-form posts (privacy, comparisons, etc.)
+    │   ├── index.md                # Renders <BlogListPage />
+    │   └── <slug>.md               # One file per post
+    ├── releases/                   # Release notes, one file per version
+    │   ├── index.md                # Timeline page — renders hero + cards
+    │   ├── v0.2.9.md               # Latest
+    │   └── v0.0.1-alpha.md … v0.2.8.md
+    └── .vitepress/
+        ├── config.ts               # Site config, nav, sidebars, JSON-LD, SEO
+        └── theme/
+            ├── index.ts            # Theme entry — registers custom components
+            ├── Layout.vue          # Slot-overrides for blog/release/legal pages
+            ├── tokens.css          # CSS custom properties (design tokens)
+            ├── custom.css          # All page-level styling (large file)
+            ├── posts.data.ts       # Content loader for blog posts
+            ├── releases.data.ts    # Content loader for releases
+            ├── faq-data.ts         # FAQ Q&A source
+            └── components/         # Vue SFCs (Home, Blog, Release, etc.)
 ```
 
-## Tech Stack
+## How the Site Is Wired
 
-| Component       | Technology                    | Version |
-| --------------- | ----------------------------- | ------- |
-| Runtime         | Electron                      | 35.2.1  |
-| Language        | TypeScript                    | 5.8.3   |
-| Bundler         | Webpack (via @electron-forge) | —       |
-| Build Tool      | Electron Forge                | 7.8.0   |
-| Database        | better-sqlite3                | 11.9.1  |
-| Key-Value Store | electron-store                | 8.2.0   |
-| Reader Mode     | @mozilla/readability          | 0.6.0   |
-| Icons           | Lucide                        | 0.503.0 |
-| Docs            | VitePress                     | 1.5.0   |
-| Testing         | Puppeteer Core                | 24.37.5 |
+### VitePress config (`docs/.vitepress/config.ts`)
 
-## Build & Configuration
+This file does a lot of work — when in doubt, read it before changing
+behaviour. It is responsible for:
 
-### Webpack
+- **Site metadata** — `title`, `description`, `siteUrl`, `ogImage`
+- **Top nav** — Home / Guide / Install / Blog / Release Notes / Links dropdown
+- **Sidebars**:
+  - `/guide/` — hand-curated, grouped (Introduction, Feature Guides, Un-features, Core Principles, Community)
+  - `/blog/` — auto-generated by `getBlogSidebar()` from blog frontmatter
+  - `/releases/` — auto-generated by `getReleaseSidebar()` from release frontmatter
+- **`transformPageData`** — applies a `pageClass` per route and injects:
+  - Canonical URL + `og:url` for every page
+  - `SoftwareApplication` JSON-LD on `index.md`, `install.md`, and `guide/features.md`
+  - `BreadcrumbList` JSON-LD on every content page
+  - `dateModified` into `Article` JSON-LD for blog posts
+- **`sitemap`** — generated with `hostname: 'https://nav0.org'`
+- **Sitewide JSON-LD** for `Organization` and `WebSite`
+- **Local search** (`search.provider: 'local'`)
 
-- `webpack.main.config.ts` — Main process bundling
-- `webpack.renderer.config.ts` — Renderer bundling (15 entry points)
-- `webpack.rules.ts` — Shared loader rules (includes `@vercel/webpack-asset-relocator-loader` for native modules)
-- `webpack.plugins.ts` — Shared plugins (Fork TS Checker for type checking)
+When adding a new top-level section (e.g. `tutorials/`), update **all** of:
+1. `nav` in `themeConfig`
+2. A new `sidebar['/tutorials/']` entry (manual or auto-generated)
+3. A `sectionNames[...]` entry so breadcrumbs render
+4. A branch in `transformPageData` if it needs a custom `pageClass`/layout
 
-### Electron Forge (`forge.config.ts`)
+### Theme overrides (`docs/.vitepress/theme/`)
 
-- **Makers**: DMG (macOS), ZIP, DEB (Linux), RPM, Squirrel (Windows)
-- **ESM Workaround**: `packageAfterPrune` hook patches Electron 35+ native module loading
-- **Native rebuild**: `better-sqlite3` rebuilt via `electron-rebuild`
+- `index.ts` extends the VitePress default theme and globally registers the Vue
+  components used inline in markdown (`<NewHome />`, `<DownloadsPage />`,
+  `<FaqPage />`, `<BlogListPage />`, `<ReleasesStats />`,
+  `<ReleasesLatestHero />`, etc.).
+- `Layout.vue` uses VitePress slots (`doc-top`, `doc-before`, `doc-after`,
+  `page-top`, `page-bottom`) to mount per-route chrome — the blog hero, the
+  release detail hero/sidebar, the legal-page TOC, etc. Layout detection is
+  done by inspecting `page.relativePath`.
+- `custom.css` (very large) holds the styles for every custom layout. There is
+  no preprocessor — plain CSS with custom properties defined in `tokens.css`.
+- `posts.data.ts` and `releases.data.ts` are VitePress
+  [content loaders](https://vitepress.dev/guide/data-loading). They are
+  consumed by the Vue components (e.g. `BlogListPage.vue`,
+  `ReleasesStats.vue`) at build time — no markdown filename should hardcode
+  data that these loaders derive (read time, word count, formatted dates, etc).
 
-### TypeScript (`tsconfig.json`)
+### Custom components to know
 
-- Target: ES6
-- Module: CommonJS
-- Strict: `noImplicitAny: true`
+| Component                  | Used on                  | Notes                                                                 |
+| -------------------------- | ------------------------ | --------------------------------------------------------------------- |
+| `NewHome.vue`              | `index.md`               | The marketing homepage hero + features                                |
+| `DownloadsPage.vue`        | `install.md`             | OS detection + download links                                         |
+| `FaqPage.vue`              | `faq.md`                 | Reads from `faq-data.ts`; mirrored by FAQPage JSON-LD in `faq.md`     |
+| `BlogListPage.vue`         | `blog/index.md`          | Lists posts via the `posts.data.ts` loader                            |
+| `BlogPostHero.vue`         | every `blog/*.md`        | Injected via the `doc-top` slot in `Layout.vue`                       |
+| `BlogPostMetaRail.vue`     | every `blog/*.md`        | Left rail with read time/word count                                   |
+| `ReleasesStats.vue`        | `releases/index.md`      | Aggregate counters derived from `releases.data.ts`                    |
+| `ReleasesLatestHero.vue`   | `releases/index.md`      | Pulls the "latest" excerpt from the index source                      |
+| `ReleaseDetailHero.vue`    | every `releases/v*.md`   | Injected via the `page-top` slot                                      |
+| `ReleaseDetailSidebar.vue` | every `releases/v*.md`   | Injected via the `page-bottom` slot                                   |
+| `LegalPageHero.vue`        | legal + guide pages      | Driven by frontmatter (`eyebrow`, `tagline`, `effective`, etc.)       |
+| `LegalPageTOC.vue`         | legal + guide pages      | Renders a numbered left-rail TOC from the page headings               |
 
-### ESLint (`.eslintrc.json`)
+## How We Do Blog Posts
 
-- Parser: `@typescript-eslint/parser`
-- Extends: `eslint:recommended`, `@typescript-eslint/recommended`, `plugin:import/recommended`
-- Environments: browser, es6, node
+Blog posts live in `docs/blog/<slug>.md` (kebab-case slug = the URL path
+under `/blog/`). The sidebar, post listing, hero, meta rail, read time,
+and category badge are **all auto-derived** from frontmatter and content —
+do not hardcode them anywhere else.
 
-## CI/CD
+### Author voice & topical scope
 
-### GitHub Actions (`.github/workflows/`)
+- Author is **always** "Nav0 Team" — we don't ship individual bylines.
+- Voice: direct, opinionated, technically grounded. We don't soft-pedal
+  privacy critiques of other browsers, but we also don't trash-talk
+  individuals or speculate. Cite sources where possible.
+- Topical scope (loosely the categories rendered in `posts.data.ts`):
+  - **Privacy** — tracking, fingerprinting, account creep
+  - **Comparisons** — `nav0-vs-*` posts pitting Nav0 against a named browser
+  - **Performance** / **Data Consumption** — benchmark-driven posts
+  - **Engineering** — implementation deep-dives
+  - **Indie web** — the broader open-web/indie-browser ecosystem
+  - **AI & Bloat** — the case against AI features bolted onto browsers
+- Every post should reinforce the "Browse. Nothing more." philosophy without
+  parroting the same paragraph in every post.
 
-- **`build-electron.yml`**: Multi-platform build matrix
-  - macOS 15 (x64) + macOS Latest (arm64) → DMG
-  - Ubuntu Latest (x64) → DEB + RPM
-  - Windows Latest (x64) → EXE
-  - Node 22, Python 3.11
-  - Trigger: `workflow_dispatch` with optional version override
-
-- **`docs.yml`**: Documentation deployment on push
-
-## Design Principles
-
-When contributing to Nav0, always keep these principles in mind:
-
-1. **Privacy-first**: Zero telemetry, zero tracking, zero data collection. Never add analytics, fingerprinting, or any form of user tracking.
-2. **Minimal**: Do one thing well — browse the web. No bloat, no AI features in the browser, no social features, no crypto wallets.
-3. **Local-only storage**: All user data stays on the device. No cloud sync, no accounts.
-4. **Open and auditable**: All code is MIT-licensed and transparent.
-5. **Performance-conscious**: Lightweight resource usage. Test impact of changes.
-
-### What Nav0 intentionally does NOT include
-
-- User accounts or cloud sync
-- AI assistants or AI-powered features
-- News feeds or content recommendations
-- Cryptocurrency wallets
-- Built-in VPN upsells
-- Telemetry or analytics of any kind
-
-## Important Gotchas
-
-### Native Modules (better-sqlite3)
-
-- Requires `electron-rebuild` after install: `npm run rebuild`
-- Webpack uses `@vercel/webpack-asset-relocator-loader` in the main process to handle native `.node` bindings
-- The `node-loader` handles `.node` file imports
-
-### Electron 35+ ESM Workaround
-
-- `forge.config.ts` has a `packageAfterPrune` hook that patches `package.json` files in node_modules to fix ESM/CJS compatibility issues
-- This is critical for native module loading — do not remove
-
-### Environment Variables
-
-- `NAV0_ISSUE_API_KEY` — Used in webpack renderer config for issue reporting
-- `REMOTE_DEBUGGING_PORT` — Enables remote debugging (used in tests)
-
-### Renderer Entry Points
-
-There are 15 separate webpack entry points for different renderer windows/overlays. When adding new UI, create a new entry point in `forge.config.ts` and `webpack.renderer.config.ts`.
-
-## Code Conventions
-
-- Use TypeScript for all new code
-- Follow the manager pattern for new features — encapsulate in a dedicated manager class
-- Define IPC channels as constants in `app-constants.ts`
-- Define data types as interfaces in `src/types/`
-- Use the existing database schema pattern when adding new data models
-- Keep renderer code separate from main process code — communicate via IPC only
-- No inline styles — use CSS files in `src/renderer/styles/`
-
-## Writing Blog Posts
-
-Blog posts live in `docs/blog/`. The sidebar and index are auto-generated from frontmatter.
-
-### Steps to add a new blog post
-
-1. **Create the markdown file** at `docs/blog/<slug>.md` (use kebab-case for the filename)
-2. **Add frontmatter** with the following required fields:
+### Required frontmatter
 
 ```yaml
 ---
 title: 'Your Post Title Here'
-description: 'A concise description for SEO and social sharing.'
+description: 'A concise description for SEO and social sharing (~155 chars).'
 date: 2026-03-21
 author: Nav0 Team
-tags: [privacy, browsers]
+tags: [privacy, browsers]      # first tag drives the category + hero art
 head:
   - - meta
     - property: og:type
@@ -282,6 +193,9 @@ head:
   - - meta
     - property: article:tag
       content: privacy
+  - - meta
+    - name: keywords
+      content: 'comma, separated, long-tail, keywords'
   - - script
     - type: application/ld+json
     - |
@@ -292,83 +206,113 @@ head:
         "description": "A concise description for SEO and social sharing.",
         "datePublished": "2026-03-21",
         "author": { "@type": "Organization", "name": "Nav0" },
-        "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Nav0",
+          "url": "https://nav0.org",
+          "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" }
+        },
         "mainEntityOfPage": "https://nav0.org/blog/<slug>",
         "keywords": ["privacy", "browsers"]
       }
 ---
 ```
 
-3. **Write the post content** in markdown. Start with an `h1` heading matching the title, followed by the byline:
+Notes:
+- `dateModified` is injected automatically in `transformPageData` — don't
+  add it manually unless you want to override.
+- `tags[0]` is what `posts.data.ts` uses to pick the hero art gradient/glyph
+  (see `ART_BY_TAG`) and the category label (see `CATEGORY_BY_TAG`). If you
+  introduce a new primary tag, add it to both maps.
+- Long-form FAQ JSON-LD (`"@type": "FAQPage"`) can be stacked into `head` as
+  an additional `script` block — see
+  `docs/blog/nav0-v012-performance-update.md` for the pattern.
 
-```md
-# Your Post Title Here
+### Post body conventions
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; March 21, 2026 &middot; 8 min read</p>
+1. Start with an `h1` matching the title, immediately followed by a small grey
+   byline paragraph:
 
-Your content here...
-```
+   ```md
+   # Your Post Title Here
 
-4. **End with the Nav0 CTA footer:**
+   <p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; March 21, 2026 &middot; 8 min read</p>
+   ```
 
-```md
----
+   The read-time count is also derived automatically by `posts.data.ts` for
+   listings/meta — the inline byline is just for the article body.
 
-_Nav0 is a minimal, privacy-focused browser that collects zero data. It's open source, free, and built on the belief that your browser should do one thing well: let you browse the web. [Get started](/guide/getting-started)._
-```
+2. Use standard markdown for structure (`##` section headings, no `#` after
+   the title). Comparison posts heavily use tables; benchmark posts embed
+   `<svg>` charts placed in `docs/public/`.
 
-5. **Add the entry to `docs/blog/index.md`** at the top of the list (newest first):
+3. **Always** close the post with the standard CTA footer:
 
-```html
-<div class="blog-post-item">
-  <a href="/blog/<slug>">
-    <h2>Your Post Title Here</h2>
-  </a>
-  <div class="post-meta">
-    By Nav0 Team &middot; March 21, 2026 &middot; 8 min read &middot; Category
-  </div>
-  <p class="post-excerpt">A brief excerpt summarizing the post (1-2 sentences).</p>
-</div>
-```
+   ```md
+   ---
 
-### Blog conventions
+   _Nav0 is a minimal, privacy-focused browser that collects zero data. It's open source, free, and built on the belief that your browser should do one thing well: let you browse the web. [Get started](/guide/getting-started)._
+   ```
 
-- Categories used: Privacy, Security, Comparison, Performance, Data Consumption, AI & Bloat, Open Web
-- Author is always "Nav0 Team"
-- Include reading time estimate in the byline
-- All posts should align with Nav0's privacy-first philosophy
-- The sidebar is auto-generated from frontmatter by `getBlogSidebar()` in `docs/.vitepress/config.ts`
+### Where the post shows up automatically
 
-## Writing Release Notes
+You do **not** need to register the post anywhere. Once the file is in
+`docs/blog/` with valid frontmatter:
 
-Release notes live in `docs/releases/`. The sidebar is auto-generated from frontmatter.
+- It appears in the `/blog/` sidebar (`getBlogSidebar()` in `config.ts`).
+- It appears in the `<BlogListPage />` grid (via `posts.data.ts`).
+- It gets a generated `BlogPostHero` and `BlogPostMetaRail` via the layout
+  slot overrides in `Layout.vue`.
+- It gets `pageClass: 'blog-post-page'` and `sidebar: false` applied by
+  `transformPageData` (the meta rail replaces the sidebar).
+- It is added to the sitemap.
 
-### Steps to add a new release
+If a post needs custom-looking imagery, drop SVGs/WebPs into `docs/public/`
+and reference them as `/your-asset.svg`.
 
-1. **Create the markdown file** at `docs/releases/v<version>.md` (e.g., `v0.1.0.md`)
-2. **Add frontmatter:**
+## How We Do Release Notes
+
+Release notes live in `docs/releases/v<version>.md`, one file per shipped
+version. Alpha releases use `v<version>-alpha.md`. Order, sidebar, hero,
+stats, and the "Latest" badge are all derived from frontmatter and the
+`releases/index.md` source — keep both in sync when shipping.
+
+### Cadence & content rules
+
+- We ship small and often. Each release file should be readable in under a
+  minute.
+- Use feature-area `##` headings (e.g. `## Address Bar`, `## Shortcuts`,
+  `## Private Mode`), plus the standing `## Bug Fixes` and (optionally)
+  `## Improvements` sections.
+- Each bullet is `**Feature/fix name** — one-line description.` The em dash
+  is intentional; keep it.
+- **Never** describe an unshipped change. If it's not in the build users will
+  download, it doesn't go in the notes.
+- **No marketing-speak.** The site explicitly promises "no 'AI-powered'
+  features hidden in patch notes" — keep notes literal.
+
+### Required frontmatter
 
 ```yaml
 ---
-title: 'v0.1.0'
-date: 2026-03-21
-badge: Latest
+title: 'v0.2.10'
+date: 2026-05-29
+badge: Latest          # only on the newest release; remove from the previous one
 ---
 ```
 
-- Use `badge: Latest` only for the newest release. Remove `badge` from the previous latest release file.
-- For alpha releases, use `badge: Alpha` and name the file `v<version>-alpha.md`.
+For an alpha: `badge: Alpha` and filename `v0.2.10-alpha.md`.
 
-3. **Write the release content** with this structure:
+### Body template
 
 ```md
-# v0.1.0
+# v0.2.10
 
 <span class="release-badge latest">Latest</span>
 
-<div class="release-date-meta">March 21, 2026</div>
+<div class="release-date-meta">May 29, 2026</div>
 
-## Feature Section Name
+## <Feature Area>
 
 - **Feature Name** — short description of what it does
 - **Another Feature** — description
@@ -380,42 +324,232 @@ badge: Latest
 ## Improvements
 
 - **Improvement Name** — what changed
+
+---
+
+_Nav0 is a minimal, privacy-focused browser that collects zero data. It's open source, free, and built on the belief that your browser should do one thing well: let you browse the web. [Get started](/guide/getting-started)._
 ```
 
-4. **Update `docs/releases/index.md`** — add the new entry at the top (newest first) and move the `latest` badge:
+### Shipping checklist for every release
 
-```html
-<div class="release-list-item">
-  <a href="/releases/v0.1.0">
-    <h2>v0.1.0</h2>
-  </a>
-  <div class="release-meta">March 21, 2026 <span class="release-badge latest">Latest</span></div>
-  <p class="release-excerpt">Brief summary of major changes in this release.</p>
-</div>
+When adding `docs/releases/v<version>.md`, also:
+
+1. **Demote the previous "Latest" file** — remove `badge: Latest` from its
+   frontmatter and the `<span class="release-badge latest">Latest</span>`
+   from its body heading.
+2. **Update `docs/releases/index.md`**:
+   - Move the `<span class="release-badge latest">Latest</span>` chip in the
+     timeline cards from the old release to the new one.
+   - Replace the body of `<ReleasesLatestHero>` (the lead paragraph) and its
+     `<template #summary>` bullet list to match the new release. The
+     `releases.data.ts` loader pulls the headline from this hero block, so
+     it is the canonical "what's new" copy.
+   - Insert a new `<div class="release-list-item">` block at the top of
+     `<div class="releases-timeline">`, with the same shape as the existing
+     entries: linked `<h2>`, `release-meta` line (date + optional badge),
+     and a one-sentence `release-excerpt`. The excerpt is what
+     `releases.data.ts` falls back to for per-release headlines, so write
+     it like a summary, not a tagline.
+3. **Bump `package.json` `version`** to match the release. The
+   `SoftwareApplication` JSON-LD reads `packageJson.version`, so this is
+   what surfaces in search results.
+4. Confirm the build:
+
+   ```bash
+   npm run docs:build
+   ```
+
+There is nothing else to wire up — `getReleaseSidebar()`, `releases.data.ts`,
+`<ReleasesStats />`, the per-release `ReleaseDetailHero`/`Sidebar`, and the
+sitemap all read the new file automatically.
+
+## How We Do Feature Documentation
+
+User-facing feature documentation lives in `docs/guide/`. These are the
+"how does X work / how do I use X" pages linked from the main nav and the
+guide sidebar.
+
+### Sidebar groups (`docs/.vitepress/config.ts`)
+
+| Group              | Pages                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------- |
+| Introduction       | `getting-started.md`, `features.md`                                                            |
+| Feature Guides     | `ad-blocker.md`, `privacy-protection.md`, `private-browsing.md`, `tab-management.md`, `keyboard-shortcuts.md` |
+| Un-features        | `un-features.md`                                                                               |
+| Core Principles    | `privacy.md`, `philosophy.md`                                                                  |
+| Community          | `contributing.md`                                                                              |
+
+To add a new guide page, drop the markdown file in `docs/guide/` **and**
+register it in the appropriate sidebar group (it is not auto-discovered).
+
+### Frontmatter conventions
+
+```yaml
+---
+title: 'Feature Name — Nav0 ...'          # always SEO-shaped (~60 chars)
+description: 'One-sentence summary suitable for search snippets (~155 chars).'
+eyebrow: Feature Guide                     # appears above the page hero
+head:
+  - - meta
+    - property: og:type
+      content: article
+  - - meta
+    - property: article:section
+      content: Documentation
+  # Add HowTo / Article / FAQ JSON-LD where it fits — see existing files.
+---
 ```
 
-Remove the `<span class="release-badge latest">Latest</span>` from the previous release entry.
+Common `eyebrow` values: `Introduction`, `Feature Guide`, `Un-features`,
+`Core Principles`, `Community`, `Legal`. The eyebrow renders in
+`LegalPageHero.vue` (which is reused for guides — see `showDocHero` in
+`Layout.vue`).
 
-5. **Update `package.json` version** to match the new release version.
+### Body conventions
 
-### Release note conventions
+- Open with an `h1` matching the page title, then a single-sentence lede
+  paragraph. The lede should be quotable.
+- Group with `##` sections; use `###` for sub-features. Keep headings
+  scannable — they drive the right-side aside-less layout via the auto-TOC.
+- Prefer tables for comparison/reference content (settings tables, keyboard
+  shortcut tables). The site CSS styles them well.
+- Use `[link text](/guide/other-page)` for cross-references between guide
+  pages; **always** use absolute site paths (leading `/`) so canonical URL
+  generation stays correct.
+- Code samples are fine — Shiki highlights them out of the box. Bash blocks
+  for install commands, `js`/`ts` for engineering posts.
 
-- Group changes by feature area with `##` headings
-- Each item is a bold feature/fix name followed by an em dash and description
-- Keep descriptions concise — one line per item
-- Badge classes: `latest`, `alpha`
-- The sidebar is auto-generated from frontmatter by `getReleaseSidebar()` in `docs/.vitepress/config.ts`
+### Linking back from a guide page
 
-## Default Browser Settings
+Adding a new prominent feature usually means touching:
 
-| Category   | Setting        | Default                           |
-| ---------- | -------------- | --------------------------------- |
-| Search     | Engine         | DuckDuckGo                        |
-| Search     | Suggestions    | Disabled                          |
-| Privacy    | Cookie Policy  | Block 3rd-party                   |
-| Privacy    | Clear on close | No                                |
-| Ad Blocker | Enabled        | Yes                               |
-| Ad Blocker | Lists          | EasyList, EasyPrivacy, Peter Lowe |
-| Proxy      | Mode           | Direct                            |
-| User Agent | Preset         | nav0-browser (custom)             |
-| Popups     | Policy         | Smart (limited)                   |
+1. The new `docs/guide/<feature>.md` page.
+2. `docs/guide/features.md` — append a short bullet/section pointing to it.
+3. The feature list in `softwareAppSchema.featureList` in `config.ts` (so
+   the `SoftwareApplication` JSON-LD on `/`, `/install`, and `/guide/features`
+   reflects it).
+4. If user-visible in the nav: add a sidebar entry under the right group in
+   `themeConfig.sidebar['/guide/']`.
+5. Optional: `docs/faq.md` + `faq-data.ts` if it answers a recurring
+   question. Both must be updated — the JSON-LD in `faq.md` is hand-maintained
+   to mirror `faq-data.ts`.
+
+## Legal Pages
+
+`privacy-policy.md`, `terms-of-use.md`, and `disclaimer.md` use a richer
+frontmatter that `LegalPageHero.vue` consumes:
+
+```yaml
+---
+title: 'Privacy Policy — Nav0 Browser'
+description: '...'
+eyebrow: Legal
+tagline: "One-sentence positioning shown under the title."
+effective: 'March 7, 2026'
+lastUpdated: 'March 7, 2026'
+version: 'v1.0'
+versionIcon: file
+---
+```
+
+When updating a legal page, bump both `lastUpdated` and (if material) the
+`version`. The numbered left-rail TOC is auto-built from `##` headings by
+`LegalPageTOC.vue`, so structure the document with that in mind.
+
+## FAQ
+
+`docs/faq.md` renders the `<FaqPage />` component, which reads questions
+and answers from `docs/.vitepress/theme/faq-data.ts`. The page also contains
+hand-maintained `FAQPage` JSON-LD in its frontmatter that mirrors the same
+content for SEO. **Edit both** when adding or modifying an entry, otherwise
+search engines and the rendered page will drift apart.
+
+Categories in `faq-data.ts` (currently): `General`, `Privacy`, plus
+others — read the file before adding a new top-level category.
+
+## SEO, Sitemap & Social
+
+- VitePress generates the sitemap from `sitemap.hostname` in `config.ts`.
+- Canonical URLs and `og:url` are injected for every page in
+  `transformPageData`.
+- The default Open Graph image is `/og-image.png`; override per page by
+  adding `['meta', { property: 'og:image', content: '/<image>.png' }]`
+  inside that page's `head` frontmatter.
+- `SoftwareApplication` JSON-LD only renders on `index.md`, `install.md`,
+  and `guide/features.md` — keep that allow-list current in `config.ts` if
+  the homepage feature surface moves.
+- `BreadcrumbList` JSON-LD is automatic; the section labels come from
+  `sectionNames` in `config.ts`.
+- `Article` JSON-LD on blog posts is added per-file in frontmatter;
+  `transformPageData` then fills in `dateModified` from the post's `date`.
+- `docs/public/llms.txt` and `docs/public/llms-full.txt` are AI-readable
+  summaries of the site. Refresh them when the homepage value prop or the
+  feature set changes meaningfully — they are served at
+  `https://nav0.org/llms.txt`.
+
+## Adding New Static Assets
+
+- Put images, favicons, OG images, and SVGs used in blog posts directly in
+  `docs/public/`. They are served at the site root (so `docs/public/foo.svg`
+  becomes `/foo.svg`).
+- Prefer SVG for icons/diagrams and WebP for raster images. PNG is fine for
+  the favicon family and `og-image.png`.
+- Don't import from `docs/public/` in `.vue` components — reference the
+  served path (`/logo.svg`).
+
+## Editorial / Voice Principles
+
+When writing for the website (blog, releases, guides, FAQ), keep these in
+mind:
+
+1. **Privacy-first, plainly stated.** Don't bury the lede. Say "Nav0 collects
+   zero data" early and often, not "we minimize unnecessary collection."
+2. **Concrete over vague.** "Memory dropped 21% on a MacBook Pro M1" beats
+   "improved performance." Show numbers, commands, and screenshots where
+   you can.
+3. **No marketing-speak.** No "powerful", no "seamless", no "next-generation",
+   no "revolutionary." If a Chrome marketing page would write it, we don't.
+4. **No AI/crypto/social pivots.** The product doesn't have them and the
+   website shouldn't hint at a roadmap toward them. "What Nav0 deliberately
+   does not do" is itself a feature — link to `/guide/un-features` when
+   relevant.
+5. **Don't invent features.** If a release note or guide describes behaviour
+   that doesn't ship in the linked version of the browser, that's a bug —
+   cross-check against the browser repo's source or a real install before
+   publishing.
+
+## CI/CD
+
+`.github/workflows/docs.yml`:
+
+- Triggers on every push to `main` (and manual `workflow_dispatch`).
+- Steps: `actions/checkout@v4` (full history, needed for `lastUpdated`) →
+  `setup-node@v4` (Node 20, npm cache) → `npm ci` → `npm run docs:build` →
+  upload `docs/.vitepress/dist` as a Pages artifact → deploy via
+  `actions/deploy-pages@v4`.
+- Deploys to GitHub Pages under the `nav0.org` CNAME
+  (`docs/public/CNAME`).
+
+There is no preview deploy and no staging environment. The build is the
+gate. If `npm run docs:build` fails locally, the deploy will fail too —
+always run it before opening a PR.
+
+## Common Gotchas
+
+- **Forgot to demote the previous "Latest" release.** The badge will appear
+  on two releases simultaneously. Always remove `badge: Latest` from the
+  previous file and the matching chip from `releases/index.md`.
+- **New blog primary tag without art mapping.** The post will render with
+  the fallback grey gradient and a `·` glyph. Add the tag to `ART_BY_TAG`
+  and `CATEGORY_BY_TAG` in `posts.data.ts`.
+- **FAQ drift.** `faq.md` JSON-LD and `faq-data.ts` must agree. There is
+  no automated check.
+- **Hardcoded dates in JSON-LD.** When adding the `Article` JSON-LD block,
+  the `datePublished` must match `frontmatter.date` — `dateModified` is
+  patched in automatically, but `datePublished` is not.
+- **Relative links inside markdown.** Always use site-absolute paths
+  (`/guide/...`), not relative (`./other.md`). Canonical URL generation
+  and the sidebar both assume absolute routes.
+- **Mixing browser-repo docs into this repo.** The browser application's
+  source code, build tooling, and `CLAUDE.md` belong in `nav0-browser`.
+  This repo only ships the website.
