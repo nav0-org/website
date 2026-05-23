@@ -28,11 +28,11 @@
       <div class="nv-hero-meta">
         <div class="nv-hero-meta-card">
           <div class="k">Memory</div>
-          <div class="v">&minus;45%<small>vs Chrome</small></div>
+          <div class="v">&minus;57%<small>vs Chrome</small></div>
         </div>
         <div class="nv-hero-meta-card">
           <div class="k">CPU at idle</div>
-          <div class="v">&minus;77%<small>vs Chrome</small></div>
+          <div class="v">&minus;76%<small>vs Chrome</small></div>
         </div>
         <div class="nv-hero-meta-card">
           <div class="k">Telemetry</div>
