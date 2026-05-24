@@ -13,19 +13,28 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-A unified address bar autocomplete that ranks bookmarks above history, new `Cmd/Ctrl+L` and corrected `Ctrl+W` shortcuts, a fully in-memory private-mode database with startup cleanup of leftover data, and fixes for ad blocker false positives on first-party requests and the empty About-page checksum row.
+The Nav0 editorial redesign lands across every built-in page — tab strip, new tab, Bookmarks, History, Downloads, Settings, About, Command-K, error pages — plus fixes for address-bar Enter behaviour, coalesced `getUserMedia` prompts, and unblocked streaming sub-resources in private mode.
 
 <template #summary>
 
-- Address bar gets a unified autocomplete dropdown — flattened ranked results that prefer bookmarks over history, rendered through the shared overlay pipeline
-- `Cmd/Ctrl+L` now focuses the URL input, and `Ctrl+W` on Linux/Windows closes the active tab instead of the whole window
-- Private-mode SQLite runs entirely in memory, and any leftover private data from previous sessions is cleared on startup
-- Ad blocker no longer applies generic URL patterns to first-party requests, and the About page hides the integrity checksum row when empty
+- Every built-in page retuned against the new Nav0 design system: warm chrome surfaces, paper-white content, brand-red active anchors, and a shared dashboard skeleton documented in DESIGN.md
+- Address bar now navigates to the typed URL when Enter is pressed with no suggestion highlighted, and arrow-key cycling can return to the typed query
+- Concurrent `getUserMedia` requests are coalesced, so Google Meet's camera prompt appears reliably when audio and video are requested together
+- Private-mode windows no longer block streaming sub-resources, fixing video seeking on common streaming sites
+- New seed scripts populate a dev database and saved session with randomized, repeatable data
 
 </template>
 </ReleasesLatestHero>
 
 <div class="releases-timeline">
+
+<div class="release-list-item">
+  <a href="/releases/v0.2.9">
+    <h2>v0.2.9</h2>
+  </a>
+  <div class="release-meta">May 17, 2026</div>
+  <p class="release-excerpt">A unified address bar autocomplete that ranks bookmarks above history, new Cmd/Ctrl+L and corrected Ctrl+W shortcuts, a fully in-memory private-mode database with startup cleanup, and fixes for ad blocker false positives and the empty About-page checksum row.</p>
+</div>
 
 <div class="release-list-item">
   <a href="/releases/v0.2.8">
