@@ -21,7 +21,15 @@
       <div class="nv-hero-stage">
         <div class="nv-hero-stage-inner">
           <div class="nv-hero-stage-glow" />
-          <Nav0BrowserMock />
+          <img
+            class="nv-hero-shot"
+            src="/homepage-screenshot.png"
+            alt="The Nav0 browser new tab page, showing the search field, bookmarks, and frequently visited sites."
+            width="2880"
+            height="1800"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </div>
 
@@ -265,7 +273,6 @@
 <script setup>
 import { computed, h } from 'vue';
 import { data as posts } from '../posts.data';
-import Nav0BrowserMock from './Nav0BrowserMock.vue';
 
 const Icon = (paths, opts = {}) => {
   const size = opts.size || 16;
@@ -580,6 +587,17 @@ const featuredPosts = computed(() => posts.slice(0, 5));
   filter: blur(40px);
   pointer-events: none;
   z-index: 0;
+}
+.nv-hero-shot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid var(--nv-rule-soft);
+  box-shadow: var(--nv-shadow-lg);
+  background: var(--nv-bg-card);
 }
 
 /* ====== HERO META TILES ====== */
