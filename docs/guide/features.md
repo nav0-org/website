@@ -252,13 +252,13 @@ Standard Chromium security model:
 
 Open settings via the Options menu or by navigating directly to `nav0://browser-settings`. The settings UI has eight focused sections, each enforced by the browser itself — there is no cloud profile that can override your local preferences.
 
-### General
+#### General
 
 Choose where downloaded files are saved. One-click reset to the OS default downloads folder.
 
 ![Settings — General page with the Downloads Location section](/settings-general.png)
 
-### On Startup
+#### On Startup
 
 Pick what happens when Nav0 launches:
 
@@ -268,7 +268,7 @@ Pick what happens when Nav0 launches:
 
 ![Settings — On Startup with three launch behaviour options](/settings-on-startup.png)
 
-### Search
+#### Search
 
 Configure how the address bar handles queries.
 
@@ -278,7 +278,7 @@ Configure how the address bar handles queries.
 
 ![Settings — Search with default engine, suggestions toggle, and the custom engine form](/settings-search.png)
 
-### Privacy & Security
+#### Privacy & Security
 
 The largest settings page, because privacy is the product. It is organized into clearly labelled groups: Third-Party Cookies, Cookie Controls, Ad & Tracker Blocking, and Filter Lists.
 
@@ -289,7 +289,7 @@ The largest settings page, because privacy is the product. It is organized into 
 
 ![Settings — Privacy & Security with cookie controls, ad & tracker blocking, and filter lists](/settings-privacy.png)
 
-### Permissions
+#### Permissions
 
 Per-site permission management for camera, microphone, location, notifications, and more. Searchable by site or permission type. When you have not made any allow/deny decisions yet, the page shows clear empty-state guidance instead of a blank list.
 
@@ -300,7 +300,7 @@ Per-site permission management for camera, microphone, location, notifications, 
 
 ![Settings — Site Permissions page with an empty-state message and search input](/settings-permissions.png)
 
-### Network
+#### Network
 
 Identity and connectivity settings in one place.
 
@@ -310,13 +310,13 @@ Identity and connectivity settings in one place.
 
 ![Settings — Network with user agent selector and proxy configuration options](/settings-network.png)
 
-### Keyboard Shortcuts
+#### Keyboard Shortcuts
 
 Every keyboard shortcut in the browser is listed and remappable. [Full shortcut reference →](/guide/keyboard-shortcuts)
 
 ![Settings — Keyboard Shortcuts page](/settings-keyboard-shortcuts.png)
 
-### Developer
+#### Developer
 
 A single toggle to enable or disable Chromium's Developer Tools. Off by default for users who do not need them; one click away when you do. With it on, Cmd+Opt+I (macOS) or Ctrl+Shift+I (Windows/Linux) opens DevTools.
 
