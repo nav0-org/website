@@ -31,6 +31,11 @@ These features conflict with Nav0's core principles (privacy-first, minimal, loc
 
 Features we'd genuinely like to add. Contributions welcome. Ordered roughly by impact.
 
+### Platform & Distribution
+
+- **macOS app signing & notarization** — Nav0 is not yet signed and notarized with an Apple Developer ID. On macOS, Gatekeeper will warn that the app is from an unidentified developer on first launch (right-click → Open to bypass). Code signing and notarization are on the roadmap.
+- **Widevine DRM certification** — Nav0 ships without a certified Widevine CDM. DRM-protected streaming services — **Netflix, Amazon Prime Video, Spotify**, and others — will not play protected content until we obtain Widevine certification. This is on the roadmap.
+
 ### Bookmarks
 
 - **Bookmark folders / organization** — Currently a flat list. Need hierarchical folders.
