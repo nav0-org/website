@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress';
-import { readdirSync, readFileSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import packageJson from '../../package.json';
 
@@ -71,6 +71,16 @@ function getBlogSidebar() {
         ...posts.map(({ text, link }) => ({ text, link })),
       ],
     },
+    {
+      text: 'Browse by topic',
+      items: [
+        { text: 'Privacy', link: '/blog/topic/privacy' },
+        { text: 'Comparisons', link: '/blog/topic/comparisons' },
+        { text: 'Performance', link: '/blog/topic/performance' },
+        { text: 'The Open Web', link: '/blog/topic/open-web' },
+        { text: 'Security', link: '/blog/topic/security' },
+      ],
+    },
   ];
 }
 
@@ -109,6 +119,71 @@ const comparisonBrowsers: Record<string, string> = {
   'nav0-vs-tor-browser': 'Tor Browser',
   'nav0-vs-vivaldi': 'Vivaldi',
 };
+
+function escapeXml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+// Reads blog post frontmatter (title/date/description) for the RSS feed.
+// readdirSync only returns direct children, so /blog/topic/* hubs are excluded.
+function getBlogPostsForFeed() {
+  const blogDir = resolve(dirname(fileURLToPath(import.meta.url)), '../blog');
+  const files = readdirSync(blogDir).filter((f) => f.endsWith('.md') && f !== 'index.md');
+  const posts = files
+    .map((file) => {
+      const content = readFileSync(resolve(blogDir, file), 'utf-8');
+      const match = content.match(/^---\n([\s\S]*?)\n---/);
+      if (!match) return null;
+      const fm = match[1];
+      return {
+        title: fm.match(/title:\s*(["'])([\s\S]*?)\1/)?.[2] || file.replace('.md', ''),
+        date: fm.match(/^date:\s*(\S+)/m)?.[1] || '',
+        description: fm.match(/^description:\s*(["'])([\s\S]*?)\1/m)?.[2] || '',
+        slug: file.replace('.md', ''),
+      };
+    })
+    .filter((p): p is { title: string; date: string; description: string; slug: string } => !!p);
+  posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
+  return posts;
+}
+
+function writeRssFeed(outDir: string) {
+  const posts = getBlogPostsForFeed();
+  const items = posts
+    .map(
+      (p) => `    <item>
+      <title>${escapeXml(p.title)}</title>
+      <link>${siteUrl}/blog/${p.slug}</link>
+      <guid isPermaLink="true">${siteUrl}/blog/${p.slug}</guid>
+      <pubDate>${new Date(p.date).toUTCString()}</pubDate>
+      <dc:creator>${escapeXml(authorName)}</dc:creator>
+      <description>${escapeXml(p.description)}</description>
+    </item>`
+    )
+    .join('\n');
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>${escapeXml(siteName)} Blog</title>
+    <link>${siteUrl}/blog/</link>
+    <atom:link href="${siteUrl}/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <description>${escapeXml(siteDescription)}</description>
+    <language>en-US</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${items}
+  </channel>
+</rss>
+`;
+
+  mkdirSync(join(outDir, 'blog'), { recursive: true });
+  writeFileSync(join(outDir, 'blog', 'feed.xml'), xml, 'utf-8');
+}
 
 const softwareAppSchema = {
   '@context': 'https://schema.org',
@@ -179,6 +254,17 @@ export default defineConfig({
     // Favicon
     ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
+
+    // RSS feed autodiscovery
+    [
+      'link',
+      {
+        rel: 'alternate',
+        type: 'application/rss+xml',
+        title: 'Nav0 Blog',
+        href: `${siteUrl}/blog/feed.xml`,
+      },
+    ],
 
     // Theme
     ['meta', { name: 'theme-color', content: '#1a1a1a' }],
@@ -252,6 +338,7 @@ export default defineConfig({
       { text: 'Install', link: '/install' },
       { text: 'Blog', link: '/blog/' },
       { text: 'Release Notes', link: '/releases/' },
+      { text: 'About', link: '/about' },
       {
         text: 'Links',
         items: [
@@ -313,6 +400,10 @@ export default defineConfig({
     },
   },
 
+  async buildEnd(siteConfig) {
+    writeRssFeed(siteConfig.outDir);
+  },
+
   transformPageData(pageData) {
     const canonicalUrl = `${siteUrl}/${pageData.relativePath}`
       .replace(/index\.md$/, '')
@@ -330,6 +421,11 @@ export default defineConfig({
 
     if (pageData.relativePath === 'blog/index.md') {
       pageData.frontmatter.pageClass = 'blog-list-page';
+    } else if (pageData.relativePath.startsWith('blog/topic/')) {
+      // Topic hub pages (e.g. /blog/topic/privacy) render <TopicHub /> on a
+      // plain page layout — they are not posts, so skip the post metadata.
+      pageData.frontmatter.pageClass = 'blog-topic-page';
+      pageData.frontmatter.layout = 'page';
     } else if (pageData.relativePath.startsWith('blog/')) {
       pageData.frontmatter.pageClass = 'blog-post-page';
       // Drop the all-posts left sidebar (the design uses the meta rail instead)

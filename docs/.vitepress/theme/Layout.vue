@@ -15,7 +15,10 @@ const { Layout } = DefaultTheme;
 const { page } = useData();
 
 const isBlogPost = computed(
-  () => page.value.relativePath.startsWith('blog/') && page.value.relativePath !== 'blog/index.md'
+  () =>
+    page.value.relativePath.startsWith('blog/') &&
+    page.value.relativePath !== 'blog/index.md' &&
+    !page.value.relativePath.startsWith('blog/topic/')
 );
 const isReleaseDetail = computed(() => {
   const path = page.value.relativePath || '';
