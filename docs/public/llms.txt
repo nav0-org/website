@@ -1,92 +1,40 @@
 # Nav0
 
-> A minimal, privacy-focused web browser. No data collection. No bloat. No AI gimmicks. Just clean, safe browsing.
+> A minimal, privacy-focused web browser. Zero telemetry, no accounts, no AI gimmicks — just clean, fast browsing. Free and open source under the MIT License, built on Electron and Chromium for Windows, macOS, and Linux.
 
-Nav0 is a free, open-source desktop web browser built on Electron and Chromium. It is designed for users who want a fast, lightweight browser that respects their privacy. Nav0 collects zero telemetry, requires no accounts, and stores all data locally on the user's device.
+Nav0 collects no data, makes no idle network requests, and stores everything locally on your device. Its guiding principle is "Browse. Nothing more." The links below are the canonical entry points to the project. For the full text of the most important pages in one file, see https://nav0.org/llms-full.txt.
 
-## Key Facts
+## Start here
 
-- **Type**: Desktop web browser application
-- **Platforms**: Windows, macOS, Linux
-- **Engine**: Chromium (via Electron)
-- **License**: MIT (fully open source)
-- **Price**: Free
-- **Telemetry**: None. Zero data collection.
-- **Source Code**: https://github.com/nav0-org/nav0-browser
-- **Website**: https://nav0.org
-- **Install**: https://nav0.org/install
+- [Nav0 — Browse. Nothing more.](https://nav0.org/): What Nav0 is, who it is for, and how a zero-data browser compares to the mainstream.
+- [Download Nav0](https://nav0.org/install): Installers for Windows, macOS (Intel and Apple Silicon), and Linux, plus build-from-source instructions.
+- [Frequently Asked Questions](https://nav0.org/faq): Direct answers on data collection, accounts, extensions, ad blocking, and how Nav0 differs from Chrome, Brave, and Firefox.
+- [Philosophy](https://nav0.org/guide/philosophy): Why Nav0 does one thing — browse the web — and deliberately omits AI, sync, crypto, and VPN features.
+- [Getting Started](https://nav0.org/guide/getting-started): Install Nav0, set it as default, and learn the core workflow in a few minutes.
 
-## Core Principles
+## Browser comparisons
 
-1. **Zero Data Collection**: Nav0 does not collect, store, transmit, or process any user data. No telemetry, no analytics, no crash reports.
-2. **Local-Only Storage**: Bookmarks, history, settings, and downloads stay on the user's device. No cloud sync. No account required.
-3. **Minimal by Design**: Only essential browsing features. No AI assistants, no news feeds, no crypto wallets, no built-in VPNs, no shopping tools.
-4. **Open Source Transparency**: Full source code is public and auditable. Users can build from source for maximum trust.
-5. **Privacy as Default**: Privacy is not a toggle or a premium feature. It is the architecture. There are no privacy settings because there is nothing to configure—no data leaves the browser.
+- [Nav0 vs Brave](https://nav0.org/blog/nav0-vs-brave): Why real privacy shouldn't ship with a crypto wallet, an ad network, and a VPN upsell.
+- [Nav0 vs Firefox](https://nav0.org/blog/nav0-vs-firefox): Keeping Firefox's ideals while removing default telemetry, account nudges, and sponsored content.
+- [Nav0 vs Safari](https://nav0.org/blog/nav0-vs-safari): Privacy by default versus privacy on Apple's terms, tied to iCloud and one ecosystem.
+- [Nav0 vs Microsoft Edge](https://nav0.org/blog/nav0-vs-edge): The browser that reports to Redmond — telemetry, Bing, Copilot, and shopping tools nobody asked for.
+- [Nav0 vs Arc](https://nav0.org/blog/nav0-vs-arc): Maximalism versus minimalism — adding UI and AI versus stripping the browser down.
 
-## Features
+## Privacy essays
 
-### Privacy & Security
-- Zero telemetry
-- Tracker blocking
-- Third-party cookie blocking
-- HTTPS auto-upgrade
-- Fingerprint protection
-- Private browsing mode
-- Referrer trimming
-- Local-only blocklists for malicious sites
-- Process sandboxing
+- [Your Browser Is Watching You](https://nav0.org/blog/your-browser-is-watching-you): Exactly what modern browsers track, why it matters, and what you can do about it.
+- [Incognito Mode Is Not Private](https://nav0.org/blog/incognito-mode-is-not-private): What private-browsing modes actually hide — and who can still see you.
+- [Cookie Banners Are Privacy Theater](https://nav0.org/blog/cookie-banners-are-privacy-theater): How consent banners became a tax on attention while tracking quietly continued.
 
-### Browsing
-- Tab management
-- Local bookmarks with folders
-- Bookmark import/export (HTML format)
-- Local browsing history
-- Download manager
-- Configurable search engine
-- Configurable start page
-- Chrome DevTools for developers
+## Performance benchmarks
 
-### Performance
-- Fast startup (no account checks, no sync, no feed loading)
-- Low memory usage
-- No background processes
-- No idle network requests
-- No pre-loading of suggested content
+- [Nav0 vs Chrome: Performance Benchmark](https://nav0.org/blog/nav0-vs-chrome-performance-benchmark): On a MacBook Pro M1, Nav0 used 48.5% less memory and 86.3% less CPU than Chrome across 10–50 tabs.
+- [Nav0 vs Chrome: Data Consumption](https://nav0.org/blog/nav0-vs-chrome-data-consumption): Measured byte for byte across 15 sites — Nav0 transferred 17.7% less data and made 29.1% fewer requests.
 
-## What Nav0 Does NOT Include (By Design)
+## More
 
-- No AI assistant or chatbot
-- No news feed or content recommendations
-- No cloud sync service
-- No cryptocurrency wallet or rewards
-- No built-in VPN
-- No forced account creation
-- No telemetry or analytics
-- No advertising-related features
-
-## Comparison with Other Browsers
-
-Unlike Chrome, Edge, Opera, and other mainstream browsers, Nav0:
-- Does not send browsing data to any server
-- Does not require or encourage sign-in
-- Does not include advertising or monetization features
-- Does not bundle AI features
-- Does not phone home for any reason
-
-## Documentation
-
-- Getting Started: https://nav0.org/guide/getting-started
-- Features: https://nav0.org/guide/features
-- Privacy Principles: https://nav0.org/guide/privacy
-- Philosophy: https://nav0.org/guide/philosophy
-- Contributing: https://nav0.org/guide/contributing
-- Blog: https://nav0.org/blog/
-- FAQ: https://nav0.org/faq
-- Privacy Policy: https://nav0.org/privacy-policy
-- Terms of Use: https://nav0.org/terms-of-use
-- Disclaimer: https://nav0.org/disclaimer
-
-## Full Content
-
-For comprehensive documentation, see: https://nav0.org/llms-full.txt
+- [Blog](https://nav0.org/blog/): Essays on privacy, browser comparisons, performance, and the open web.
+- [Release Notes](https://nav0.org/releases/): Every shipped version, with literal patch notes and no marketing-speak.
+- [Features](https://nav0.org/guide/features): The full, deliberately short list of what Nav0 does.
+- [What Nav0 Doesn't Do](https://nav0.org/guide/un-features): The "un-features" — AI, sync, crypto, VPN, accounts, telemetry — and why they are absent by design.
+- [Privacy](https://nav0.org/guide/privacy): How privacy is the architecture, not a setting you have to find and toggle.

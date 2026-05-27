@@ -30,7 +30,7 @@ async function copyLink() {
     <div class="bp-meta-card">
       <div class="bp-meta-row">
         <span class="bp-meta-k">Author</span>
-        <span class="bp-meta-v">{{ post.author }}</span>
+        <span class="bp-meta-v"><a class="bp-meta-link" href="/about">{{ post.author }}</a></span>
       </div>
       <div class="bp-meta-row">
         <span class="bp-meta-k">Topic</span>
@@ -41,8 +41,14 @@ async function copyLink() {
         <span class="bp-meta-v">{{ post.wordCount }}</span>
       </div>
       <div class="bp-meta-row">
-        <span class="bp-meta-k">Updated</span>
+        <span class="bp-meta-k">Published</span>
         <span class="bp-meta-v">{{ post.date }}</span>
+      </div>
+      <div class="bp-meta-row">
+        <span class="bp-meta-k">Reviewed</span>
+        <span class="bp-meta-v">
+          <time :datetime="post.lastReviewedISO">{{ post.lastReviewed }}</time>
+        </span>
       </div>
     </div>
     <h4 class="bp-meta-section">Share</h4>

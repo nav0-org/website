@@ -4,6 +4,8 @@ import { useData } from 'vitepress';
 import { computed } from 'vue';
 import BlogPostHero from './components/BlogPostHero.vue';
 import BlogPostMetaRail from './components/BlogPostMetaRail.vue';
+import BlogPostTldr from './components/BlogPostTldr.vue';
+import RelatedPosts from './components/RelatedPosts.vue';
 import ReleaseDetailHero from './components/ReleaseDetailHero.vue';
 import ReleaseDetailSidebar from './components/ReleaseDetailSidebar.vue';
 import LegalPageHero from './components/LegalPageHero.vue';
@@ -13,7 +15,10 @@ const { Layout } = DefaultTheme;
 const { page } = useData();
 
 const isBlogPost = computed(
-  () => page.value.relativePath.startsWith('blog/') && page.value.relativePath !== 'blog/index.md'
+  () =>
+    page.value.relativePath.startsWith('blog/') &&
+    page.value.relativePath !== 'blog/index.md' &&
+    !page.value.relativePath.startsWith('blog/topic/')
 );
 const isReleaseDetail = computed(() => {
   const path = page.value.relativePath || '';
@@ -38,9 +43,11 @@ const showDocHero = computed(() => isLegalPage.value || isGuidePage.value);
         <LegalPageHero v-if="showDocHero" />
       </template>
       <template #doc-before>
+        <BlogPostTldr v-if="isBlogPost" />
         <BlogPostMetaRail v-if="isBlogPost" />
       </template>
       <template #doc-after>
+        <RelatedPosts v-if="isBlogPost" />
         <LegalPageTOC v-if="showDocHero" />
       </template>
       <template v-if="isReleaseDetail" #page-top>

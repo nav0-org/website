@@ -2,7 +2,11 @@
 title: 'Your Browser Is Watching You: The Hidden Cost of Free Browsing'
 description: 'Modern browsers collect an astonishing amount of data about you. We break down exactly what they track, why it matters, and what you can do about it.'
 date: 2026-02-10
-author: Nav0 Team
+author: Ketan
+category: privacy
+lastReviewed: 2026-05-27
+tldr: >-
+  Your browser is the most intimate software you run, and most mainstream browsers are built to collect, store, and transmit what they see: full history, keystrokes and form data, location, device fingerprint, and DNS activity, often synced to identity-linked cloud servers. A 2024 Trinity College Dublin study found Chrome, Edge, and Yandex send persistent identifiers to their backends. The fix is a browser that collects nothing, works locally, stays minimal, is open source, and needs no account - like Nav0.
 tags: [privacy, browsers, data-collection]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-02-10'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: privacy
@@ -32,7 +36,7 @@ head:
         "headline": "Your Browser Is Watching You: The Hidden Cost of Free Browsing",
         "description": "Modern browsers collect an astonishing amount of data about you. We break down exactly what they track, why it matters, and what you can do about it.",
         "datePublished": "2026-02-10",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/your-browser-is-watching-you",
         "keywords": ["privacy", "browsers", "data collection", "browser tracking", "web privacy", "what data does my browser collect", "does chrome track you", "browser surveillance", "how to stop browser tracking", "browser data breach risk", "browser fingerprinting explained", "private browser no telemetry", "browser sync privacy risk", "does edge send data to microsoft", "zero data collection browser", "open source privacy browser", "browser watching you"]
@@ -90,7 +94,7 @@ head:
 
 # Your Browser Is Watching You: The Hidden Cost of "Free" Browsing
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; February 10, 2026 &middot; 8 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 10, 2026 &middot; 8 min read</p>
 
 Your web browser is the single most intimate piece of software on your computer. It knows what you search for when you're anxious at 2 AM. It knows your medical concerns, your financial situation, your political views, and your personal relationships. It sees every site you visit, every form you fill out, every link you click.
 

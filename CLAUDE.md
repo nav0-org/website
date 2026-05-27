@@ -10,7 +10,7 @@ ships marketing pages, the user guide, blog posts, release notes, the FAQ, and
 legal pages.
 
 - **Site**: https://nav0.org
-- **Version**: 0.2.9 (tracks the browser's currently-shipping version)
+- **Version**: 0.3.0 (tracks the browser's currently-shipping version)
 - **License**: MIT
 - **Author**: Ketan Patil
 - **Stack**: VitePress 1.5 + Vue 3 SFCs, deployed to GitHub Pages
@@ -50,7 +50,8 @@ website/
     │   ├── llms.txt, llms-full.txt # AI-readable site summaries
     │   ├── robots.txt
     │   ├── logo.svg / logo.webp
-    │   ├── og-image.png            # Default Open Graph image
+    │   ├── og-image.png            # Default/fallback Open Graph image
+    │   ├── og/                      # Per-route OG cards (generated, committed)
     │   ├── favicon.png, apple-touch-icon.png
     │   └── *.svg / *.webp          # Inline images used in blog posts
     ├── guide/                      # Feature & concept documentation
@@ -157,7 +158,10 @@ do not hardcode them anywhere else.
 
 ### Author voice & topical scope
 
-- Author is **always** "Nav0 Team" — we don't ship individual bylines.
+- Author is **always** "Ketan" — this is the byline name on every post. It must
+  appear in the frontmatter `author`, the `article:author` meta, the visible body
+  byline, and the Article JSON-LD `author` (as a `Person` linked to `/about`).
+  Never use "Nav0 Team".
 - Voice: direct, opinionated, technically grounded. We don't soft-pedal
   privacy critiques of other browsers, but we also don't trash-talk
   individuals or speculate. Cite sources where possible.
@@ -171,6 +175,31 @@ do not hardcode them anywhere else.
 - Every post should reinforce the "Browse. Nothing more." philosophy without
   parroting the same paragraph in every post.
 
+### Standing requirements for every new post
+
+These are hard requirements — a post is not done until all of them are met:
+
+1. **Byline is "Ketan"** everywhere (see above). Never "Nav0 Team".
+2. **Unique `tldr`** frontmatter — a 40–80 word direct answer to the post's title
+   question. It renders as the TL;DR callout at the top of the post (via
+   `BlogPostTldr`). Do not reuse another post's TL;DR.
+3. **Unique `description`** frontmatter — it drives the per-post `og:description`
+   and `twitter:description` (set in `transformPageData`). Never let a post fall
+   back to the generic site description.
+4. **A `category`** frontmatter slug (`privacy` | `comparisons` | `performance` |
+   `open-web` | `security`) — it places the post in the right `/blog/topic/*` hub.
+5. **A `lastReviewed`** frontmatter date — set it on publish, and bump it whenever
+   you re-read a post even if you don't change the body (LLMs prefer recently
+   reviewed content; it also drives the Article `dateModified`).
+6. **Its own OG image** — `scripts/generate-og.mjs` renders one per post
+   automatically on `predocs:build`; just run `npm run docs:build` (or
+   `npm run og:generate`) and commit the new `docs/public/og/<slug>.png`.
+7. **Comparison posts** (`nav0-vs-*`) must link **at least three** Related posts,
+   of which **at least two are other comparison posts**. The `RelatedPosts`
+   component handles this automatically as long as `category: comparisons` is set.
+8. **No new "Nav0 vs X" comparison posts without explicit approval.** Ask first
+   before adding another `nav0-vs-*` post.
+
 ### Required frontmatter
 
 ```yaml
@@ -178,8 +207,13 @@ do not hardcode them anywhere else.
 title: 'Your Post Title Here'
 description: 'A concise description for SEO and social sharing (~155 chars).'
 date: 2026-03-21
-author: Nav0 Team
-tags: [privacy, browsers]      # first tag drives the category + hero art
+author: Ketan
+category: comparisons          # privacy | comparisons | performance | open-web | security
+lastReviewed: 2026-03-21       # bump whenever you re-read the post, even if unchanged
+tldr: >-
+  A 40-80 word direct answer to the question in the title. Renders as the
+  TL;DR callout at the top of the post; must be unique per post.
+tags: [privacy, browsers]      # first tag drives the hero art + display label
 head:
   - - meta
     - property: og:type
@@ -189,7 +223,7 @@ head:
       content: '2026-03-21'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: privacy
@@ -205,7 +239,7 @@ head:
         "headline": "Your Post Title Here",
         "description": "A concise description for SEO and social sharing.",
         "datePublished": "2026-03-21",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": {
           "@type": "Organization",
           "name": "Nav0",
@@ -227,6 +261,12 @@ Notes:
 - Long-form FAQ JSON-LD (`"@type": "FAQPage"`) can be stacked into `head` as
   an additional `script` block — see
   `docs/blog/nav0-v012-performance-update.md` for the pattern.
+- A lot is injected automatically in `transformPageData`, so do **not** add it
+  by hand: per-post `og:`/`twitter:` title + description, `og:image`
+  (`/og/<slug>.png`), the author `Person` JSON-LD, `hreflang`, `BreadcrumbList`,
+  and — for `nav0-vs-*` posts — the Comparison `about`/`mentions` on the Article.
+- `category`, `lastReviewed`, and `tldr` are read by `posts.data.ts` and surface
+  in the meta rail, the TL;DR callout, the topic hubs, and Related posts.
 
 ### Post body conventions
 
@@ -236,7 +276,7 @@ Notes:
    ```md
    # Your Post Title Here
 
-   <p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; March 21, 2026 &middot; 8 min read</p>
+   <p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 21, 2026 &middot; 8 min read</p>
    ```
 
    The read-time count is also derived automatically by `posts.data.ts` for
@@ -472,9 +512,22 @@ others — read the file before adding a new top-level category.
 - VitePress generates the sitemap from `sitemap.hostname` in `config.ts`.
 - Canonical URLs and `og:url` are injected for every page in
   `transformPageData`.
-- The default Open Graph image is `/og-image.png`; override per page by
-  adding `['meta', { property: 'og:image', content: '/<image>.png' }]`
-  inside that page's `head` frontmatter.
+- Open Graph images are generated per route by `scripts/generate-og.mjs`
+  (run on the `predocs:build` hook). Every blog post gets `/og/<slug>.png`
+  (keyed off the post slug in `POSTS`), and the main site pages — home,
+  install, FAQ, about, the blog/releases indexes, every `/guide/*` page, the
+  `/blog/topic/*` hubs, and the legal pages — get their own card from the
+  `PAGES` list. `transformPageData` wires each route to its card: blog posts in
+  the `blog/` branch, everything else via `pageOgName()`. Release detail pages
+  share the `releases` card. Anything with no card falls back to the default
+  `/og-image.png`.
+- **Adding a new page card.** Add an entry to `PAGES` in
+  `scripts/generate-og.mjs` (pick a Lucide icon, a short display title, and a
+  label) and a matching route in `pageOgName()` in `config.ts`, then run
+  `npm run docs:build` and commit the new `docs/public/og/<name>.png`. To
+  override a single page by hand instead, push
+  `['meta', { property: 'og:image', content: '/<image>.png' }]` in that page's
+  `head` frontmatter.
 - `SoftwareApplication` JSON-LD only renders on `index.md`, `install.md`,
   and `guide/features.md` — keep that allow-list current in `config.ts` if
   the homepage feature surface moves.
@@ -553,3 +606,15 @@ always run it before opening a PR.
 - **Mixing browser-repo docs into this repo.** The browser application's
   source code, build tooling, and `CLAUDE.md` belong in `nav0-browser`.
   This repo only ships the website.
+- **New post missing `tldr` / `category` / `lastReviewed`.** The TL;DR callout
+  won't render, the post won't appear in any `/blog/topic/*` hub, and the meta
+  rail "Reviewed" date falls back to the publish date. All three are required
+  (see "Standing requirements for every new post").
+- **New `category` value.** Only `privacy`, `comparisons`, `performance`,
+  `open-web`, and `security` have a topic hub and a label in `TopicHub.vue`.
+  Adding a new one means creating `docs/blog/topic/<slug>.md`, a sidebar entry
+  in `getBlogSidebar()`, and a label in `TopicHub.vue`.
+- **OG image looks stale or is missing.** Re-run `npm run docs:build` (the
+  `predocs:build` hook regenerates `docs/public/og/<slug>.png`) and commit the
+  PNG. Titles longer than ~4 lines are auto-shrunk and ellipsised by
+  `scripts/generate-og.mjs`.

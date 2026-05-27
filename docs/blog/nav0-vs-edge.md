@@ -2,7 +2,11 @@
 title: 'Nav0 vs Microsoft Edge: The Browser That Reports Everything to Redmond'
 description: 'Microsoft Edge ships with more telemetry than almost any browser on the market. It sends your browsing data to Microsoft, pushes Bing, Copilot AI, shopping tools, and news feeds you never asked for. Nav0 sends nothing to anyone.'
 date: 2026-04-04
-author: Nav0 Team
+author: Ketan
+category: comparisons
+lastReviewed: 2026-05-27
+tldr: >-
+  Microsoft Edge is one of the market's most aggressive data collectors. A 2020 Trinity College Dublin study ranked it worst of six browsers for telemetry, and it sends a persistent, non-resettable hardware UUID to Microsoft regardless of diagnostic settings. Copilot sends your page content to Microsoft's AI servers, and Edge stacks 15-plus features pushing Bing, accounts, news, and shopping. Nav0 collects zero data, has no AI, no accounts, and is open source. Edge is Microsoft's browser; Nav0 is yours.
 tags: [edge, microsoft, privacy, comparison, telemetry, bloat]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-04-04'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: edge
@@ -38,7 +42,7 @@ head:
         "headline": "Nav0 vs Microsoft Edge: The Browser That Reports Everything to Redmond",
         "description": "Microsoft Edge ships with more telemetry than almost any browser on the market. It sends your browsing data to Microsoft, pushes Bing, Copilot AI, shopping tools, and news feeds you never asked for. Nav0 sends nothing to anyone.",
         "datePublished": "2026-04-04",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-edge",
         "keywords": ["Nav0 vs edge", "microsoft edge privacy", "edge telemetry", "edge copilot", "edge bloat", "edge tracking", "minimal browser", "private browser", "edge alternative"]
@@ -96,7 +100,7 @@ head:
 
 # Nav0 vs Microsoft Edge: The Browser That Reports Everything to Redmond
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; April 4, 2026 &middot; 11 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 4, 2026 &middot; 11 min read</p>
 
 Microsoft Edge is the browser that came pre-installed on your Windows PC and immediately asked you to sign in with your Microsoft account, set Bing as your default search engine, enable Copilot AI, and turn on a news feed full of clickbait. It did all of this before you opened a single web page.
 

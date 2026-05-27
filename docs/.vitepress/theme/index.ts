@@ -12,6 +12,8 @@ import NewHome from './components/NewHome.vue';
 import ReleasesStats from './components/ReleasesStats.vue';
 import ReleasesLatestHero from './components/ReleasesLatestHero.vue';
 import FaqPage from './components/FaqPage.vue';
+import AboutPage from './components/AboutPage.vue';
+import TopicHub from './components/TopicHub.vue';
 import './tokens.css';
 import './custom.css';
 
@@ -30,5 +32,7 @@ export default {
     app.component('ReleasesStats', ReleasesStats);
     app.component('ReleasesLatestHero', ReleasesLatestHero);
     app.component('FaqPage', FaqPage);
+    app.component('AboutPage', AboutPage);
+    app.component('TopicHub', TopicHub);
   },
 } satisfies Theme;

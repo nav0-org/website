@@ -2,7 +2,11 @@
 title: 'Nav0 vs Comet Browser: Two Privacy Browsers, Different Trust Models'
 description: 'Comet Browser and Nav0 both promise fast, private browsing. But one is closed source and the other is fully auditable. When it comes to privacy, verifiability is what separates promises from proof.'
 date: 2026-04-04
-author: Nav0 Team
+author: Ketan
+category: comparisons
+lastReviewed: 2026-05-27
+tldr: >-
+  Comet Browser and Nav0 both promise fast, private, bloat-free browsing, but they differ on trust model. Comet is closed source, so its privacy claims cannot be independently verified - you must take them on trust. Nav0 is fully open source under the MIT license with verifiable zero telemetry, published benchmarks showing 48.5 percent less memory than Chrome, local SQLite storage, and open development on GitHub. In privacy software, verifiability is what separates promises from proof.
 tags: [comet, privacy, comparison, open-source, transparency]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-04-04'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: comet
@@ -38,7 +42,7 @@ head:
         "headline": "Nav0 vs Comet Browser: Two Privacy Browsers, Different Trust Models",
         "description": "Comet Browser and Nav0 both promise fast, private browsing. But one is closed source and the other is fully auditable. When it comes to privacy, verifiability is what separates promises from proof.",
         "datePublished": "2026-04-04",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-comet",
         "keywords": ["Nav0 vs comet browser", "comet browser privacy", "minimal browser comparison", "lightweight browser", "private browser", "open source browser", "comet browser alternative"]
@@ -88,7 +92,7 @@ head:
 
 # Nav0 vs Comet Browser: Two Privacy Browsers, Different Trust Models
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; April 4, 2026 &middot; 8 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 4, 2026 &middot; 8 min read</p>
 
 Comet Browser and Nav0 appear to occupy the same niche. Both position themselves as fast, privacy-focused alternatives to mainstream browsers. Both promise a cleaner browsing experience without the feature creep of Chrome, Edge, or Brave.
 

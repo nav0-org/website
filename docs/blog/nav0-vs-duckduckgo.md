@@ -2,7 +2,11 @@
 title: 'Nav0 vs DuckDuckGo Browser: When Your Privacy Brand Has a Microsoft Exception'
 description: "DuckDuckGo's browser is a solid privacy option — until you learn about the Microsoft tracking exception, the remote config system, and the AI features. Nav0 takes the simpler path: collect nothing, period."
 date: 2026-04-04
-author: Nav0 Team
+author: Ketan
+category: comparisons
+lastReviewed: 2026-05-27
+tldr: >-
+  DuckDuckGo's browser is better than Chrome, but it carries caveats Nav0 avoids. In 2022 it was caught allowing Microsoft trackers from LinkedIn and Bing due to an ad syndication deal. It also uses remote configuration that can change behavior server-side, offers Duck AI proxied to third parties, and runs on an ad-supported model. Nav0 has zero telemetry, no business partnerships, no remote config, no AI, and applies community blocklists with no exceptions. DuckDuckGo still wins on mobile, where Nav0 is unavailable.
 tags: [duckduckgo, privacy, comparison, tracking, mobile]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-04-04'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: duckduckgo
@@ -38,7 +42,7 @@ head:
         "headline": "Nav0 vs DuckDuckGo Browser: When Your Privacy Brand Has a Microsoft Exception",
         "description": "DuckDuckGo's browser is a solid privacy option — until you learn about the Microsoft tracking exception, the remote config system, and the AI features. Nav0 takes the simpler path: collect nothing, period.",
         "datePublished": "2026-04-04",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-duckduckgo",
         "keywords": ["Nav0 vs duckduckgo", "duckduckgo browser privacy", "duckduckgo microsoft tracking", "duck browser", "minimal browser", "private browser", "duckduckgo browser alternative"]
@@ -96,7 +100,7 @@ head:
 
 # Nav0 vs DuckDuckGo Browser: When Your Privacy Brand Has a Microsoft Exception
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; April 4, 2026 &middot; 10 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 4, 2026 &middot; 10 min read</p>
 
 DuckDuckGo built its reputation on a search engine that doesn't track you. Then they built a browser with the same promise. On the surface, it's a compelling story: the privacy search company making a privacy browser.
 

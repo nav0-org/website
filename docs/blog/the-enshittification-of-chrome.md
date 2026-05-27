@@ -2,7 +2,11 @@
 title: "The Enshittification of Chrome: How the World's Most Popular Browser Turned Against Its Users"
 description: "Chrome used to be the fast, clean browser that saved us from Internet Explorer. Now it's a bloated, data-hungry machine that serves Google's ad business first and users second. Here's how it happened."
 date: 2026-02-28
-author: Nav0 Team
+author: Ketan
+category: privacy
+lastReviewed: 2026-05-27
+tldr: >-
+  Chrome followed Cory Doctorow's enshittification arc: a fast, minimal 2008 browser that won 65 percent market share, then degraded to serve Google's ad business. It now eats 1.5 GB of RAM on a few tabs, crippled ad blockers via Manifest V3, crammed in unwanted Gemini AI, and replaced third-party cookies with the Google-controlled Topics API before reversing course in 2024. A real alternative is independent of ad money, open source, minimal, and zero-telemetry - which is why Nav0 exists.
 tags: [chrome, enshittification, privacy, google, browsers, bloat]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-02-28'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: chrome
@@ -38,7 +42,7 @@ head:
         "headline": "The Enshittification of Chrome: How the World's Most Popular Browser Turned Against Its Users",
         "description": "Chrome used to be the fast, clean browser that saved us from Internet Explorer. Now it's a bloated, data-hungry machine that serves Google's ad business first and users second.",
         "datePublished": "2026-02-28",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/the-enshittification-of-chrome",
         "keywords": ["chrome enshittification", "google chrome bloat", "chrome privacy", "manifest v3", "chrome alternatives", "browser privacy", "google tracking", "chrome data collection"]
@@ -96,7 +100,7 @@ head:
 
 # The Enshittification of Chrome: How the World's Most Popular Browser Turned Against Its Users
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; February 28, 2026 &middot; 9 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 28, 2026 &middot; 9 min read</p>
 
 Look, I'm just gonna say it. Chrome is cooked.
 

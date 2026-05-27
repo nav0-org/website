@@ -2,7 +2,11 @@
 title: 'Nav0 vs Opera: From Innovation to Monetization'
 description: 'Opera pioneered tabbed browsing and mouse gestures — then new ownership shifted its focus toward monetization. Today it ships a browser-only proxy marketed as a VPN, an AI assistant, built-in messengers, a news feed, and a gaming edition. Nav0 just ships a browser.'
 date: 2026-04-13
-author: Nav0 Team
+author: Ketan
+category: comparisons
+lastReviewed: 2026-05-27
+tldr: >-
+  Opera pioneered tabbed browsing, then a 2016 sale to a Chinese consortium, now majority-owned by Beijing-based Kunlun Tech, shifted it toward monetization. Its marketed VPN is actually a browser-only proxy with no kill switch that still lets Opera collect your data, and it ships Aria AI, embedded messengers, a news feed, a crypto wallet, and sponsored content. Opera is closed source and shares data with advertising partners. Nav0 is open source, collects zero data, and is beholden to nobody.
 tags: [opera, privacy, comparison, bloat, vpn, telemetry]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-04-13'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: opera
@@ -38,7 +42,7 @@ head:
         "headline": "Nav0 vs Opera: From Innovation to Monetization",
         "description": "Opera pioneered tabbed browsing and mouse gestures — then new ownership shifted its focus toward monetization. Today it ships a browser-only proxy marketed as a VPN, an AI assistant, built-in messengers, a news feed, and a gaming edition. Nav0 just ships a browser.",
         "datePublished": "2026-04-13",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-opera",
         "keywords": ["Nav0 vs opera", "opera browser privacy", "opera vpn", "opera chinese ownership", "opera data collection", "opera aria ai", "opera gx", "private browser", "minimal browser"]
@@ -96,7 +100,7 @@ head:
 
 # Nav0 vs Opera: From Innovation to Monetization
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; April 13, 2026 &middot; 11 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 13, 2026 &middot; 11 min read</p>
 
 Opera used to be the scrappy innovator. It was the first browser with tabbed browsing, the first with built-in pop-up blocking, the first with mouse gestures. In the early 2000s, Opera was the browser that cared about users — a small Norwegian company punching above its weight against Internet Explorer.
 

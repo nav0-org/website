@@ -2,7 +2,11 @@
 title: 'Nav0 vs Vivaldi: When Your Browser Tries to Be Everything'
 description: "Vivaldi is the most customizable browser ever built — mail client, calendar, RSS reader, note-taking, and hundreds of settings. Nav0 takes the opposite approach: do less, perfectly. Here's why a browser that does everything may not do the one thing you need it to."
 date: 2026-03-29
-author: Nav0 Team
+author: Ketan
+category: comparisons
+lastReviewed: 2026-05-27
+tldr: >-
+  Vivaldi packs a mail client, calendar, RSS reader, notes, translation, and fourteen-plus features into the browser, each adding code, memory, and attack surface. Its UI layer is closed source, so its privacy claims cannot be audited, and it assigns each install a unique ID that sends daily pings with version, CPU, resolution, and approximate location. Nav0 only browses - tabs, bookmarks, history, downloads, ad blocker, reader mode, PDF viewer - is fully open source, and collects zero data. Vivaldi tries to be everything; Nav0 tries to be one thing.
 tags: [vivaldi, privacy, comparison, bloat, minimalism]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-03-29'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: vivaldi
@@ -38,7 +42,7 @@ head:
         "headline": "Nav0 vs Vivaldi: When Your Browser Tries to Be Everything",
         "description": "Vivaldi is the most customizable browser ever built — mail client, calendar, RSS reader, note-taking, and hundreds of settings. Nav0 takes the opposite approach: do less, perfectly.",
         "datePublished": "2026-03-29",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-vivaldi",
         "keywords": ["Nav0 vs vivaldi", "vivaldi browser privacy", "vivaldi bloat", "vivaldi mail calendar", "minimal browser", "private browser"]
@@ -96,7 +100,7 @@ head:
 
 # Nav0 vs Vivaldi: When Your Browser Tries to Be Everything
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; March 29, 2026 &middot; 10 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 29, 2026 &middot; 10 min read</p>
 
 Vivaldi is the Swiss Army knife of browsers. It has a built-in mail client, a calendar, an RSS feed reader, a note-taking tool, a translation engine, tab stacking, tab tiling, web panels, command chains, custom keyboard shortcuts for everything, mouse gestures, page actions, and more settings pages than some operating systems.
 

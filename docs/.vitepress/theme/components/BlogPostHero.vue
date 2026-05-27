@@ -14,14 +14,17 @@ const title = computed(() => frontmatter.value.title || post.value?.title || '')
 const category = computed(() => post.value?.category || '');
 const longDate = computed(() => post.value?.longDate || '');
 const readTime = computed(() => post.value?.readTime || '');
-const author = computed(() => post.value?.author || 'Nav0 Team');
+const author = computed(() => post.value?.author || 'Ketan');
+const dateISO = computed(() => post.value?.dateISO || '');
+const reviewedISO = computed(() => post.value?.lastReviewedISO || '');
+const canonicalUrl = computed(() => (post.value ? `https://nav0.org${post.value.url}` : ''));
 
 // Short crumb — drop the colon-suffix subtitle that many posts use
 const breadcrumbTitle = computed(() => title.value.split(':')[0].trim());
 </script>
 
 <template>
-  <section v-if="post" class="bp-hero">
+  <article v-if="post" class="bp-hero" itemscope itemtype="https://schema.org/BlogPosting">
     <div class="bp-hero-inner">
       <div class="bp-breadcrumb">
         <a href="/">Nav0</a>
@@ -33,17 +36,30 @@ const breadcrumbTitle = computed(() => title.value.split(':')[0].trim());
       <div class="bp-eyebrow">
         <span class="bp-tag">{{ category }}</span>
       </div>
-      <h1 class="bp-headline">{{ title }}</h1>
+      <h1 class="bp-headline" itemprop="headline">{{ title }}</h1>
       <div class="bp-byline">
-        <span class="bp-author">
-          <span class="bp-avatar">N0</span>
-          {{ author }}
-        </span>
+        <a
+          class="bp-author"
+          href="/about"
+          itemprop="author"
+          itemscope
+          itemtype="https://schema.org/Person"
+        >
+          <img class="bp-avatar" src="/author.jpg" :alt="author" width="28" height="28" />
+          <span itemprop="name">{{ author }}</span>
+          <link itemprop="url" href="https://nav0.org/about" />
+        </a>
         <span class="bp-dot"></span>
-        <span>{{ longDate }}</span>
+        <time :datetime="dateISO" itemprop="datePublished">{{ longDate }}</time>
         <span class="bp-dot"></span>
         <span>{{ readTime }}</span>
       </div>
     </div>
-  </section>
+    <meta itemprop="dateModified" :content="reviewedISO || dateISO" />
+    <link itemprop="mainEntityOfPage" :href="canonicalUrl" />
+    <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <meta itemprop="name" content="Nav0" />
+      <link itemprop="url" href="https://nav0.org" />
+    </span>
+  </article>
 </template>
