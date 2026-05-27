@@ -13,20 +13,36 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-The Nav0 editorial redesign lands across every built-in page — tab strip, new tab, Bookmarks, History, Downloads, Settings, About, Command-K, error pages — plus fixes for address-bar Enter behaviour, coalesced `getUserMedia` prompts, and unblocked streaming sub-resources in private mode.
+A maintenance release focused on tab handling, session restore, and ad-blocker accuracy — accurate address-bar URLs across sub-frames, no more stray helper-frame tabs, exact tab-order and pinned-tab restore, and a first-party exemption applied across every blocklist.
 
 <template #summary>
 
-- Every built-in page retuned against the new Nav0 design system: warm chrome surfaces, paper-white content, brand-red active anchors, and a shared dashboard skeleton documented in DESIGN.md
-- Address bar now navigates to the typed URL when Enter is pressed with no suggestion highlighted, and arrow-key cycling can return to the typed query
-- Concurrent `getUserMedia` requests are coalesced, so Google Meet's camera prompt appears reliably when audio and video are requested together
-- Private-mode windows no longer block streaming sub-resources, fixing video seeking on common streaming sites
-- New seed scripts populate a dev database and saved session with randomized, repeatable data
+- The address bar no longer updates from sub-frame in-page navigations, and gapi helper frames and other invisible popups no longer spawn stray empty tabs
+- Session restore preserves tab order exactly and keeps pinned tabs pinned across restarts
+- The first-party / navigation exemption now applies across all blocklists, so domains that merely appear on tracker lists no longer block legitimate page loads
+- Ad-blocker toggles are right-aligned inline with their labels, with corrected permission favicon sizing and a tidied allow-list and custom search-engine form
+- Downloads with duplicate filenames are suffixed (e.g. `file (1).pdf`) instead of overwriting, plus smoother tab-strip resizing
 
 </template>
 </ReleasesLatestHero>
 
 <div class="releases-timeline">
+
+<div class="release-list-item">
+  <a href="/releases/v0.3.1">
+    <h2>v0.3.1</h2>
+  </a>
+  <div class="release-meta">May 27, 2026 <span class="release-badge latest">Latest</span></div>
+  <p class="release-excerpt">A maintenance release fixing sub-frame address-bar updates and stray helper-frame tabs, preserving exact tab order and pinned tabs on session restore, applying the first-party ad-blocker exemption across all blocklists, and suffixing duplicate downloads.</p>
+</div>
+
+<div class="release-list-item">
+  <a href="/releases/v0.3.0">
+    <h2>v0.3.0</h2>
+  </a>
+  <div class="release-meta">May 24, 2026</div>
+  <p class="release-excerpt">The Nav0 editorial redesign lands across every built-in page — tab strip, new tab, Bookmarks, History, Downloads, Settings, About, Command-K, and error pages — plus address-bar Enter fixes, coalesced getUserMedia prompts, and unblocked streaming sub-resources in private mode.</p>
+</div>
 
 <div class="release-list-item">
   <a href="/releases/v0.2.9">
