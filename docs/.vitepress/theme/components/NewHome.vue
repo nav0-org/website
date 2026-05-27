@@ -39,7 +39,7 @@
           <div class="v">&minus;57%<small>vs Chrome</small></div>
         </div>
         <div class="nv-hero-meta-card">
-          <div class="k">CPU at idle</div>
+          <div class="k">CPU under 50-tab load</div>
           <div class="v">&minus;76%<small>vs Chrome</small></div>
         </div>
         <div class="nv-hero-meta-card">
@@ -159,7 +159,7 @@
               <em>Nav0 takes a different approach.</em> It does one thing: lets you browse the web.
               No assistants. No phoning home. No clutter. No accounts. Browse. Bookmark. Done.
             </p>
-            <div class="nv-signature">— Nav0 Team · 2026</div>
+            <div class="nv-signature">— Ketan · 2026</div>
           </div>
           <aside class="nv-definition-card">
             <div class="nv-word">Nav0</div>

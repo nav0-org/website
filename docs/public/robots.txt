@@ -1,8 +1,51 @@
+# Nav0 — robots.txt
+# Nav0 is open to all crawlers, including AI/LLM crawlers. We collect no data
+# and have nothing to hide; our content is meant to be read, indexed, and cited.
+
 User-agent: *
 Allow: /
 
+# --- AI / LLM crawlers (explicitly allowed) ---
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemap
 Sitemap: https://nav0.org/sitemap.xml
 
-# LLM-readable content
+# LLM-readable content summaries
 # https://nav0.org/llms.txt — concise project summary for LLMs
-# https://nav0.org/llms-full.txt — comprehensive documentation for LLMs
+# https://nav0.org/llms-full.txt — full text of the most important pages

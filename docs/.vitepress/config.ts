@@ -80,6 +80,36 @@ const siteDescription =
   'A minimal, privacy-focused web browser. No data collection. No bloat. No AI gimmicks. Just clean, safe browsing.';
 const ogImage = `${siteUrl}/og-image.png`;
 
+// Author identity. Nav0 is built and maintained by Ketan; blog bylines, the
+// /about page, and all author/Person JSON-LD point here.
+const authorName = 'Ketan';
+const authorUrl = `${siteUrl}/about`;
+const authorSameAs = ['https://github.com/nav0-org'];
+const personNode = {
+  '@type': 'Person',
+  name: authorName,
+  url: authorUrl,
+  sameAs: authorSameAs,
+};
+
+// Maps each "Nav0 vs X" post slug to the proper name of the browser it is
+// compared against, so we can emit Comparison about/mentions JSON-LD that
+// names both entities (see transformPageData).
+const comparisonBrowsers: Record<string, string> = {
+  'nav0-vs-arc': 'Arc',
+  'nav0-vs-brave': 'Brave',
+  'nav0-vs-chrome-data-consumption': 'Google Chrome',
+  'nav0-vs-chrome-performance-benchmark': 'Google Chrome',
+  'nav0-vs-comet': 'Comet',
+  'nav0-vs-duckduckgo': 'DuckDuckGo',
+  'nav0-vs-edge': 'Microsoft Edge',
+  'nav0-vs-firefox': 'Mozilla Firefox',
+  'nav0-vs-opera': 'Opera',
+  'nav0-vs-safari': 'Safari',
+  'nav0-vs-tor-browser': 'Tor Browser',
+  'nav0-vs-vivaldi': 'Vivaldi',
+};
+
 const softwareAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -87,7 +117,7 @@ const softwareAppSchema = {
   description:
     'A minimal, privacy-focused web browser built on Electron. No data collection. No bloat. No AI gimmicks.',
   url: siteUrl,
-  applicationCategory: 'BrowserApplication',
+  applicationCategory: 'WebBrowser',
   operatingSystem: 'Windows, macOS, Linux',
   offers: {
     '@type': 'Offer',
@@ -98,11 +128,7 @@ const softwareAppSchema = {
   isAccessibleForFree: true,
   downloadUrl: 'https://nav0.org/install',
   softwareVersion: packageJson.version,
-  author: {
-    '@type': 'Organization',
-    name: 'Nav0',
-    url: siteUrl,
-  },
+  author: personNode,
   featureList: [
     'Zero telemetry',
     'No data collection',
@@ -295,7 +321,11 @@ export default defineConfig({
     pageData.frontmatter.head ??= [];
     pageData.frontmatter.head.push(
       ['link', { rel: 'canonical', href: canonicalUrl }],
-      ['meta', { property: 'og:url', content: canonicalUrl }]
+      ['meta', { property: 'og:url', content: canonicalUrl }],
+      // The site is English-only; declare an explicit self-referencing
+      // hreflang + x-default so crawlers don't have to guess.
+      ['link', { rel: 'alternate', hreflang: 'en', href: canonicalUrl }],
+      ['link', { rel: 'alternate', hreflang: 'x-default', href: canonicalUrl }]
     );
 
     if (pageData.relativePath === 'blog/index.md') {
@@ -305,6 +335,37 @@ export default defineConfig({
       // Drop the all-posts left sidebar (the design uses the meta rail instead)
       // but keep the aside on so VitePress renders the right TOC + scrollspy.
       pageData.frontmatter.sidebar = false;
+
+      // Per-post social metadata. Without this, every post inherits the
+      // generic site title/description and the default OG image. VitePress
+      // dedupes og:/twitter: tags by property, so these override the globals.
+      const slug = pageData.relativePath.replace(/^blog\//, '').replace(/\.md$/, '');
+      const postTitle = pageData.frontmatter.title;
+      const postDesc = pageData.frontmatter.description;
+      const postOgImage = `${siteUrl}/og/${slug}.png`;
+      if (postTitle) {
+        pageData.frontmatter.head.push(
+          ['meta', { property: 'og:title', content: postTitle }],
+          ['meta', { name: 'twitter:title', content: postTitle }]
+        );
+      }
+      if (postDesc) {
+        pageData.frontmatter.head.push(
+          ['meta', { property: 'og:description', content: postDesc }],
+          ['meta', { name: 'twitter:description', content: postDesc }]
+        );
+      }
+      pageData.frontmatter.head.push(
+        ['meta', { property: 'og:image', content: postOgImage }],
+        ['meta', { name: 'twitter:image', content: postOgImage }],
+        // Per-post author Person JSON-LD (referenced as author in the
+        // Article schema below). url points at the /about page.
+        [
+          'script',
+          { type: 'application/ld+json' },
+          JSON.stringify({ '@context': 'https://schema.org', ...personNode }),
+        ]
+      );
     } else if (pageData.relativePath === 'releases/index.md') {
       pageData.frontmatter.pageClass = 'releases-index-page';
       pageData.frontmatter.layout = 'page';
@@ -390,12 +451,32 @@ export default defineConfig({
       ]);
     }
 
-    // Inject dateModified into Article JSON-LD for blog posts
+    // Patch the per-post Article JSON-LD: fill in dateModified, and for
+    // "Nav0 vs X" comparison posts add about/mentions naming both browsers as
+    // distinct entities so crawlers know which two things are being compared.
     if (pageData.relativePath.startsWith('blog/') && pageData.frontmatter.date) {
       const dateStr =
         typeof pageData.frontmatter.date === 'string'
           ? pageData.frontmatter.date
           : new Date(pageData.frontmatter.date).toISOString().split('T')[0];
+
+      const slug = pageData.relativePath.replace(/^blog\//, '').replace(/\.md$/, '');
+      const comparedBrowser = comparisonBrowsers[slug];
+      const comparisonEntities = comparedBrowser
+        ? [
+            {
+              '@type': 'SoftwareApplication',
+              name: 'Nav0',
+              applicationCategory: 'WebBrowser',
+              url: siteUrl,
+            },
+            {
+              '@type': 'SoftwareApplication',
+              name: comparedBrowser,
+              applicationCategory: 'WebBrowser',
+            },
+          ]
+        : null;
 
       for (const entry of pageData.frontmatter.head) {
         if (
@@ -406,8 +487,14 @@ export default defineConfig({
         ) {
           try {
             const jsonLd = JSON.parse(entry[2]);
-            if (jsonLd['@type'] === 'Article' && !jsonLd.dateModified) {
-              jsonLd.dateModified = jsonLd.datePublished || dateStr;
+            if (jsonLd['@type'] === 'Article') {
+              if (!jsonLd.dateModified) {
+                jsonLd.dateModified = jsonLd.datePublished || dateStr;
+              }
+              if (comparisonEntities) {
+                jsonLd.about = comparisonEntities;
+                jsonLd.mentions = comparisonEntities;
+              }
               entry[2] = JSON.stringify(jsonLd);
             }
           } catch {
