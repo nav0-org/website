@@ -105,6 +105,8 @@ head:
 
 <p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 5, 2026 &middot; 4 min read</p>
 
+> **Update:** These figures are from Nav0 **v0.1.2**. Nav0 has kept improving since; the current build is [v0.3.0](/releases/). The numbers below remain a v0.1.2 snapshot against the original [v0.0.6 benchmark](/blog/nav0-vs-chrome-performance-benchmark).
+
 A month ago, we published a [head-to-head performance benchmark](/blog/nav0-vs-chrome-performance-benchmark) comparing Nav0 v0.0.6 against Google Chrome on a MacBook Pro M1. Nav0 used 48.5% less memory and 86.3% less CPU.
 
 We just re-ran the same test on the same machine with Nav0 v0.1.2. The numbers got better.

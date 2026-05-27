@@ -102,6 +102,8 @@ head:
 
 <p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 4, 2026 &middot; 11 min read</p>
 
+> **Update:** This benchmark was run against Nav0 **v0.0.6**. We later re-ran the exact same test on the same MacBook Pro M1 with **v0.1.2** and the numbers improved again — see the [v0.1.2 performance update](/blog/nav0-v012-performance-update). Nav0 currently ships [v0.3.0](/releases/); the figures below are a v0.0.6 snapshot, kept here for the record.
+
 We talk a lot about how modern browsers are bloated. But talk is cheap. So we decided to actually measure it.
 
 We ran a controlled, head-to-head performance comparison between Nav0 v0.0.6 and Google Chrome v144.0.7559.133 on a MacBook Pro with an Apple M1 chip. We tested with 10, 20, 30, 40, and 50 open tabs, measuring memory consumption, CPU usage, and process count at each step.
