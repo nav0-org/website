@@ -1,11 +1,12 @@
 // Build-time Open Graph image generation.
 //
-// Renders one 1200x630 PNG per blog post into docs/public/og/<slug>.png. Each
-// card depicts its subject, not just the title:
+// Renders one 1200x630 PNG per blog post into docs/public/og/<slug>.png, plus a
+// card for each main site page (home, install, FAQ, guides, topic hubs, legal).
+// Each card depicts its subject, not just the title:
 //   - "Nav0 vs X" posts get a versus composition (Nav0 logo + the competitor's
 //     colored badge and name).
-//   - Essays get a topic icon (Lucide) chosen per post — an eye for "watching
-//     you", a mask for incognito, a cookie for cookie banners, and so on.
+//   - Essays and pages get a topic icon (Lucide) chosen per entry — an eye for
+//     "watching you", a mask for incognito, a download glyph for the installer.
 //   - Performance posts add their headline stat.
 // Fonts are bundled (scripts/fonts) and rendering is deterministic, so output is
 // identical on every machine and in CI. Run via the predocs:build npm hook.
@@ -29,6 +30,22 @@ import {
   Sprout,
   Gauge,
   Globe,
+  Download,
+  Info,
+  Newspaper,
+  Tag,
+  Shield,
+  ShieldCheck,
+  Scale,
+  FileText,
+  CircleHelp,
+  Keyboard,
+  Ban,
+  Compass,
+  Feather,
+  Layers,
+  Users,
+  Rocket,
 } from 'lucide';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -95,6 +112,43 @@ const POSTS = {
   'your-browser-doesnt-need-a-vpn': { icon: ShieldOff },
   'your-browser-is-watching-you': { icon: Eye },
 };
+
+// Non-blog site pages. `out` is the og/<out>.png filename, matched by route in
+// config.ts (transformPageData). Titles are short display strings, not the long
+// SEO <title>. Release detail pages share the 'releases' card.
+const PAGES = [
+  { out: 'home', label: 'Privacy Browser', title: 'Browse. Nothing more.', icon: Compass },
+  { out: 'install', label: 'Download', title: 'Get Nav0 for Mac, Windows & Linux', icon: Download },
+  { out: 'faq', label: 'Help', title: 'Frequently Asked Questions', icon: CircleHelp },
+  { out: 'about', label: 'About', title: 'The Person Behind Nav0', icon: Info },
+  { out: 'blog', label: 'Blog', title: 'Privacy, Browsers & the Open Web', icon: Newspaper },
+  { out: 'releases', label: 'Release Notes', title: "What's New in Nav0", icon: Tag },
+
+  // Blog topic hubs (/blog/topic/*)
+  { out: 'topic-privacy', label: 'Privacy', title: 'Privacy & Tracking', icon: Shield },
+  { out: 'topic-comparisons', label: 'Comparisons', title: 'Nav0 vs the Competition', icon: Scale },
+  { out: 'topic-performance', label: 'Performance', title: 'Performance & Efficiency', icon: Gauge },
+  { out: 'topic-open-web', label: 'The Open Web', title: 'The Open Web', icon: Globe },
+  { out: 'topic-security', label: 'Security', title: 'Browser Security', icon: Lock },
+
+  // Guide pages (/guide/*)
+  { out: 'guide-features', label: 'Introduction', title: 'Nav0 Features', icon: Sparkles },
+  { out: 'guide-getting-started', label: 'Introduction', title: 'Getting Started', icon: Rocket },
+  { out: 'guide-ad-blocker', label: 'Feature Guide', title: 'Ad & Tracker Blocking', icon: Ban },
+  { out: 'guide-privacy-protection', label: 'Feature Guide', title: 'Privacy & Tracking Protection', icon: ShieldCheck },
+  { out: 'guide-private-browsing', label: 'Feature Guide', title: 'Private Browsing', icon: VenetianMask },
+  { out: 'guide-tab-management', label: 'Feature Guide', title: 'Tab Management', icon: Layers },
+  { out: 'guide-keyboard-shortcuts', label: 'Feature Guide', title: 'Keyboard Shortcuts', icon: Keyboard },
+  { out: 'guide-un-features', label: 'Un-features', title: "What Nav0 Doesn't Do", icon: Ban },
+  { out: 'guide-privacy', label: 'Core Principles', title: 'Zero Data Collection', icon: Shield },
+  { out: 'guide-philosophy', label: 'Core Principles', title: 'Why We Built a Minimal Browser', icon: Feather },
+  { out: 'guide-contributing', label: 'Community', title: 'Contributing to Nav0', icon: Users },
+
+  // Legal
+  { out: 'legal-privacy-policy', label: 'Legal', title: 'Privacy Policy', icon: Shield },
+  { out: 'legal-terms-of-use', label: 'Legal', title: 'Terms of Use', icon: Scale },
+  { out: 'legal-disclaimer', label: 'Legal', title: 'Disclaimer', icon: FileText },
+];
 
 function readFrontmatter(file) {
   const content = readFileSync(file, 'utf-8');
@@ -228,10 +282,10 @@ async function drawVisual(ctx, cfg, logo) {
   }
 }
 
-async function render(post, logo) {
+async function render(entry, logo) {
   const canvas = createCanvas(WIDTH, HEIGHT);
   const ctx = canvas.getContext('2d');
-  const cfg = POSTS[post.slug] || {};
+  const cfg = entry.cfg || {};
 
   // Apple-blue diagonal gradient background.
   const grad = ctx.createLinearGradient(0, 0, WIDTH, HEIGHT);
@@ -262,18 +316,18 @@ async function render(post, logo) {
   let fontSize = 60;
   let lineHeight = 72;
   ctx.font = `${fontSize}px OGSansBold`;
-  let lines = wrapLines(ctx, post.title, maxTextWidth, 4);
+  let lines = wrapLines(ctx, entry.title, maxTextWidth, 4);
   if (lines.length > 3) {
     fontSize = 50;
     lineHeight = 62;
     ctx.font = `${fontSize}px OGSansBold`;
-    lines = wrapLines(ctx, post.title, maxTextWidth, 4);
+    lines = wrapLines(ctx, entry.title, maxTextWidth, 4);
   }
 
   const titleBottom = 520;
   const firstBaseline = titleBottom - (lines.length - 1) * lineHeight;
 
-  const label = (CATEGORY_LABELS[post.category] || post.category || 'Blog').toUpperCase();
+  const label = (entry.label || 'Blog').toUpperCase();
   ctx.font = '24px OGSansBold';
   ctx.fillStyle = 'rgba(255,255,255,0.82)';
   ctx.fillText(label, PAD, firstBaseline - fontSize - 20);
@@ -303,8 +357,24 @@ async function main() {
   for (const file of files) {
     const post = readFrontmatter(join(BLOG_DIR, file));
     if (!post) continue;
-    const png = await render(post, logo);
+    const entry = {
+      title: post.title,
+      label: CATEGORY_LABELS[post.category] || post.category || 'Blog',
+      cfg: POSTS[post.slug] || {},
+    };
+    const png = await render(entry, logo);
     writeFileSync(join(OUT_DIR, `${post.slug}.png`), png);
+    count++;
+  }
+
+  for (const page of PAGES) {
+    const entry = {
+      title: page.title,
+      label: page.label,
+      cfg: { icon: page.icon, stat: page.stat },
+    };
+    const png = await render(entry, logo);
+    writeFileSync(join(OUT_DIR, `${page.out}.png`), png);
     count++;
   }
   console.log(`Generated ${count} OG images into docs/public/og/`);

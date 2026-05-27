@@ -50,7 +50,8 @@ website/
     │   ├── llms.txt, llms-full.txt # AI-readable site summaries
     │   ├── robots.txt
     │   ├── logo.svg / logo.webp
-    │   ├── og-image.png            # Default Open Graph image
+    │   ├── og-image.png            # Default/fallback Open Graph image
+    │   ├── og/                      # Per-route OG cards (generated, committed)
     │   ├── favicon.png, apple-touch-icon.png
     │   └── *.svg / *.webp          # Inline images used in blog posts
     ├── guide/                      # Feature & concept documentation
@@ -511,9 +512,22 @@ others — read the file before adding a new top-level category.
 - VitePress generates the sitemap from `sitemap.hostname` in `config.ts`.
 - Canonical URLs and `og:url` are injected for every page in
   `transformPageData`.
-- The default Open Graph image is `/og-image.png`; override per page by
-  adding `['meta', { property: 'og:image', content: '/<image>.png' }]`
-  inside that page's `head` frontmatter.
+- Open Graph images are generated per route by `scripts/generate-og.mjs`
+  (run on the `predocs:build` hook). Every blog post gets `/og/<slug>.png`
+  (keyed off the post slug in `POSTS`), and the main site pages — home,
+  install, FAQ, about, the blog/releases indexes, every `/guide/*` page, the
+  `/blog/topic/*` hubs, and the legal pages — get their own card from the
+  `PAGES` list. `transformPageData` wires each route to its card: blog posts in
+  the `blog/` branch, everything else via `pageOgName()`. Release detail pages
+  share the `releases` card. Anything with no card falls back to the default
+  `/og-image.png`.
+- **Adding a new page card.** Add an entry to `PAGES` in
+  `scripts/generate-og.mjs` (pick a Lucide icon, a short display title, and a
+  label) and a matching route in `pageOgName()` in `config.ts`, then run
+  `npm run docs:build` and commit the new `docs/public/og/<name>.png`. To
+  override a single page by hand instead, push
+  `['meta', { property: 'og:image', content: '/<image>.png' }]` in that page's
+  `head` frontmatter.
 - `SoftwareApplication` JSON-LD only renders on `index.md`, `install.md`,
   and `guide/features.md` — keep that allow-list current in `config.ts` if
   the homepage feature surface moves.
