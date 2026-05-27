@@ -90,6 +90,33 @@ const siteDescription =
   'A minimal, privacy-focused web browser. No data collection. No bloat. No AI gimmicks. Just clean, safe browsing.';
 const ogImage = `${siteUrl}/og-image.png`;
 
+// Per-page Open Graph cards. scripts/generate-og.mjs renders one PNG per route
+// into docs/public/og/<name>.png; this maps a route to its card so
+// transformPageData can override the default og:image. Blog posts are handled
+// separately (they key off the post slug). Returns null for routes with no
+// dedicated card, which then fall back to the site default.
+function pageOgName(relativePath: string): string | null {
+  const direct: Record<string, string> = {
+    'index.md': 'home',
+    'install.md': 'install',
+    'faq.md': 'faq',
+    'about.md': 'about',
+    'blog/index.md': 'blog',
+    'releases/index.md': 'releases',
+    'privacy-policy.md': 'legal-privacy-policy',
+    'terms-of-use.md': 'legal-terms-of-use',
+    'disclaimer.md': 'legal-disclaimer',
+  };
+  if (direct[relativePath]) return direct[relativePath];
+  if (relativePath.startsWith('guide/'))
+    return `guide-${relativePath.slice('guide/'.length).replace(/\.md$/, '')}`;
+  if (relativePath.startsWith('blog/topic/'))
+    return `topic-${relativePath.slice('blog/topic/'.length).replace(/\.md$/, '')}`;
+  // All release detail pages share the releases card.
+  if (relativePath.startsWith('releases/')) return 'releases';
+  return null;
+}
+
 // Author identity. Nav0 is built and maintained by Ketan; blog bylines, the
 // /about page, and all author/Person JSON-LD point here.
 const authorName = 'Ketan';
@@ -418,6 +445,18 @@ export default defineConfig({
       ['link', { rel: 'alternate', hreflang: 'en', href: canonicalUrl }],
       ['link', { rel: 'alternate', hreflang: 'x-default', href: canonicalUrl }]
     );
+
+    // Point non-blog routes at their dedicated OG card (blog posts get theirs
+    // in the blog/ branch below). VitePress dedupes og:/twitter: meta by
+    // property/name, so these override the site defaults.
+    const ogName = pageOgName(pageData.relativePath);
+    if (ogName) {
+      const pageImage = `${siteUrl}/og/${ogName}.png`;
+      pageData.frontmatter.head.push(
+        ['meta', { property: 'og:image', content: pageImage }],
+        ['meta', { name: 'twitter:image', content: pageImage }]
+      );
+    }
 
     if (pageData.relativePath === 'blog/index.md') {
       pageData.frontmatter.pageClass = 'blog-list-page';
