@@ -1,263 +1,872 @@
-# Nav0 — Complete Documentation
+# Nav0 — Full Content for LLMs
 
-> A minimal, privacy-focused web browser. No data collection. No bloat. No AI gimmicks. Just clean, safe browsing.
-
-Nav0 is a free, open-source desktop web browser built on Electron and Chromium. It is designed for users who want a fast, lightweight browser that respects their privacy. Nav0 collects zero telemetry, requires no accounts, and stores all data locally on the user's device.
-
-Website: https://nav0.org
-Source Code: https://github.com/nav0-org/nav0-browser
-Install: https://nav0.org/install
-License: MIT
+> The full text of Nav0's most important pages — homepage, FAQ, Getting Started, Philosophy, and the Nav0 vs Chrome performance benchmark — concatenated as plain markdown with no HTML. For a concise link index, see https://nav0.org/llms.txt.
 
 ---
 
-## Getting Started
+# Nav0 — Browse. Nothing more.
+
+A minimal, privacy-focused web browser. Zero telemetry. No bloat. No AI gimmicks. Free and open source under the MIT License, built on Electron and Chromium for Windows, macOS, and Linux.
+
+## At a glance
+
+- Memory: 57% less than Chrome with 50 tabs open (4,294 MB vs 10,076 MB on a MacBook Pro M1)
+- CPU under 50-tab load: 76% less than Chrome (24.4% vs 101.7%)
+- Telemetry: 0 requests
+- Accounts: 0 required
+
+## A browser built on fewer ideas, executed properly
+
+Every feature earns its keep. Anything that doesn't, isn't here.
+
+- **Lightweight** — Built for speed and efficiency. Minimal system resources, fast startup, no idle network chatter.
+- **Privacy First** — Your data stays yours. No telemetry, no tracking, no analytics.
+- **No AI Bloat** — No forced assistants, no chatbots, no "smart" features you never asked for. Just a browser that browses.
+- **Safe Browsing** — Built-in protection against malicious sites and downloads. Local-only blocklists. Security without surveillance.
+- **Open Source** — Fully transparent. Audit it, fork it, contribute.
+- **Modern Engine** — Powered by Electron and Chromium for compatibility with the modern web while respecting your privacy.
+
+## Lighter, by design. Measured, not promised.
+
+Same hardware. Same 50 tabs. Half the appetite. On a MacBook Pro M1 with 50 tabs open, Nav0 used 4,294 MB of memory versus Chrome's 10,076 MB, and 24.4% CPU versus Chrome's 101.7%. The full report is at https://nav0.org/blog/nav0-vs-chrome-performance-benchmark.
+
+## Why Nav0
+
+The browser became a data-harvesting machine. What started as a simple tool to view web pages turned into a billboard: AI assistants you didn't ask for, news feeds you didn't subscribe to, accounts you didn't sign up for, telemetry you can't see.
+
+Nav0 takes a different approach. It does one thing: lets you browse the web. No assistants. No phoning home. No clutter. No accounts. Browse. Bookmark. Done.
+
+**Nav0** /ˈnav nɔːt/ — from *navigate* + *nought* (zero, nothing). A browser that collects nought, ships nought extra, and otherwise gets out of the way.
+
+---
+
+# Frequently Asked Questions
+
+## General
+
+### What is Nav0?
+
+Nav0 (pronounced "Nav Nought") is a free, open-source, privacy-focused desktop web browser built on Electron and Chromium. The name comes from "navigate + nought (bloat)." It collects zero telemetry, requires no accounts, and stores all data locally on your device.
+
+### What platforms does Nav0 support?
+
+Nav0 supports **Windows** (x64), **macOS** (Intel x64 and Apple Silicon ARM64), and **Linux** (x64).
+
+On macOS, install via [Homebrew](https://brew.sh): `brew install --cask nav0-org/nav0/nav0`. On Windows and Linux, download installers from [GitHub Releases](https://github.com/nav0-org/nav0-browser/releases). On all platforms, you can [build from source](/guide/getting-started).
+
+### What browser engine does Nav0 use?
+
+Nav0 uses **Chromium** via Electron, giving it full compatibility with the modern web while maintaining privacy through zero telemetry and local-only data storage.
+
+### Is Nav0 open source?
+
+Yes. Nav0 is fully open source under the **MIT License**. The complete source code is publicly available at [github.com/nav0-org/nav0-browser](https://github.com/nav0-org/nav0-browser). You can audit it, fork it, or build it from source yourself.
+
+### How do I update Nav0?
+
+Download the latest release from [GitHub Releases](https://github.com/nav0-org/nav0-browser/releases) or, on macOS, run `brew upgrade nav0`. Nav0 never forces updates — you control when and how you update.
+
+
+## Privacy
+
+### Does Nav0 collect any data?
+
+**No. Zero.** Nav0 collects no telemetry, no usage statistics, no crash reports, no browsing data, no personal information, and no device information. There is nothing to opt out of because there is nothing to collect.
+
+### Does Nav0 require an account?
+
+No. Nav0 works fully without any sign-up, sign-in, or registration. There are no accounts, no profiles, and no cloud sync.
+
+### Where is my data stored?
+
+All data is stored **locally on your device**:
+
+| Data      | Storage            |
+| --------- | ------------------ |
+| Bookmarks | Local database     |
+| History   | Local database     |
+| Settings  | Local config file  |
+| Downloads | Your chosen folder |
+
+Configuration locations:
+
+- **Windows**: `%APPDATA%/nav0/`
+- **macOS**: `~/Library/Application Support/nav0/`
+- **Linux**: `~/.config/nav0/`
+
+### Does Nav0 phone home?
+
+No. Nav0 makes **zero unsolicited network requests**. No analytics pings, no heartbeat checks, no "anonymous" usage data, no background sync. You can verify this by monitoring your network traffic.
+
+### Does Nav0 block ads and trackers?
+
+Yes. Nav0 includes a **built-in ad blocker** with domain blocking, URL pattern matching, cosmetic filtering, and video ad blocking. It also blocks third-party cookies by default and includes fingerprinting protection. Everything works out of the box.
+
+### Is private browsing truly private in Nav0?
+
+In private mode, Nav0 saves no history, clears cookies on close, and persists no cached data. Unlike other browsers, Nav0 also doesn't collect data in normal mode — so private mode is an extra layer on top of already-private browsing.
+
+
+## Comparisons
+
+### How is Nav0 different from Chrome, Edge, or other mainstream browsers?
+
+Unlike mainstream browsers, Nav0:
+
+- Does **not** send browsing data to any server
+- Does **not** require or encourage sign-in
+- Does **not** include advertising or monetization features
+- Does **not** bundle AI assistants
+- Does **not** phone home for any reason
+
+Most mainstream browsers are funded by advertising revenue and designed to collect user data. Nav0 has no such business model.
+
+### How is Nav0 different from Brave?
+
+While Brave has meaningful privacy protections, its business model depends on an **advertising network** (Brave Ads) and it ships with a **cryptocurrency wallet** and affiliate link features. Nav0 has no advertising, no crypto features, and no business model that depends on user data.
+
+### How is Nav0 different from Firefox?
+
+Firefox receives approximately 80-85% of its revenue from **Google search engine deals**, creating a financial dependency. Firefox has also been adding AI-powered features. Nav0 has no search engine deals and no AI features.
+
+
+## Features
+
+### Does Nav0 support browser extensions?
+
+Yes. Nav0 supports extensions. However, third-party extensions have their own privacy policies. We recommend:
+
+- Reviewing extension permissions carefully
+- Using open-source extensions
+- Limiting the number of installed extensions
+
+### Does Nav0 have a built-in ad blocker?
+
+Yes. Nav0 ships with a comprehensive ad blocker that includes domain blocking, URL pattern matching, cosmetic filtering, and video ad blocking. It works out of the box with no configuration required.
+
+### Does Nav0 support dark mode?
+
+Yes. Nav0 has a **dark mode toggle** in the browser navbar that applies dark CSS to any website. It works on sites like LinkedIn and Reddit and persists across back/forward navigation.
+
+### Can I open PDFs in Nav0?
+
+Yes. Nav0 has a **built-in PDF reader** that opens PDFs inline in browser tabs. You can also open local PDF files via File > Open PDF (Ctrl+Shift+O / Cmd+Shift+O).
+
+### Does Nav0 have a reader mode?
+
+Yes. Nav0 includes **Reader Mode** powered by Readability.js — strip away page clutter and read articles in a clean, distraction-free layout.
+
+### Can I restore tabs I accidentally closed?
+
+Yes. Nav0 tracks recently closed tabs and lets you restore them from the History menu. You can even restore an entire closed window with all its tabs.
+
+### Does Nav0 support tab pinning?
+
+Yes. Right-click any tab to pin it. Pinned tabs stay compact and persistent at the left side of the tab strip.
+
+### Why doesn't Nav0 have an AI assistant?
+
+Nav0 does not include AI because **a browser's job is to browse the web**. AI features typically require sending page content and user queries to cloud servers for processing, which contradicts Nav0's privacy-first design. If you want AI tools, you can visit them in a browser tab like any other website.
+
+### Why doesn't Nav0 have a built-in VPN?
+
+Browser VPNs create **conflicts of interest** and a false sense of security. A VPN inside the browser does not protect you from the browser itself. Nav0 believes these should be separate, auditable tools. A browser that collects zero data is already more private than any browser-plus-VPN combination from a big tech company.
+
+### Why doesn't Nav0 have sync or cloud features?
+
+Cloud sync requires accounts, which enable identity-linked data collection. It also means your bookmarks, history, and settings exist on someone else's server. Nav0 keeps everything local by design. If you need to transfer data between devices, you can export and import bookmarks manually.
+
+### How do I report a bug?
+
+You can report bugs **directly from inside the browser** using the built-in issue reporter, which supports image attachments. Screenshots are automatically compressed before upload. Alternatively, open an issue on [GitHub](https://github.com/nav0-org/nav0-browser/issues).
+
+### Does Nav0 enforce HTTPS?
+
+Yes. Nav0 **automatically upgrades HTTP URLs to HTTPS** when possible. For sites with invalid or expired SSL certificates, Nav0 shows a security warning page with a temporary bypass option.
+
+### Can I check if a site's SSL certificate is valid?
+
+Yes. Click the **lock icon** in the address bar to view SSL certificate details in an overlay panel. The icon also reflects whether the connection is secure, insecure, or has no certificate info.
+
+
+## Project
+
+### How does Nav0 make money?
+
+Nav0 is a **community project**. It does not monetize users. There are no search engine deals, no advertising revenue, and no paid features.
+
+### How does Nav0 improve without collecting telemetry?
+
+Through:
+
+- Voluntary bug reports from users
+- GitHub issues and discussions
+- Community feedback
+- The developers' own daily usage
+
+### What happens if Nav0 gets acquired?
+
+The code is open source under the MIT License. Even if the project changes hands, the community can **fork it** and continue development independently. Users can always build from a trusted commit.
+
+### How can I contribute?
+
+Visit the [Contributing guide](/guide/contributing) for details. You can contribute by reporting bugs, submitting pull requests, improving documentation, or simply using Nav0 and spreading the word.
+
+### What license does Nav0 use?
+
+Nav0 is licensed under the **MIT License** — one of the most permissive open-source licenses. You are free to use, modify, and distribute the software.
+
+
+**Still have questions?** Open an issue on [GitHub](https://github.com/nav0-org/nav0-browser/issues).
+
+---
+
+# Getting Started
 
 Nav0 is a minimal web browser built on Electron that prioritizes your privacy and system resources.
 
-### macOS (Homebrew)
+## Installation
+
+### macOS
+
+Run this command in Terminal to install Nav0:
 
 ```bash
-brew install --cask nav0-org/nav0/nav0
+curl -fsSL https://raw.githubusercontent.com/nav0-org/nav0-browser/main/install.sh | bash
 ```
 
 ### Windows
 
-Download the .exe installer from GitHub Releases: https://github.com/nav0-org/nav0-browser/releases
+Download the `.exe` installer from [GitHub Releases](https://github.com/nav0-org/nav0-browser/releases).
 
 ### Linux
 
-Download .deb (Debian/Ubuntu) or .rpm (Fedora/RHEL) from GitHub Releases: https://github.com/nav0-org/nav0-browser/releases
+Download `.deb` (Debian/Ubuntu) or `.rpm` (Fedora/RHEL) packages from [GitHub Releases](https://github.com/nav0-org/nav0-browser/releases).
 
 ### Build from Source
 
+On any platform, you can also build Nav0 from source:
+
 ```bash
+# Clone the repository
 git clone https://github.com/nav0-org/nav0-browser.git
 cd nav0-browser
+
+# Install dependencies
 npm install
+
+# Build the app
 npm run make
 ```
 
-Requires Node.js 22+ and npm. The built app will be in the out/ directory.
+The built app will be in the `out/` directory. Requires [Node.js](https://nodejs.org) 22+ and npm.
 
-### First Launch
+## First Launch
 
-When you first open Nav0, nothing asks for your data:
+When you first open Nav0, you'll notice something different: **nothing asks for your data**.
+
 - No account creation prompts
 - No "personalization" setup
 - No telemetry consent dialogs
-- Just a browser, ready to use
+
+Just a browser, ready to use.
+
+## Basic Usage
+
+### Navigation
+
+- **Address Bar**: Type URLs or search terms
+- **Back/Forward**: Navigate your history
+- **Refresh**: Reload the current page
+- **Home**: Return to your start page
 
 ### Keyboard Shortcuts
 
 | Action          | Windows/Linux | macOS          |
-|-----------------|---------------|----------------|
-| New Tab         | Ctrl+T        | Cmd+T          |
-| Close Tab       | Ctrl+W        | Cmd+W          |
-| Reload          | Ctrl+R        | Cmd+R          |
-| Address Bar     | Ctrl+L        | Cmd+L          |
-| Find in Page    | Ctrl+F        | Cmd+F          |
-| Developer Tools | F12           | Cmd+Option+I   |
+| --------------- | ------------- | -------------- |
+| New Tab         | `Ctrl+T`      | `Cmd+T`        |
+| Close Tab       | `Ctrl+W`      | `Cmd+W`        |
+| Reload          | `Ctrl+R`      | `Cmd+R`        |
+| Address Bar     | `Ctrl+L`      | `Cmd+L`        |
+| Find in Page    | `Ctrl+F`      | `Cmd+F`        |
+| Developer Tools | `F12`         | `Cmd+Option+I` |
 
-### Configuration
+## Configuration
 
 Nav0 stores its configuration locally on your machine. No cloud sync, no account needed.
 
-Configuration locations:
-- Windows: %APPDATA%/nav0/
-- macOS: ~/Library/Application Support/nav0/
-- Linux: ~/.config/nav0/
+Configuration location:
+
+- **Windows**: `%APPDATA%/nav0/`
+- **macOS**: `~/Library/Application Support/nav0/`
+- **Linux**: `~/.config/nav0/`
+
+## What's Not Included
+
+By design, Nav0 does **not** include:
+
+- User accounts or sign-in
+- Sync services
+- AI assistants or chatbots
+- News feeds or content recommendations
+- Cryptocurrency wallets
+- Built-in VPN upsells
+- Telemetry or analytics
+
+If you need these features, Nav0 isn't for you—and that's okay. We built Nav0 for users who want less, not more.
+
+## Next Steps
+
+- Learn about Nav0's [Features](/guide/features)
+- Understand our [Privacy](/guide/privacy) commitment
+- Read about our [Philosophy](/guide/philosophy)
 
 ---
 
-## Features
+# Philosophy
 
-Nav0 includes only the features essential for a clean browsing experience.
+Nav0 exists because modern browsers have lost their way.
 
-### Tab Management
-- Open unlimited tabs
-- Tab preview on hover
-- Drag to reorder
-- Close with middle-click
-- Restore recently closed tabs
+What follows is not a marketing pitch. It's a set of convictions that guide every decision we make — what we build, what we refuse to build, and why. If you've ever felt that your browser is working against you rather than for you, this page explains why that feeling is justified and what Nav0 does differently.
 
-### Bookmarks
-- Add bookmarks with one click
-- Organize with folders
-- Import/export standard formats (HTML)
-- No cloud sync—bookmarks stay on your device
+## The State of Browsers Today
 
-### History
-- Local storage only
-- Easy clearing (by time range or all)
-- Search within history
-- No history sent anywhere
+### Browsers Were Supposed to Be Simple
 
-### Downloads
-- Choose download location
-- Pause and resume
-- Clear download history
-- No scanning uploads to external servers
+The original web browser was a window to the internet. You typed an address, the browser fetched the page, and it showed you the content. That was the entire relationship. The browser was a tool — a transparent pane of glass between you and the web.
 
-### Tracking Protection
-- Block third-party cookies by default
-- Fingerprinting protection
-- Referrer trimming
-- No tracking of your tracking protection usage
+That simplicity has been systematically dismantled.
 
-### Private Browsing
-- No history saved
-- Cookies cleared on close
-- No cached data persists
+### What Browsers Have Become
 
-### HTTPS Upgrades
-- Upgrade HTTP to HTTPS when available
-- Clear warnings for insecure sites
-- No phoning home to check URLs
+Today's major browsers are not tools. They are products — revenue-generating platforms designed to serve the business interests of the companies that make them. What was once a simple utility has been transformed into:
 
-### Safe Browsing
-- Local blocklists for known malicious sites
-- Warning pages for suspicious downloads
-- No URL checking against remote servers
-- Updates via standard release channels
+- **A data harvesting platform** — Your browsing history, search queries, device information, and behavioral patterns are collected, analyzed, and monetized. The browser that's supposed to help you access information is simultaneously extracting information from you.
+- **An advertising delivery system** — New tab pages filled with "recommended" content, "trending" stories, and "personalized" suggestions are advertising dressed up as features. Every click generates revenue for the browser vendor.
+- **A feature showcase for engagement metrics** — AI assistants, reading lists, collections, workspaces, tab groups, vertical tabs, sidebar panels — features are added not because users need them, but because each new feature is a new surface for data collection and a new talking point for marketing.
+- **A gateway to paid services** — Built-in VPN upsells, premium password managers, sync subscriptions, cloud storage promotions. The browser has become a storefront.
+- **A vehicle for someone else's business model** — When Google makes Chrome, the browser serves Google's advertising business. When Microsoft makes Edge, the browser serves Microsoft's cloud and AI business. The user's needs come second to the company's quarterly targets.
 
-### Sandboxing
-- Process isolation per tab
-- Restricted file system access
-- Memory protection
+### The Feature Creep Epidemic
 
-### Developer Features
-- Full Chrome DevTools
-- Console, Network, Elements panels
-- Local storage inspection
+Every major browser now includes functionality that has nothing to do with browsing the web:
 
-### Performance
-- Minimal background processes
-- No pre-loading of suggested content
-- No idle network requests
-- Efficient memory management
-- Fast startup: no account check, no sync, no feed loading
+- **AI assistants** that read your pages, compose your text, and send your data to cloud servers for processing
+- **News feeds** curated by algorithms optimized for engagement, not for informing you
+- **Shopping helpers** that monitor your purchases and insert themselves into transactions
+- **Cryptocurrency wallets** bundled into a web browser for no defensible reason
+- **Built-in VPNs** that are usually paid upsells and route your traffic through the browser vendor's servers
+- **Password managers** pushing subscription models for what should be a basic local feature
+- **Reading lists, collections, workspaces, tab groups** — overlapping organizational features that add complexity without solving real problems
 
-### What's Intentionally Missing
-| Feature         | Why It's Missing                          |
-|-----------------|------------------------------------------|
-| AI Assistant    | Unnecessary complexity, often cloud-dependent |
-| News Feed       | Distraction, usually ad-driven           |
-| Sync Service    | Requires accounts, cloud storage         |
-| Rewards/Crypto  | Not a browser's job                      |
-| Built-in VPN    | Usually upsells, trust issues            |
-| Reading List    | Use bookmarks                            |
-| Collections     | Use bookmark folders                     |
+Each of these features has costs that users bear whether they use the feature or not: increased memory usage, larger attack surface, more background processes, more settings to manage, more updates that change behavior without asking. The browser gets heavier with every release while the core task — loading web pages — doesn't meaningfully improve.
+
+Most users don't want any of this. They want to browse the web. They want pages to load fast. They want their privacy respected. They want their browser to stay out of the way.
+
+### The Privacy Illusion
+
+Perhaps the most cynical aspect of modern browsers is the way privacy is marketed as a feature while being undermined in practice.
+
+Browser vendors advertise "privacy features" — tracking protection, cookie controls, private browsing modes — while simultaneously:
+
+- **Collecting telemetry by default.** Every major browser phones home with usage data, crash reports, and behavioral analytics. Opting out requires navigating buried settings that often reset after updates.
+- **Requiring accounts for basic features.** Want to sync your bookmarks? Create an account. Want to save your passwords? Sign in. Every account is a persistent identifier that links your browsing activity across devices and sessions.
+- **Syncing data to their clouds.** Your bookmarks, history, passwords, and settings are uploaded to the vendor's servers. "Encrypted" sync still means your data exists on someone else's infrastructure, subject to their policies, their vulnerabilities, and their government compliance obligations.
+- **Partnering with advertisers.** Google's Privacy Sandbox doesn't eliminate tracking — it moves tracking from third-party cookies into a first-party system that Google controls. The browser itself becomes the ad-targeting engine.
+
+A truly private browser doesn't need privacy settings. It doesn't need a "privacy mode." It doesn't need toggles for telemetry because there is no telemetry to toggle. It just doesn't collect data. Period.
+
+## Our Principles
+
+Nav0 is built on five principles. These are not aspirations — they are hard constraints that govern what Nav0 is and what it will never become.
+
+### 1. Do One Thing Well
+
+Nav0 browses the web. That's it.
+
+This principle comes from the Unix philosophy: write programs that do one thing and do it well. A browser's job is to fetch web pages, render them correctly, keep you safe while doing so, and get out of the way. Everything else is scope creep.
+
+We don't try to be:
+
+- **Your AI assistant.** If you want AI, open an AI tool in a tab. Your browser doesn't need to embed one, and it definitely doesn't need to read your pages to power one.
+- **Your news source.** Algorithmic news feeds in browsers are engagement traps designed to keep you inside the vendor's ecosystem. If you want news, visit a news site.
+- **Your password manager.** Dedicated password managers like Bitwarden and KeePass are purpose-built, independently audited, and cross-platform. A browser-integrated password manager is a convenience that comes with lock-in.
+- **Your cryptocurrency wallet.** This one shouldn't need explaining, but apparently it does.
+- **Your shopping companion.** Price comparison and coupon features monitor your purchases and share that data. Use a dedicated tool if you want this functionality.
+- **Your writing tool.** "Help me write" features in browsers send the content of your web forms to cloud servers. Use a dedicated writing tool.
+
+Use dedicated tools for dedicated tasks. A browser should browse. When a single application tries to do everything, it does nothing well and creates a single point of failure for your entire digital life.
+
+### 2. Absence Over Presence
+
+The best feature is often no feature at all.
+
+This is the principle most at odds with how the software industry works. Companies are incentivized to add features because features drive marketing narratives, justify updates, and create new data collection surfaces. Removing features or choosing not to build them generates no press releases and no engagement metrics.
+
+But every feature has costs, whether or not anyone uses it:
+
+- **Code complexity.** More code means more potential bugs, more edge cases, more interactions between components that can fail in unexpected ways. The simplest code is no code.
+- **Security surface.** Every feature is a potential attack vector. AI features that process page content, sync features that transmit data, extension APIs that expose browser internals — each one expands the attack surface. A feature that doesn't exist can't be exploited.
+- **Maintenance burden.** Every feature must be updated, tested, and kept compatible with new web standards and OS versions. Features that seem simple at launch become permanent maintenance obligations.
+- **User confusion.** Every feature adds settings, menu items, and behavioral complexity. Users shouldn't need to navigate through pages of options to make their browser behave sensibly.
+- **Resource consumption.** Every feature uses memory, CPU time, and disk space. Background processes for sync, AI, and telemetry all consume resources even when the user isn't actively using them.
+
+We add features only when they are absolutely necessary for core browsing. The bar is high: does this feature directly serve the task of loading and displaying web pages? If not, it doesn't belong in Nav0.
+
+This means Nav0 will always have fewer features than Chrome, Edge, or Firefox. That's not a limitation. It's the entire point. The absence of unnecessary features is what makes Nav0 fast, secure, and trustworthy.
+
+### 3. Local Over Cloud
+
+Your data belongs on your device, under your control.
+
+In Nav0:
+
+- **Bookmarks:** stored locally in a database on your machine
+- **History:** stored locally, never transmitted anywhere
+- **Settings:** local configuration, not synced to any server
+- **Downloads:** saved to your chosen folder, not logged remotely
+- **Everything:** local. All of it.
+
+Cloud sync is marketed as a convenience, and it is convenient. But convenience has costs that are rarely made explicit:
+
+- **Account requirements.** Cloud sync requires an account, which means creating a persistent identifier that links all your activity. The account becomes a profile.
+- **Data on someone else's servers.** Even with encryption, your data exists on infrastructure you don't control. It's subject to the vendor's terms of service, their data retention policies, their security practices, and the legal jurisdictions of the countries where their servers operate.
+- **Server dependencies.** Cloud features break when servers go down, when APIs change, when companies pivot their business model. Local data doesn't have dependencies.
+- **Privacy risks.** Data that doesn't leave your device can't be breached from a remote server. Data that isn't collected can't be subpoenaed. Data that doesn't exist in a cloud can't be sold, shared, or leaked.
+
+The trade-off is real: Nav0 doesn't sync your bookmarks across devices. If you need cross-device access, you'll need to export and import manually, or use a third-party sync solution of your choosing. We believe this trade-off is worth it. Your data's security and your privacy are more important than the convenience of automatic sync.
+
+### 4. Transparent Over Proprietary
+
+Everything about Nav0 is open. Not partially open. Not "open core." Completely open.
+
+- **Source code:** publicly available on GitHub. Every line of code that runs in your browser can be read, audited, and verified by anyone.
+- **Development process:** public issue tracker, public pull requests, public discussions. Decisions are made in the open.
+- **Roadmap:** public. You can see what we're planning and why.
+- **Decision rationale:** public. When we make a significant decision, the reasoning is documented and visible.
+
+This matters because trust in software must be verifiable. When a browser vendor says "we don't collect your data," you have two options: take their word for it, or verify it yourself. With proprietary browsers, you can only do the former. With Nav0, you can do the latter.
+
+Open source also provides a structural guarantee against enshittification. If Nav0 ever abandons its principles — if a future maintainer adds telemetry or inserts advertising — the community can fork the project and continue from the last trustworthy version. The code belongs to everyone. The project is bigger than any individual or organization.
+
+This transparency extends to what we don't do. Nav0 has:
+
+- No obfuscated code
+- No binary blobs with unknown functionality
+- No proprietary protocols
+- No hidden network requests
+- No undocumented data collection
+
+If you can't see how your software works, you can't trust it. Full stop.
+
+### 5. User Over User Data
+
+We value users, not user data. This distinction defines everything about how Nav0 operates.
+
+Most browser vendors have a fundamental conflict of interest. Their revenue depends on knowing things about you — what you search for, what you buy, what you read, where you go. The more they know, the more valuable their advertising inventory becomes. This creates an incentive structure where user experience and user surveillance are permanently in tension.
+
+Nav0 has no such conflict because we have no advertising business, no data brokerage, and no analytics platform.
+
+We succeed when:
+
+- **Users have a fast, responsive browser** that doesn't waste their time or their hardware's resources
+- **Users maintain their privacy** without needing to configure anything, disable anything, or opt out of anything
+- **Users trust their tools** because those tools are transparent, predictable, and honest about what they do
+
+We don't succeed by:
+
+- Collecting user metrics to optimize engagement
+- Building user profiles to sell targeted advertising
+- Monetizing user attention through algorithmic content
+- Creating lock-in through proprietary sync and account systems
+- Growing a user base to impress investors or acquirers
+
+Nav0 is free. Nav0 is open source. Nav0 collects nothing. These aren't marketing claims — they are architectural facts that anyone can verify by reading the source code.
+
+## What We Believe
+
+### About Privacy
+
+Privacy is not a premium feature you unlock by paying for a subscription. Privacy is not a toggle buried in settings that resets after every update. Privacy is not something you should have to opt into. Privacy is not a competitive advantage for marketing materials.
+
+Privacy is a right.
+
+Nav0 treats privacy as the default state, not an afterthought. We don't collect data and then promise to protect it. We simply don't collect data. There is nothing to protect because there is nothing to collect.
+
+This is not a technical limitation — it's a design choice. We could add telemetry. We could add crash reporting. We could add usage analytics. We choose not to because we believe your relationship with the web is none of our business.
+
+### About Simplicity
+
+Simplicity is frequently misunderstood. When we say Nav0 is simple, we don't mean:
+
+- **Lacking capability.** Nav0 runs on Chromium. It renders the modern web correctly. It supports complex web applications, streaming media, and interactive content. The engine is powerful; the interface is minimal.
+- **Ugly or unpolished.** Simplicity is not the absence of design. It's the result of careful design decisions about what to include and what to leave out. A clean interface is the product of discipline, not laziness.
+- **Incomplete.** Nav0 isn't a work in progress that will eventually grow into a full-featured browser. The minimal feature set is the finished product. We're not building toward complexity; we're maintaining simplicity.
+
+Simplicity means:
+
+- **Focused.** Every element of the interface serves a clear purpose related to browsing the web. There are no distractions, no promotional content, no features competing for your attention.
+- **Understandable.** You shouldn't need documentation to use a browser. Nav0's interface is self-explanatory because there's nothing extraneous to confuse you.
+- **Maintainable.** Simple software is easier to audit, easier to debug, and less likely to contain hidden defects. Fewer moving parts means fewer things that can break.
+- **Trustworthy.** Simple software is easier to understand. Software you understand is software you can trust. Complexity is the enemy of trust.
+
+### About Open Source
+
+Open source is more than a development methodology or a licensing choice. It's a statement about the relationship between software and the people who use it.
+
+Open source means:
+
+- **Transparency.** The code is visible. The development process is visible. There's nowhere to hide tracking code, data collection, or anti-user behavior.
+- **Trust through verification.** "Don't trust us — verify" is not a slogan. It's a genuine invitation. We expect users and security researchers to audit our code. We welcome it.
+- **Community ownership.** No single entity can take Nav0 away from its users. The code is published under the MIT License. If the project changes direction, the community can fork it. This structural guarantee against enshittification is one of the most important properties of open source software.
+- **Permanence.** Companies get acquired, pivot, or shut down. Open source projects survive because the code belongs to everyone. A trusted commit will always be available to build from, regardless of what happens to the project's maintainers.
+
+### About the Web
+
+We believe the web should be open, accessible, and free from gatekeepers. A browser is the lens through which billions of people experience the internet. That lens should be clear, neutral, and controlled by the user — not by an advertising company, a platform vendor, or an AI corporation.
+
+The browser should not decide what content to show you on startup. It should not recommend articles, products, or services. It should not insert itself between you and the websites you choose to visit. It should not analyze your behavior to predict what you'll do next. It should load the page you asked for, render it correctly, and wait for your next instruction.
+
+That's what a browser is. That's what Nav0 does.
+
+## What Nav0 Deliberately Excludes
+
+Choosing what not to build is as important as choosing what to build. These exclusions are not temporary gaps in our feature list — they are permanent, principled decisions.
+
+| Feature                         | Why It's Excluded                                                                                                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **User accounts / sign-in**     | Accounts create persistent identifiers. No account means no profile, no tracking across sessions, no data to breach.                                               |
+| **Sync services**               | Sync requires cloud infrastructure, accounts, and server-side data storage. All of these conflict with local-first principles.                                     |
+| **AI assistants**               | AI features send page content to cloud servers, consume resources, add complexity, and create new data collection vectors. Use AI tools directly if you need them. |
+| **News feeds**                  | Algorithmic content feeds are engagement traps designed to keep you in the browser vendor's ecosystem. They are advertising, not a feature.                        |
+| **Cryptocurrency wallets**      | A browser is not a financial application. Bundling a wallet adds attack surface and complexity for a feature unrelated to browsing.                                |
+| **Built-in VPN**                | Browser VPNs are typically paid upsells that route your traffic through the vendor's servers. Use a dedicated, independently audited VPN if you need one.          |
+| **Telemetry / analytics**       | We don't collect usage data. Not "anonymized" data, not "optional" data, not "aggregated" data. Zero.                                                              |
+| **Shopping / coupon features**  | These features monitor your purchases and insert the browser vendor into your transactions. They exist to monetize your browsing, not to help you.                 |
+| **Reading lists / collections** | Bookmarks and bookmark folders handle this. We don't need three different organizational features when one works fine.                                             |
+| **Sidebar panels**              | Sidebars are screen real estate claimed by the browser for features unrelated to the page you're viewing. Nav0 maximizes the space for actual web content.         |
+
+## The Nav0 Way
+
+### We Say No
+
+The most important word in Nav0's vocabulary is "no."
+
+We say no to features that:
+
+- Collect data, whether the user knows about it or not
+- Require accounts or persistent identifiers
+- Add complexity without directly improving the core browsing experience
+- Serve business interests over user interests
+- Follow industry trends without clear user benefit
+- Increase the attack surface without corresponding security value
+- Consume resources for functionality unrelated to browsing
+
+Saying no is difficult in an industry that measures progress by feature count. But the discipline to say no is what keeps Nav0 minimal, fast, and trustworthy. Every feature we decline is bloat we don't ship, a vulnerability we don't create, and complexity we don't impose on our users.
+
+### We Say Yes
+
+We say yes to improvements that:
+
+- Make page loading measurably faster
+- Increase security against real, documented threats
+- Reduce memory usage and CPU consumption
+- Fix actual bugs reported by actual users
+- Improve web standards compliance
+- Make the browser more accessible
+- Serve clearly articulated user needs with minimal added complexity
+
+### We Stay Focused
+
+The web evolves constantly. New standards emerge. Security threats change. Hardware capabilities advance. A browser must adapt to serve its users on the modern web.
+
+But adapting to change is not the same as chasing trends. Adapting means:
+
+- Supporting new web standards so sites render correctly
+- Updating security measures against emerging threats
+- Optimizing performance for modern hardware
+- Fixing compatibility issues as the web evolves
+
+Adapting does not mean:
+
+- Adding every feature competitors ship
+- Following hype cycles (AI, crypto, metaverse, whatever's next)
+- Copying the design decisions of browsers with different values
+- Expanding scope beyond core browsing
+
+Nav0 will evolve, but it will evolve in its own direction — toward better browsing, not toward more features.
+
+## How We Make Decisions
+
+Every feature request, pull request, and design decision at Nav0 is evaluated against a simple framework:
+
+1. **Does this serve core browsing?** If the feature isn't directly related to loading, rendering, and navigating web pages, it probably doesn't belong in Nav0.
+2. **Does this respect user privacy?** If the feature requires collecting, transmitting, or processing user data, it doesn't belong in Nav0.
+3. **Does this add justified complexity?** Every feature adds complexity. Is the benefit to the user clearly worth the added complexity, maintenance burden, and attack surface?
+4. **Can the user achieve this with an existing tool?** If a dedicated tool already handles this task well, the browser doesn't need to duplicate it.
+5. **Would removing this feature make Nav0 worse at browsing?** If removing a proposed feature wouldn't affect the core browsing experience, the feature isn't essential.
+
+If a feature can't pass all five questions, we don't build it. This framework has served us well. It will continue to guide Nav0's development for as long as the project exists.
+
+## Join Us
+
+Nav0 is built by people who were tired of bloated, invasive browsers and decided to build something better. If you share that frustration, you're welcome here.
+
+- **Use Nav0.** The simplest and most important contribution. Every user who switches to Nav0 is one fewer profile being built by an advertising company.
+- **Report bugs.** Found something broken? Tell us. Bug reports from real users are how we improve without telemetry.
+- **Contribute code.** Nav0 is open source and welcomes contributions. Read our [Contributing Guide](/guide/contributing) to get started.
+- **Spread the word.** Tell others about Nav0. The web needs more people who care about privacy and simplicity.
+- **Audit the code.** Security researchers, privacy advocates, and curious developers — we want you looking at our code. Transparency only works if people actually look.
+
+The web deserves a better browser. One that works for its users instead of against them. One that respects privacy as a right instead of marketing it as a feature. One that stays simple in a world that rewards complexity.
+
+Let's build that browser.
 
 ---
 
-## Privacy Policy
-
-Privacy is not a feature in Nav0—it is the foundation.
-
-### The Complete Policy
-
-Nav0 does not collect, store, transmit, or process any user data. Period.
-
-### What Nav0 Does NOT Collect
-
-Telemetry: No usage statistics, no crash reports, no feature usage tracking, no A/B testing data.
-Personal Information: No names, no emails, no accounts, no identifiers.
-Browsing Data: No URLs visited, no search queries, no browsing history, no bookmarks.
-Device Information: No hardware specs, no OS details, no screen resolution, no installed software.
-Network Data: No IP addresses, no location data, no connection information, no ISP details.
-
-### How Nav0 Achieves This
-
-No Accounts: No sign-in means no profile to build.
-No Cloud Services: Data stays on your device—bookmarks, history, settings, downloads are all stored locally.
-No Phone Home: Nav0 makes no unsolicited network requests. No analytics pings, no heartbeat checks, no "anonymous" usage data, no background sync.
-Open Source: Full source code available for auditing. Hidden tracking is impossible when anyone can read the code.
-
-### Data Requests
-
-If law enforcement requests user data: Nav0 has nothing to provide. Nav0 does not have user data. Nav0 cannot give what it does not have.
+_"Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away."_
+— Antoine de Saint-Exupéry
 
 ---
 
-## Philosophy
+# Nav0 vs Chrome: A Head-to-Head Performance Benchmark on macOS
 
-Nav0 exists because modern browsers have lost their way. What was once a tool to view web pages has become a data harvesting platform, an advertising delivery system, and a feature showcase for engagement metrics.
+> **Update:** This benchmark was run against Nav0 **v0.0.6**. We later re-ran the exact same test on the same MacBook Pro M1 with **v0.1.2** and the numbers improved again — see the [v0.1.2 performance update](/blog/nav0-v012-performance-update). Nav0 currently ships [v0.3.0](/releases/); the figures below are a v0.0.6 snapshot, kept here for the record.
 
-### Core Principles
+We talk a lot about how modern browsers are bloated. But talk is cheap. So we decided to actually measure it.
 
-1. Do One Thing Well: Nav0 browses the web. It does not try to be an AI assistant, a news source, a password manager, a cryptocurrency wallet, or a shopping companion.
+We ran a controlled, head-to-head performance comparison between Nav0 v0.0.6 and Google Chrome v144.0.7559.133 on a MacBook Pro with an Apple M1 chip. We tested with 10, 20, 30, 40, and 50 open tabs, measuring memory consumption, CPU usage, and process count at each step.
 
-2. Absence Over Presence: The best feature is often no feature. Every feature has costs—code complexity, security surface, maintenance burden, user confusion, and potential for misuse.
+The results weren't even close.
 
-3. Local Over Cloud: All data belongs on the user's device. Bookmarks, history, settings—everything is local.
+## The Results
 
-4. Transparent Over Proprietary: Source code, development, roadmap, and decisions are all public. If you cannot see how it works, you cannot trust it.
+Before we get into methodology, here are the numbers. Every test was run on the same machine, with the same websites, under the same conditions.
 
-5. User Over User Data: Nav0 values users, not user data. Success means users have a fast browser and maintain their privacy—not collecting metrics or building profiles.
+### Memory Usage
 
----
+| Tabs | Chrome    | Nav0     | Difference         |
+| ---- | --------- | -------- | ------------------ |
+| 10   | 1,551 MB  | 1,247 MB | -304 MB (-19.6%)   |
+| 20   | 4,441 MB  | 2,461 MB | -1,980 MB (-44.6%) |
+| 30   | 6,938 MB  | 3,755 MB | -3,183 MB (-45.9%) |
+| 40   | 8,251 MB  | 4,345 MB | -3,906 MB (-47.3%) |
+| 50   | 10,076 MB | 4,294 MB | -5,782 MB (-57.4%) |
+
+At 50 tabs, Chrome consumed over 10 GB of memory. Nav0 used 4.3 GB. That's a 57.4% reduction — nearly 6 GB of RAM saved.
+
+And notice the scaling pattern. Chrome's memory usage grows almost linearly with tab count: roughly 200 MB per tab. Nav0's memory growth flattens significantly after 30 tabs, barely increasing between 40 and 50 tabs. At 50 tabs, Nav0 actually used slightly _less_ memory than at 40 tabs (4,294 MB vs 4,345 MB), suggesting that its resource management actively adapts to constrained conditions.
+
+**Average across all tests: Chrome 6,251 MB vs Nav0 3,220 MB — Nav0 uses 48.5% less memory.**
+
+### CPU Usage
+
+| Tabs | Chrome | Nav0  | Difference          |
+| ---- | ------ | ----- | ------------------- |
+| 10   | 29.5%  | 8.0%  | -21.6 pts (-73.0%)  |
+| 20   | 14.6%  | 9.1%  | -5.5 pts (-37.7%)   |
+| 30   | 141.2% | 11.8% | -129.3 pts (-91.6%) |
+| 40   | 187.7% | 12.0% | -175.8 pts (-93.6%) |
+| 50   | 101.7% | 24.4% | -77.3 pts (-76.0%)  |
+
+CPU percentages over 100% mean multiple cores are being saturated. At 40 tabs, Chrome was consuming nearly 188% CPU — pinning almost two full cores just to keep idle tabs alive. Nav0 at the same tab count: 12%. That's not a typo.
+
+Chrome's CPU behavior was also erratic. It swung from 14.6% at 20 tabs to 141.2% at 30 tabs, suggesting heavy background processing that kicks in unpredictably. Nav0's CPU usage remained remarkably flat and predictable across every tab count, only ticking up modestly at 50 tabs.
+
+**Average across all tests: Chrome 95.0% vs Nav0 13.1% — Nav0 uses 86.3% less CPU.**
+
+### Process Count
+
+| Tabs | Chrome | Nav0 | Difference   |
+| ---- | ------ | ---- | ------------ |
+| 10   | 67     | 22   | -45 (-67.2%) |
+| 20   | 90     | 34   | -56 (-62.2%) |
+| 30   | 103    | 43   | -60 (-58.3%) |
+| 40   | 112    | 53   | -59 (-52.7%) |
+| 50   | 120    | 62   | -58 (-48.3%) |
+
+With just 10 tabs open, Chrome spawned 67 processes. Nav0 ran with 22. Every additional process means additional memory overhead, additional context switches, and additional CPU scheduling work for your operating system.
+
+Chrome's process-per-tab architecture, combined with its various utility processes (GPU, network, storage, audio, extension service workers, renderer processes), means the process count scales aggressively. Nav0's architecture keeps process count substantially lower while still maintaining tab isolation where it matters.
+
+## Testing Methodology
+
+We're engineers, not marketers. We didn't cherry-pick numbers to make ourselves look good. Here's exactly how the tests were run so you can reproduce them yourself.
+
+### Hardware and Software
+
+- **Machine:** MacBook Pro with Apple M1 chip, 8 CPU cores, 16 GB RAM
+- **OS:** macOS (Darwin arm64)
+- **Chrome:** v144.0.7559.133, launched with a fresh temporary profile
+- **Nav0:** v0.0.6, launched with default settings
+- **Node.js:** 18+ with puppeteer-core for Chrome automation
+
+### Test Design
+
+Each browser was tested at five tab counts: 10, 20, 30, 40, and 50. For each tab count, the test followed this exact sequence:
+
+1. **Clean launch.** Kill any existing instance on the debug port. Launch the browser fresh with no prior state.
+2. **Open tabs.** Navigate to real-world websites sequentially. Each tab loads an actual page — no blank tabs, no synthetic pages.
+3. **Settle period (8 seconds).** After all tabs are open, wait 8 seconds for the browser to finish background work like rendering, JavaScript execution, garbage collection, and service worker initialization.
+4. **Measurement period (5 seconds).** Sample CPU and memory over a 5-second window, then average the results.
+5. **Clean shutdown.** Kill the entire process tree and wait 3 seconds before the next test.
+
+Both browsers were tested back-to-back for each tab count, meaning they experienced the same system conditions. Chrome was always tested first, then Nav0, for every tab count.
+
+### The Test URLs
+
+We didn't just load `about:blank` fifty times. The test rotated through 15 real-world websites spanning three weight classes:
+
+**Light pages** — minimal JavaScript, mostly text:
+
+- Hacker News, CNN Lite, NPR Text, Wikipedia, Craigslist
+
+**Medium pages** — moderate JavaScript, standard web apps:
+
+- MDN Web Docs, GitHub Docs, Stack Overflow, npm, GitHub Explore
+
+**Heavy pages** — complex JavaScript, video, dynamic content:
+
+- Reddit, YouTube, BBC News, CNN, Twitch
+
+Tabs cycled through these 15 URLs in order, so at 50 tabs each URL was loaded at least three times. This ensures the benchmark reflects realistic browsing patterns, not synthetic best-case scenarios.
+
+### How We Measured Memory
+
+This is important because memory measurement in browsers is notoriously tricky to get right.
+
+We used macOS's `footprint` command, which reports the **physical footprint** of a process — the same number you see in Activity Monitor's "Memory" column. This is the gold standard for memory measurement on macOS because it correctly handles shared memory.
+
+Why does this matter? Browsers spawn dozens of subprocesses that share memory-mapped libraries. If you naively sum the RSS (Resident Set Size) of every process, you double-count shared memory and get an inflated number. The `footprint` command avoids this by attributing shared memory to only one process, giving an accurate picture of the browser's true memory impact on the system.
+
+For each measurement, we:
+
+1. Built the complete process tree starting from the root browser PID, recursively collecting all child processes via `pgrep -P`.
+2. Passed every PID in the tree to the `footprint` command.
+3. Parsed the output for `Physical footprint` or `phys_footprint` values, handling both human-readable units (K, M, G) and raw byte counts.
+4. Summed the physical footprint across all processes.
+
+If `footprint` was unavailable for any reason, the script fell back to RSS summation with a warning — but on macOS, `footprint` was always available and always used.
+
+### How We Measured CPU
+
+CPU was sampled using `ps -o %cpu=` for every process in the browser's process tree. We sampled once per second for the full 5-second measurement window, collecting the total CPU percentage across all subprocesses at each sample, then averaged across all samples.
+
+CPU percentages are reported as they appear on macOS: 100% means one full core is saturated, 200% means two cores, and so on. This is consistent with what Activity Monitor and `top` report.
+
+### How We Built the Process Tree
+
+Both Chrome and Nav0 spawn child processes — renderers, GPU processes, utility workers, etc. To capture the full resource picture, we recursively walked the process tree from the root PID:
+
+1. Start with the root browser PID (the PID of the process we launched).
+2. Use `pgrep -P ` to find all direct children.
+3. Recurse into each child to find grandchildren, and so on.
+4. Collect every PID in the tree for measurement.
+
+This ensures we're measuring the _complete_ browser footprint, not just the main process. Chrome in particular has a complex multi-process architecture with many types of subprocesses, and missing any of them would undercount its resource usage.
+
+### Chrome Test Setup
+
+Chrome was launched via command line with these flags:
+
+- `--remote-debugging-port=9222` — enables the Chrome DevTools Protocol for tab automation
+- `--user-data-dir=` — uses a fresh temporary profile, no extensions, no cached data
+- `--no-first-run` — skips the first-run setup dialog
+- `--no-default-browser-check` — skips the "make Chrome your default" prompt
+- `--disable-default-apps` — no pre-installed apps
+- `--disable-extensions` — no extensions loaded
+- `--disable-background-networking` — reduces background network activity
+
+Tabs were opened using Puppeteer via the Chrome DevTools Protocol. Each tab was navigated with `waitUntil: 'domcontentloaded'` and a 20-second timeout.
+
+Note: Chrome was tested with extensions disabled and background networking turned off. This is a _favorable_ configuration for Chrome — in real-world usage with extensions, syncing, and background services active, Chrome's resource usage would be even higher.
+
+### Nav0 Test Setup
+
+Nav0 was launched with the `REMOTE_DEBUGGING_PORT` environment variable set, which activates a lightweight HTTP control server for test automation. Tabs were created via HTTP POST requests to `http://127.0.0.1:9229/create-tab?url=`.
+
+Nav0 was launched with its default configuration — no special flags to reduce resource usage. What you see in the benchmark is what you get when you use Nav0 normally.
+
+### What We Didn't Do
+
+Transparency matters, so here's what this benchmark does _not_ test:
+
+- **Page load speed.** We measured idle resource consumption, not how fast pages render. That's a different benchmark.
+- **JavaScript performance.** We didn't run Speedometer, JetStream, or other JS benchmarks. Both browsers use variants of the V8/Chromium engine, so JS execution speed is similar.
+- **Extension impact.** Chrome was tested with extensions disabled. Real-world Chrome with uBlock Origin, password managers, and other extensions would use even more resources.
+- **Long-running sessions.** Each test was a fresh launch. We didn't measure memory leaks over hours of browsing, which is a known issue with Chrome.
+- **Multiple runs for statistical significance.** This was a single run at each tab count. The numbers could vary slightly between runs, though the magnitude of the differences makes the conclusion robust.
+
+We plan to publish follow-up benchmarks covering these areas. The test script is open source in our repository — you can run it yourself and verify our results.
+
+## Why Nav0 Is More Efficient
+
+These numbers raise an obvious question: how is Nav0 so much lighter?
+
+The answer isn't one magic trick — it's what happens when you build a browser without the baggage that Chrome has accumulated over 18 years of feature creep.
+
+### No Telemetry Overhead
+
+Chrome runs a constant stream of background processes for Safe Browsing checks, usage statistics, component updates, field trial configurations, and sync services. Every one of those processes consumes memory and CPU cycles. Nav0 has zero telemetry. No data is collected, no data is sent, no background processes exist to manage data that doesn't exist.
+
+### No Bloat Features
+
+Chrome ships with a built-in PDF viewer, a translation engine, a password manager, an autofill system, a payment handler, a media router (Chromecast), a reading list, a side panel, a tab groups manager, shopping integrations, and most recently, a suite of Gemini AI features. Each of these is a subsystem with its own processes, memory allocations, and CPU cycles.
+
+Nav0 is a browser. It browses the web. That's it. Fewer features means fewer processes, less memory, and less CPU.
+
+### Leaner Process Architecture
+
+Chrome's multi-process architecture was groundbreaking in 2008. But it has grown increasingly complex, with separate process types for renderers, GPU compositing, network, storage, audio, utility workers, extension service workers, and more. With 10 tabs, Chrome spawned 67 processes — nearly 7 processes per tab.
+
+Nav0 achieves tab isolation with significantly fewer processes. At 10 tabs, it used 22 processes — about 2 per tab. The result is less memory overhead, fewer context switches, and less OS scheduling pressure.
+
+### Efficient Resource Management at Scale
+
+Perhaps the most striking result is how Nav0 scales. Chrome's resource usage grows roughly linearly — each additional tab adds a relatively fixed amount of memory and CPU. Nav0's resource growth flattens at higher tab counts, suggesting active resource management that adapts as the number of tabs increases.
+
+At 50 tabs, Nav0 used less memory than at 40 tabs. Chrome at 50 tabs used 22% more memory than at 40. The gap between the two browsers _widened_ as tab count increased, from 19.6% at 10 tabs to 57.4% at 50 tabs. If you're someone who keeps a lot of tabs open — and let's be honest, that's most of us — the difference is dramatic.
+
+## What This Means for You
+
+If you're running a machine with 8 GB or 16 GB of RAM, Chrome with 30+ tabs can push your system into swap territory, grinding everything to a halt. Nav0 at 50 tabs uses less memory than Chrome at 20.
+
+If you're on a laptop, CPU usage directly translates to battery life. Chrome pinning nearly two full CPU cores at 40 idle tabs means your fans are spinning and your battery is draining — for tabs you're not even looking at. Nav0 at the same tab count barely registers on the CPU meter.
+
+If you care about system responsiveness, fewer processes means less OS overhead. Chrome's 120 processes at 50 tabs compete with every other application on your system for scheduling time. Nav0's 62 processes at the same tab count leave more headroom for the rest of your work.
 
 ## Frequently Asked Questions
 
-### What is Nav0?
-Nav0 (pronounced "Nav Nought") is a free, open-source, privacy-focused desktop web browser built on Electron and Chromium. The name comes from "navigate + nought (bloat)."
+### How much memory does Chrome use with 50 tabs open?
 
-### What platforms does Nav0 support?
-Windows (x64), macOS (Intel x64 and Apple Silicon ARM64), and Linux (x64). On macOS, install via Homebrew: brew install --cask nav0-org/nav0/nav0. On Windows and Linux, download installers from GitHub Releases. On all platforms, you can build from source.
+In our benchmark on a MacBook Pro M1, Chrome consumed over 10 GB (10,076 MB) of memory with 50 tabs open. Memory usage scaled roughly linearly at about 200 MB per tab. Nav0 used 4,294 MB for the same 50 tabs — a 57.4% reduction, saving nearly 6 GB of RAM. Nav0's memory growth also flattened at higher tab counts, suggesting active resource management.
 
-### Does Nav0 collect any data?
-No. Zero. Nav0 collects no telemetry, no usage statistics, no crash reports, no browsing data, no personal information, and no device information.
+### Why does Chrome use so much RAM and CPU?
 
-### Does Nav0 require an account?
-No. Nav0 works fully without any sign-up, sign-in, or registration.
+Chrome runs a constant stream of background processes for Safe Browsing checks, telemetry, component updates, field trial configurations, and sync services. It also ships built-in features like a PDF viewer, translation engine, password manager, autofill system, payment handler, media router, and AI features — each with its own processes and memory allocations. Combined with Chrome's aggressive multi-process architecture (roughly 7 processes per tab at low counts), this results in high resource consumption even when tabs are idle.
 
-### Is Nav0 open source?
-Yes. Nav0 is fully open source under the MIT License. The source code is available at https://github.com/nav0-org/nav0-browser.
+### Is Nav0 browser faster than Chrome?
 
-### What browser engine does Nav0 use?
-Nav0 uses Chromium via Electron, giving it compatibility with the modern web.
+Nav0 uses significantly fewer system resources than Chrome. In our head-to-head benchmarks, Nav0 used 48.5% less memory and 86.3% less CPU on average across tests with 10 to 50 tabs. Both browsers use variants of the Chromium rendering engine, so JavaScript execution and page rendering speed are similar. The difference is that Nav0 leaves far more of your system's resources available for everything else you are doing.
 
-### Does Nav0 support browser extensions?
-Nav0 supports extensions. Users should review extension permissions and prefer open-source extensions.
+### How many processes does Chrome spawn per tab?
 
-### How does Nav0 make money?
-Nav0 is a community project. It does not monetize users.
+In our benchmark, Chrome spawned about 67 processes with just 10 tabs open — nearly 7 processes per tab. At 50 tabs, it ran 120 processes. Chrome's multi-process architecture includes separate process types for renderers, GPU compositing, network, storage, audio, utility workers, and extension service workers. Nav0 achieved tab isolation with significantly fewer processes: 22 at 10 tabs (about 2 per tab) and 62 at 50 tabs.
 
-### Why doesn't Nav0 have an AI assistant?
-Nav0 does not include AI because it is not what a browser is for. AI features typically require sending page content and queries to cloud servers, which contradicts Nav0's privacy principles.
+### What is the best lightweight browser for macOS?
 
-### Why doesn't Nav0 have a built-in VPN?
-Browser VPNs create conflicts of interest and give users a false sense of security. A browser that collects zero data is already more private than any browser-plus-VPN combination.
+Nav0 is a minimal, open-source browser that used 48.5% less memory and 86.3% less CPU than Chrome in head-to-head benchmarks on a MacBook Pro M1. It has zero telemetry, a built-in ad blocker, and runs no background processes when idle. It is fully open source under the MIT license and designed to be as lightweight as possible while still browsing the modern web effectively.
 
-### How does Nav0 improve without telemetry?
-Through voluntary bug reports, GitHub issues, community feedback, and the developers' own usage.
+## Try It Yourself
 
-### What if Nav0 gets acquired?
-The code is open source under the MIT License. Even if the project changes hands, the community can fork it. Users can always build from a trusted commit.
+The test script is [open source in our repository](https://github.com/nav0-org/nav0-browser/blob/main/tests/performance/browser-perf-test-mac.js). If you have a Mac with Chrome and Nav0 installed, you can reproduce these results in about 15 minutes. We believe in showing our work, not just making claims.
 
-### How is Nav0 different from Brave?
-While Brave has meaningful privacy protections, its business model depends on an advertising network and it ships with a cryptocurrency wallet and affiliate link injection. Nav0 has no advertising, no crypto features, and no business model that depends on user data.
+The numbers speak for themselves. Nav0 isn't just a little lighter than Chrome — it's a fundamentally different approach to building a browser. No telemetry tax, no feature bloat, no background processes doing work you never asked for.
 
-### How is Nav0 different from Firefox?
-Firefox receives approximately 80-85% of its revenue from Google search engine deals, creating a financial dependency. Firefox has also been adding AI-powered features. Nav0 has no search engine deals and no AI features.
+Your computer's resources should go toward the things you're actually doing, not toward feeding a data pipeline you didn't sign up for.
+
+[Download Nav0 — free, open source, and light on your system](/guide/getting-started).
 
 ---
 
-## Blog Posts
-
-### Your Browser Is Watching You: The Hidden Cost of "Free" Browsing (February 10, 2026)
-An in-depth look at what data modern browsers collect—browsing history, keystrokes, location, device fingerprints, and network activity. Examines Chrome, Edge, Brave, and Opera's data practices and explains why privacy-focused alternatives matter.
-URL: https://nav0.org/blog/your-browser-is-watching-you
-
-### Stop Forcing AI Into My Browser (February 8, 2026)
-Examines the AI arms race in browsers—Chrome's "Help me write," Edge's Copilot, Opera's Aria, Brave's Leo. Discusses the privacy cost (page content sent to cloud servers), performance tax, and feature creep of forced AI integration.
-URL: https://nav0.org/blog/stop-forcing-ai-into-browsers
-
-### Your Browser Doesn't Need a Built-In VPN (February 6, 2026)
-Analysis of built-in browser VPNs from Opera, Edge, Chrome/Google One, and Brave. Explains why browser VPNs are security theater—they don't protect users from the browser itself, create false security, and serve vendor business interests.
-URL: https://nav0.org/blog/your-browser-doesnt-need-a-vpn
-
-### Big Tech Owns Your Browser (February 4, 2026)
-Explores how Google, Microsoft, Apple, and Mozilla control how billions access the web. Covers Chrome's advertising model, Edge's platform lock-in, Safari's WebKit monopoly on iOS, Firefox's Google dependency, and the Chromium engine problem.
-URL: https://nav0.org/blog/big-tech-owns-your-browser
+_Nav0 is a minimal, open-source browser built on one principle: your browser should work for you, not for an ad company. Zero telemetry. Zero bloat. Zero BS. [Learn more](/guide/philosophy)._
