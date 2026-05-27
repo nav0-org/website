@@ -2,7 +2,11 @@
 title: "Browser Extensions Won't Save Your Privacy"
 description: "Privacy-focused extensions are the most common advice for staying safe online. But extensions themselves are a privacy and security risk most people overlook. Here's why bolting on privacy doesn't work."
 date: 2026-02-15
-author: Nav0 Team
+author: Ketan
+category: security
+lastReviewed: 2026-05-27
+tldr: >-
+  Privacy extensions are themselves a privacy and security risk. They demand access to all your data on all sites, can be silently sold to new owners who inject tracking, and increase your attack surface and fingerprint. In 2024 researchers found over 280 data-stealing Chrome extensions affecting 80 million users. The real fix is privacy built into the browser's architecture, not bolted on.
 tags: [privacy, extensions, security, browsers]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-02-15'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: privacy
@@ -35,7 +39,7 @@ head:
         "headline": "Browser Extensions Won't Save Your Privacy",
         "description": "Privacy-focused extensions are the most common advice for staying safe online. But extensions themselves are a privacy and security risk most people overlook. Here's why bolting on privacy doesn't work.",
         "datePublished": "2026-02-15",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/browser-extensions-wont-save-your-privacy",
         "keywords": ["privacy", "browser extensions", "security", "browser privacy", "extension permissions", "are browser extensions safe", "privacy extensions risk", "extension data collection", "browser extension sold malware", "do extensions protect privacy", "chrome extension security risks", "browser attack surface extensions", "manifest v3 ad blockers", "open source browser no extensions", "built-in privacy browser", "extension permissions danger", "browser extension ownership change"]
@@ -93,7 +97,7 @@ head:
 
 # Browser Extensions Won't Save Your Privacy
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; February 15, 2026 &middot; 8 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 15, 2026 &middot; 8 min read</p>
 
 Go to any privacy forum, any "how to secure your browser" guide, any tech journalist's recommendations, and you'll find the same advice: install these five extensions. uBlock Origin. Privacy Badger. HTTPS Everywhere. NoScript. Cookie AutoDelete. Maybe a few more.
 

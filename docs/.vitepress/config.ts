@@ -460,6 +460,14 @@ export default defineConfig({
           ? pageData.frontmatter.date
           : new Date(pageData.frontmatter.date).toISOString().split('T')[0];
 
+      const reviewedRaw = pageData.frontmatter.lastReviewed;
+      const reviewedStr =
+        (typeof reviewedRaw === 'string'
+          ? reviewedRaw
+          : reviewedRaw
+            ? new Date(reviewedRaw).toISOString().split('T')[0]
+            : '') || dateStr;
+
       const slug = pageData.relativePath.replace(/^blog\//, '').replace(/\.md$/, '');
       const comparedBrowser = comparisonBrowsers[slug];
       const comparisonEntities = comparedBrowser
@@ -489,7 +497,7 @@ export default defineConfig({
             const jsonLd = JSON.parse(entry[2]);
             if (jsonLd['@type'] === 'Article') {
               if (!jsonLd.dateModified) {
-                jsonLd.dateModified = jsonLd.datePublished || dateStr;
+                jsonLd.dateModified = reviewedStr;
               }
               if (comparisonEntities) {
                 jsonLd.about = comparisonEntities;

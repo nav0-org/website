@@ -2,7 +2,11 @@
 title: "Nav0 vs Firefox: When 'Good Enough' Privacy Isn't Good Enough"
 description: "Firefox is the most respected alternative browser and genuinely cares about privacy. But it still ships telemetry by default, pushes Mozilla accounts, shows sponsored content, and grows more complex every year. Nav0 takes Firefox's ideals further by removing everything that isn't browsing."
 date: 2026-03-21
-author: Nav0 Team
+author: Ketan
+category: comparisons
+lastReviewed: 2026-05-27
+tldr: >-
+  Firefox is the best mainstream browser for privacy, but its defaults fall short of its principles. A fresh install sends telemetry to Mozilla, shows sponsored shortcuts and Pocket stories, nudges Mozilla accounts, and defaults to Google search - which pays Mozilla roughly $450 million a year. Hardening requires changing hundreds of about:config settings that break across updates. Nav0 is private by default with zero telemetry and no sponsored content, trading away sync, extensions, mobile, and Gecko's engine diversity.
 tags: [firefox, privacy, comparison, telemetry, mozilla, bloat]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-03-21'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: firefox
@@ -38,7 +42,7 @@ head:
         "headline": "Nav0 vs Firefox: When 'Good Enough' Privacy Isn't Good Enough",
         "description": "Firefox is the most respected alternative browser and genuinely cares about privacy. But it still ships telemetry by default, pushes Mozilla accounts, shows sponsored content, and grows more complex every year. Nav0 takes Firefox's ideals further.",
         "datePublished": "2026-03-21",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-firefox",
         "keywords": ["Nav0 vs firefox", "firefox privacy", "firefox telemetry", "mozilla data collection", "firefox pocket", "minimal browser", "private browser comparison"]
@@ -96,7 +100,7 @@ head:
 
 # Nav0 vs Firefox: When "Good Enough" Privacy Isn't Good Enough
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; March 21, 2026 &middot; 11 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 21, 2026 &middot; 11 min read</p>
 
 This one is harder to write.
 

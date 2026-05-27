@@ -2,7 +2,11 @@
 title: 'The Indie Browser Renaissance: Meet the Projects Rebuilding the Web on Their Own Terms'
 description: "A celebratory survey of today's indie browsers — Min, Helium, Ladybird, Zen, Orion, Qutebrowser, SigmaOS, Floorp, LibreWolf, Beaker, and Nav0 — and why a scrappy wave of small projects matters in a web dominated by four vendors."
 date: 2026-04-22
-author: Nav0 Team
+author: Ketan
+category: open-web
+lastReviewed: 2026-05-27
+tldr: >-
+  A wave of small, independent browsers - Min, Helium, Ladybird, Zen, Orion, Qutebrowser, SigmaOS, Floorp, LibreWolf, Beaker, and Nav0 - is rebuilding the web on its own terms against a market dominated by four vendors and roughly 80 percent Chromium share. None is owned by an ad network; most are open source and honest about their tradeoffs. The point is not picking one winner but treating your browser as something you choose, not something you inherit.
 tags: [indie-browsers, open-web, browsers, privacy]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-04-22'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: indie-browsers
@@ -35,7 +39,7 @@ head:
         "headline": "The Indie Browser Renaissance: Meet the Projects Rebuilding the Web on Their Own Terms",
         "description": "A celebratory survey of today's indie browsers — Min, Helium, Ladybird, Zen, Orion, Qutebrowser, SigmaOS, Floorp, LibreWolf, Beaker, and Nav0 — and why a scrappy wave of small projects matters in a web dominated by four vendors.",
         "datePublished": "2026-04-22",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/the-indie-browser-renaissance",
         "keywords": ["indie browsers", "independent browsers", "alternative browsers", "Min browser", "Helium browser", "Ladybird browser", "Zen browser", "Orion browser", "Qutebrowser", "SigmaOS", "Beaker browser", "Floorp browser", "LibreWolf", "Nav0 browser", "Chromium monoculture", "open web", "browser engine diversity", "minimal browser", "privacy browser", "browser without big tech"]
@@ -44,7 +48,7 @@ head:
 
 # The Indie Browser Renaissance: Meet the Projects Rebuilding the Web on Their Own Terms
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; April 22, 2026 &middot; 10 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 22, 2026 &middot; 10 min read</p>
 
 For most of the last decade, the browser felt like a solved problem. Four companies — Google, Apple, Microsoft, and Mozilla (itself largely Google-funded) — rendered the web for nearly everyone. Two rendering engines did most of the work. New browsers showed up, but they were almost always Chromium with a different paint job.
 

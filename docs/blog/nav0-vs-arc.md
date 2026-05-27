@@ -2,7 +2,11 @@
 title: 'Nav0 vs Arc: Rethinking the Browser vs. Stripping It Down'
 description: "Arc and Nav0 both reject Chrome's status quo, but from opposite directions. Arc adds more UI — Spaces, Easels, AI features, split views. Nav0 removes UI. This is maximalism vs. minimalism, and only one approach doesn't require your data."
 date: 2026-03-21
-author: Nav0 Team
+author: Ketan
+category: comparisons
+lastReviewed: 2026-05-27
+tldr: >-
+  Arc and Nav0 both reject Chrome, but in opposite directions: Arc adds UI - Spaces, Easels, Boosts, split views, and AI features that send page content to external servers - while Nav0 removes everything but browsing. Arc is closed source, requires a mandatory account, syncs to The Browser Company's servers, and is backed by over $50 million in venture capital. Nav0 is open source, accountless, zero-telemetry, and has no investors. Arc is more capable; Nav0 is more trustworthy.
 tags: [arc, comparison, privacy, minimalism, ai, bloat]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-03-21'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: arc
@@ -38,7 +42,7 @@ head:
         "headline": "Nav0 vs Arc: Rethinking the Browser vs. Stripping It Down",
         "description": "Arc and Nav0 both reject Chrome's status quo, but from opposite directions. Arc adds more — Spaces, Easels, AI features, split views. Nav0 removes. This is maximalism vs. minimalism.",
         "datePublished": "2026-03-21",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-arc",
         "keywords": ["Nav0 vs arc", "arc browser privacy", "arc browser review", "the browser company", "arc closed source", "arc AI", "minimal browser"]
@@ -96,7 +100,7 @@ head:
 
 # Nav0 vs Arc: Rethinking the Browser vs. Stripping It Down
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; March 21, 2026 &middot; 10 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 21, 2026 &middot; 10 min read</p>
 
 Arc and Nav0 agree on one thing: Chrome is not the answer.
 

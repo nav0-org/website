@@ -2,7 +2,11 @@
 title: 'Cookie Banners Are Privacy Theater'
 description: 'Cookie consent banners were supposed to give you control over your data. Instead, they became a tax on attention, a UX disaster, and a fig leaf for tracking that never really stopped.'
 date: 2026-05-22
-author: Nav0 Team
+author: Ketan
+category: privacy
+lastReviewed: 2026-05-27
+tldr: >-
+  Cookie banners do not protect your privacy; they shift legal responsibility for tracking onto you. A 2020 Ruhr-Universitat Bochum study found only 11.8 percent of banners met minimum consent requirements, and most use dark patterns to push acceptance. Even a perfect Reject All leaves fingerprinting, IP, and server-side tracking untouched. The real fix is less data collection, enforced by a browser that blocks third-party cookies by default.
 tags: [privacy, browsers, cookies, gdpr]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-05-22'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: privacy
@@ -35,7 +39,7 @@ head:
         "headline": "Cookie Banners Are Privacy Theater",
         "description": "Cookie consent banners were supposed to give you control over your data. Instead, they became a tax on attention, a UX disaster, and a fig leaf for tracking that never really stopped.",
         "datePublished": "2026-05-22",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/cookie-banners-are-privacy-theater",
         "keywords": ["cookie banners", "GDPR cookie consent", "privacy theater", "dark patterns", "cookie consent fatigue", "are cookie banners required", "how to block cookie banners", "do cookie banners actually protect privacy", "reject all cookies", "cookie banner dark patterns", "third party cookies", "browser privacy", "GDPR enforcement", "ePrivacy directive", "stop cookie popups", "privacy focused browser", "tracking without cookies", "browser fingerprinting cookies"]
@@ -93,7 +97,7 @@ head:
 
 # Cookie Banners Are Privacy Theater
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; May 22, 2026 &middot; 8 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; May 22, 2026 &middot; 8 min read</p>
 
 You open a news article. Before you can read the headline, a wall of text appears. "We value your privacy." Below it, two buttons. One is large and brightly colored: **Accept All**. The other is a tiny grey link: _Manage preferences_. You sigh. You click Accept All. You read the article. You forget the banner ever existed.
 

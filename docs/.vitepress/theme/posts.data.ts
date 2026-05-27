@@ -130,6 +130,7 @@ export interface BlogPost {
   url: string;
   slug: string;
   date: string;
+  dateISO: string;
   longDate: string;
   excerpt: string;
   tag: string;
@@ -138,6 +139,10 @@ export interface BlogPost {
   shortReadTime: string;
   wordCount: string;
   author: string;
+  topic: string;
+  tldr: string;
+  lastReviewed: string;
+  lastReviewedISO: string;
   artGradient: string;
   artGlyph: string;
   artInk?: string;
@@ -155,19 +160,31 @@ export default createContentLoader('blog/*.md', {
       .map((page) => {
         const tags: string[] = page.frontmatter.tags || [];
         const art = pickArt(tags);
+        const reviewedRaw = page.frontmatter.lastReviewed || page.frontmatter.date;
         return {
           title: page.frontmatter.title,
           url: page.url,
           slug: page.url.replace(/^\/blog\//, '').replace(/\/$/, ''),
           date: formatDate(page.frontmatter.date),
+          dateISO:
+            typeof page.frontmatter.date === 'string'
+              ? page.frontmatter.date
+              : new Date(page.frontmatter.date).toISOString().split('T')[0],
           longDate: formatLongDate(page.frontmatter.date),
           excerpt: page.frontmatter.description,
           tag: formatTag(tags[0] || 'blog'),
           category: pickCategory(tags),
+          topic: page.frontmatter.category || '',
+          tldr: page.frontmatter.tldr || '',
+          lastReviewed: formatDate(reviewedRaw),
+          lastReviewedISO:
+            typeof reviewedRaw === 'string'
+              ? reviewedRaw
+              : new Date(reviewedRaw).toISOString().split('T')[0],
           readTime: calculateReadTime(page.src || ''),
           shortReadTime: shortReadTime(page.src || ''),
           wordCount: approxWordCount(page.src || ''),
-          author: page.frontmatter.author || 'Nav0 Team',
+          author: page.frontmatter.author || 'Ketan',
           artGradient: art.gradient,
           artGlyph: art.glyph,
           artInk: art.ink,

@@ -2,7 +2,11 @@
 title: 'Why Your Browser Wants You to Sign In'
 description: "Every time you open your browser, it nudges you to create an account and sign in. That's not about convenience — it's about tying every click, search, and keystroke to your real identity."
 date: 2026-02-21
-author: Nav0 Team
+author: Ketan
+category: privacy
+lastReviewed: 2026-05-27
+tldr: >-
+  Browsers nudge you to sign in not for convenience but to tie your browsing to your real identity - your email, phone, and name. Once signed in, your history, passwords, autofill, and live open tabs upload to the vendor's servers, forming a detailed cross-device profile that feeds advertising and ecosystem lock-in. Vendors usually hold the encryption keys, so encrypted does not mean private. The web worked for decades without browser accounts; Nav0 has none, keeping all data local.
 tags: [privacy, browsers, accounts, tracking]
 head:
   - - meta
@@ -13,7 +17,7 @@ head:
       content: '2026-02-21'
   - - meta
     - property: article:author
-      content: Nav0 Team
+      content: Ketan
   - - meta
     - property: article:tag
       content: privacy
@@ -35,7 +39,7 @@ head:
         "headline": "Why Your Browser Wants You to Sign In",
         "description": "Every time you open your browser, it nudges you to create an account and sign in. That's not about convenience — it's about tying every click, search, and keystroke to your real identity.",
         "datePublished": "2026-02-21",
-        "author": { "@type": "Organization", "name": "Nav0" },
+        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/why-your-browser-wants-you-to-sign-in",
         "keywords": ["browser sign in", "browser accounts", "privacy", "cross-device tracking", "data collection"]
@@ -93,7 +97,7 @@ head:
 
 # Why Your Browser Wants You to Sign In
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Nav0 Team &middot; February 21, 2026 &middot; 7 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 21, 2026 &middot; 7 min read</p>
 
 <img src="/blog-sign-in.svg" alt="Illustration showing a browser sign-in dialog with data flowing from the user's browsing history, passwords, bookmarks, and open tabs to a remote server" style="width: 100%; max-width: 720px; margin: 1.5rem auto; display: block; border-radius: 12px;" />
 
