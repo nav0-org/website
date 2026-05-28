@@ -46,6 +46,7 @@ import {
   Layers,
   Users,
   Rocket,
+  Fingerprint,
 } from 'lucide';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -111,6 +112,7 @@ const POSTS = {
   'why-your-browser-wants-you-to-sign-in': { icon: LogIn },
   'your-browser-doesnt-need-a-vpn': { icon: ShieldOff },
   'your-browser-is-watching-you': { icon: Eye },
+  'honest-ua-vs-spoofed-ua-field-report': { icon: Fingerprint },
 };
 
 // Non-blog site pages. `out` is the og/<out>.png filename, matched by route in
