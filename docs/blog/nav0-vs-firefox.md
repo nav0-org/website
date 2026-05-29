@@ -2,7 +2,7 @@
 title: "Nav0 vs Firefox: When 'Good Enough' Privacy Isn't Good Enough"
 description: "Firefox is the most respected alternative browser and genuinely cares about privacy. But it still ships telemetry by default, pushes Mozilla accounts, shows sponsored content, and grows more complex every year. Nav0 takes Firefox's ideals further by removing everything that isn't browsing."
 date: 2026-03-21
-author: Ketan
+author: Ketan Patil
 category: comparisons
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-03-21'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: firefox
@@ -42,7 +42,7 @@ head:
         "headline": "Nav0 vs Firefox: When 'Good Enough' Privacy Isn't Good Enough",
         "description": "Firefox is the most respected alternative browser and genuinely cares about privacy. But it still ships telemetry by default, pushes Mozilla accounts, shows sponsored content, and grows more complex every year. Nav0 takes Firefox's ideals further.",
         "datePublished": "2026-03-21",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-firefox",
         "keywords": ["Nav0 vs firefox", "firefox privacy", "firefox telemetry", "mozilla data collection", "firefox pocket", "minimal browser", "private browser comparison"]
@@ -100,7 +100,7 @@ head:
 
 # Nav0 vs Firefox: When "Good Enough" Privacy Isn't Good Enough
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 21, 2026 &middot; 11 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; March 21, 2026 &middot; 11 min read</p>
 
 This one is harder to write.
 

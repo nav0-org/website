@@ -159,7 +159,7 @@
               <em>Nav0 takes a different approach.</em> It does one thing: lets you browse the web.
               No assistants. No phoning home. No clutter. No accounts. Browse. Bookmark. Done.
             </p>
-            <div class="nv-signature">— Ketan · 2026</div>
+            <div class="nv-signature">— Ketan Patil · 2026</div>
           </div>
           <aside class="nv-definition-card">
             <div class="nv-word">Nav0</div>
@@ -194,6 +194,7 @@
             <h3 class="nv-post-title">{{ p.title }}</h3>
             <p class="nv-post-excerpt">{{ p.excerpt }}</p>
             <div class="nv-post-foot">
+              <span>By {{ p.author }}</span>
               <span>{{ p.date }}</span>
               <span>{{ p.readTime }}</span>
             </div>
@@ -229,8 +230,8 @@
               <span>Nav0</span>
             </a>
             <p class="nv-foot-tag">
-              A minimal, privacy-focused web browser. Built by a small team, supported by a small
-              community, owned by no one.
+              A minimal, privacy-focused web browser. Built by Ketan Patil. Open source under the
+              MIT License.
             </p>
           </div>
           <div>

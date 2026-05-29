@@ -119,9 +119,14 @@ function pageOgName(relativePath: string): string | null {
 
 // Author identity. Nav0 is built and maintained by Ketan; blog bylines, the
 // /about page, and all author/Person JSON-LD point here.
-const authorName = 'Ketan';
+const authorName = 'Ketan Patil';
 const authorUrl = `${siteUrl}/about`;
-const authorSameAs = ['https://github.com/nav0-org'];
+const authorSameAs = [
+  'https://github.com/ketansp',
+  'https://x.com/ketansp',
+  'https://linkedin.com/in/ketansp',
+  'https://github.com/nav0-org',
+];
 const personNode = {
   '@type': 'Person',
   name: authorName,
@@ -318,7 +323,7 @@ export default defineConfig({
     ],
 
     // Additional SEO
-    ['meta', { name: 'author', content: 'Nav0 Contributors' }],
+    ['meta', { name: 'author', content: 'Ketan Patil' }],
     ['meta', { name: 'robots', content: 'index, follow' }],
 
     // JSON-LD: Organization
@@ -445,6 +450,33 @@ export default defineConfig({
       ['link', { rel: 'alternate', hreflang: 'en', href: canonicalUrl }],
       ['link', { rel: 'alternate', hreflang: 'x-default', href: canonicalUrl }]
     );
+
+    // Per-page og:/twitter: title + description from frontmatter, so non-blog
+    // pages stop inheriting the generic site title/description. Blog posts get
+    // theirs in the blog/ branch below. We skip any tag the page already sets by
+    // hand (e.g. index.md / about.md curate their own), and VitePress dedupes
+    // og:/twitter: meta by property/name so these override the site defaults.
+    if (!pageData.relativePath.startsWith('blog/')) {
+      const head = pageData.frontmatter.head as Array<
+        [string, Record<string, string>, string?]
+      >;
+      const hasMeta = (key: 'property' | 'name', val: string) =>
+        head.some((e) => Array.isArray(e) && e[0] === 'meta' && e[1]?.[key] === val);
+      const fmTitle = pageData.frontmatter.title as string | undefined;
+      const fmDesc = pageData.frontmatter.description as string | undefined;
+      if (fmTitle) {
+        if (!hasMeta('property', 'og:title'))
+          head.push(['meta', { property: 'og:title', content: fmTitle }]);
+        if (!hasMeta('name', 'twitter:title'))
+          head.push(['meta', { name: 'twitter:title', content: fmTitle }]);
+      }
+      if (fmDesc) {
+        if (!hasMeta('property', 'og:description'))
+          head.push(['meta', { property: 'og:description', content: fmDesc }]);
+        if (!hasMeta('name', 'twitter:description'))
+          head.push(['meta', { name: 'twitter:description', content: fmDesc }]);
+      }
+    }
 
     // Point non-blog routes at their dedicated OG card (blog posts get theirs
     // in the blog/ branch below). VitePress dedupes og:/twitter: meta by

@@ -14,7 +14,7 @@ const title = computed(() => frontmatter.value.title || post.value?.title || '')
 const category = computed(() => post.value?.category || '');
 const longDate = computed(() => post.value?.longDate || '');
 const readTime = computed(() => post.value?.readTime || '');
-const author = computed(() => post.value?.author || 'Ketan');
+const author = computed(() => post.value?.author || 'Ketan Patil');
 const dateISO = computed(() => post.value?.dateISO || '');
 const reviewedISO = computed(() => post.value?.lastReviewedISO || '');
 const canonicalUrl = computed(() => (post.value ? `https://nav0.org${post.value.url}` : ''));
@@ -45,7 +45,7 @@ const breadcrumbTitle = computed(() => title.value.split(':')[0].trim());
           itemscope
           itemtype="https://schema.org/Person"
         >
-          <img class="bp-avatar" src="/author.jpg" :alt="author" width="28" height="28" />
+          <img class="bp-avatar" src="/ketan-patil.jpg" :alt="author" width="28" height="28" />
           <span itemprop="name">{{ author }}</span>
           <link itemprop="url" href="https://nav0.org/about" />
         </a>

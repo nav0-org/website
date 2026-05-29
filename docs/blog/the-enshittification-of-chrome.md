@@ -2,7 +2,7 @@
 title: "The Enshittification of Chrome: How the World's Most Popular Browser Turned Against Its Users"
 description: "Chrome used to be the fast, clean browser that saved us from Internet Explorer. Now it's a bloated, data-hungry machine that serves Google's ad business first and users second. Here's how it happened."
 date: 2026-02-28
-author: Ketan
+author: Ketan Patil
 category: privacy
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-02-28'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: chrome
@@ -42,7 +42,7 @@ head:
         "headline": "The Enshittification of Chrome: How the World's Most Popular Browser Turned Against Its Users",
         "description": "Chrome used to be the fast, clean browser that saved us from Internet Explorer. Now it's a bloated, data-hungry machine that serves Google's ad business first and users second.",
         "datePublished": "2026-02-28",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/the-enshittification-of-chrome",
         "keywords": ["chrome enshittification", "google chrome bloat", "chrome privacy", "manifest v3", "chrome alternatives", "browser privacy", "google tracking", "chrome data collection"]
@@ -100,7 +100,7 @@ head:
 
 # The Enshittification of Chrome: How the World's Most Popular Browser Turned Against Its Users
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 28, 2026 &middot; 9 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; February 28, 2026 &middot; 9 min read</p>
 
 Look, I'm just gonna say it. Chrome is cooked.
 

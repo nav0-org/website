@@ -2,7 +2,7 @@
 title: 'Why Your Browser Wants You to Sign In'
 description: "Every time you open your browser, it nudges you to create an account and sign in. That's not about convenience — it's about tying every click, search, and keystroke to your real identity."
 date: 2026-02-21
-author: Ketan
+author: Ketan Patil
 category: privacy
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-02-21'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: privacy
@@ -39,7 +39,7 @@ head:
         "headline": "Why Your Browser Wants You to Sign In",
         "description": "Every time you open your browser, it nudges you to create an account and sign in. That's not about convenience — it's about tying every click, search, and keystroke to your real identity.",
         "datePublished": "2026-02-21",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/why-your-browser-wants-you-to-sign-in",
         "keywords": ["browser sign in", "browser accounts", "privacy", "cross-device tracking", "data collection"]
@@ -97,7 +97,7 @@ head:
 
 # Why Your Browser Wants You to Sign In
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 21, 2026 &middot; 7 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; February 21, 2026 &middot; 7 min read</p>
 
 <img src="/blog-sign-in.svg" alt="Illustration showing a browser sign-in dialog with data flowing from the user's browsing history, passwords, bookmarks, and open tabs to a remote server" style="width: 100%; max-width: 720px; margin: 1.5rem auto; display: block; border-radius: 12px;" />
 

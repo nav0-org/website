@@ -2,7 +2,7 @@
 title: "Nav0 vs Safari: Privacy by Default vs. Privacy by Apple's Terms"
 description: "Safari is the most privacy-friendly mainstream browser — but it's still controlled by Apple, tied to iCloud, and locked to one ecosystem. Nav0 takes Safari's privacy ideals and removes the strings attached."
 date: 2026-03-31
-author: Ketan
+author: Ketan Patil
 category: comparisons
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-03-31'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: safari
@@ -42,7 +42,7 @@ head:
         "headline": "Nav0 vs Safari: Privacy by Default vs. Privacy by Apple's Terms",
         "description": "Safari is the most privacy-friendly mainstream browser — but it's still controlled by Apple, tied to iCloud, and locked to one ecosystem. Nav0 takes Safari's privacy ideals and removes the strings attached.",
         "datePublished": "2026-03-31",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-safari",
         "keywords": ["Nav0 vs Safari", "Safari privacy", "Apple browser", "Safari iCloud", "Safari telemetry", "private browser", "minimal browser", "open source browser"]
@@ -100,7 +100,7 @@ head:
 
 # Nav0 vs Safari: Privacy by Default vs. Privacy by Apple's Terms
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 31, 2026 &middot; 11 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; March 31, 2026 &middot; 11 min read</p>
 
 Safari is the browser that privacy-conscious users point to when someone says, "But I don't use Chrome." And for good reason. Apple has invested heavily in privacy as a brand pillar. Intelligent Tracking Prevention, fingerprinting resistance, Privacy Reports — Safari does more to protect users than any other mainstream browser.
 

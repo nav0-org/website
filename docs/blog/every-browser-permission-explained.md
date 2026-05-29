@@ -2,7 +2,7 @@
 title: 'Every Browser Permission, Explained: What You Grant When You Click "Allow"'
 description: 'A long-form reference for every browser permission prompt: camera, mic, geolocation, sensors, storage, notifications, USB, MIDI, and more. What each one means and what gets sent.'
 date: 2026-05-23
-author: Ketan
+author: Ketan Patil
 category: security
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-05-23'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: privacy
@@ -39,7 +39,7 @@ head:
         "headline": "Every Browser Permission, Explained: What You Grant When You Click \"Allow\"",
         "description": "A long-form reference for every browser permission prompt: camera, mic, geolocation, sensors, storage, notifications, USB, MIDI, and more. What each one means and what gets sent.",
         "datePublished": "2026-05-23",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": {
           "@type": "Organization",
           "name": "Nav0",
@@ -53,7 +53,7 @@ head:
 
 # Every Browser Permission, Explained: What You Grant When You Click "Allow"
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; May 23, 2026 &middot; 15 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; May 23, 2026 &middot; 15 min read</p>
 
 Modern browsers ship with around two dozen permission prompts. Most users click "Allow" or "Block" without reading, because the prompt itself doesn't tell you what the page can actually do once the permission is granted. The prompt says "this site wants to know your location" — it doesn't say "this site can now poll your coordinates every 200 milliseconds in the background while the tab is open."
 

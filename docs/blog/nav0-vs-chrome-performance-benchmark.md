@@ -2,7 +2,7 @@
 title: 'Nav0 vs Chrome: A Head-to-Head Performance Benchmark on macOS'
 description: 'We ran a rigorous head-to-head performance comparison between Nav0 and Google Chrome on a MacBook Pro M1. Nav0 used 48.5% less memory, 86.3% less CPU, and spawned far fewer processes across every tab count tested.'
 date: 2026-03-04
-author: Ketan
+author: Ketan Patil
 category: performance
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-03-04'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: performance
@@ -42,7 +42,7 @@ head:
         "headline": "Nav0 vs Chrome: A Head-to-Head Performance Benchmark on macOS",
         "description": "We ran a rigorous head-to-head performance comparison between Nav0 and Google Chrome on a MacBook Pro M1. Nav0 used 48.5% less memory, 86.3% less CPU, and spawned far fewer processes.",
         "datePublished": "2026-03-04",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-chrome-performance-benchmark",
         "keywords": ["Nav0 vs chrome", "browser performance", "chrome memory usage", "browser benchmark", "chrome RAM", "lightweight browser", "browser CPU usage"]
@@ -100,7 +100,7 @@ head:
 
 # Nav0 vs Chrome: A Head-to-Head Performance Benchmark on macOS
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 4, 2026 &middot; 11 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; March 4, 2026 &middot; 11 min read</p>
 
 > **Update:** This benchmark was run against Nav0 **v0.0.6**. We later re-ran the exact same test on the same MacBook Pro M1 with **v0.1.2** and the numbers improved again — see the [v0.1.2 performance update](/blog/nav0-v012-performance-update). Nav0 currently ships [v0.3.0](/releases/); the figures below are a v0.0.6 snapshot, kept here for the record.
 

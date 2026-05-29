@@ -2,7 +2,7 @@
 title: 'Big Tech Owns Your Browser'
 description: 'Google, Microsoft, and Apple control how billions of people access the web. When your browser is made by an ad company or a platform gatekeeper, whose interests does it really serve?'
 date: 2026-02-04
-author: Ketan
+author: Ketan Patil
 category: open-web
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-02-04'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: big-tech
@@ -36,7 +36,7 @@ head:
         "headline": "Big Tech Owns Your Browser",
         "description": "Google, Microsoft, and Apple control how billions of people access the web. When your browser is made by an ad company or a platform gatekeeper, whose interests does it really serve?",
         "datePublished": "2026-02-04",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/big-tech-owns-your-browser",
         "keywords": ["big tech", "browser monopoly", "Chrome", "Edge", "Safari", "open web", "Chromium", "who owns Chrome browser", "does Google control the web", "why is Chrome free", "big tech browser data collection", "Chromium browser engine monopoly", "independent browser alternative", "browser without ads or tracking", "Google Chrome advertising business model", "Microsoft Edge telemetry", "Apple Safari App Store conflict of interest", "Mozilla Google funding dependency", "open source browser no big tech", "browser vendor conflict of interest"]
@@ -94,7 +94,7 @@ head:
 
 # Big Tech Owns Your Browser
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 4, 2026 &middot; 8 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; February 4, 2026 &middot; 8 min read</p>
 
 There are roughly 5 billion internet users worldwide. The vast majority of them access the web through a browser made by one of four companies: Google, Apple, Microsoft, or the Mozilla Foundation (which gets over 80% of its revenue from Google). That's it. Four organizations mediate almost the entire world's relationship with the internet.
 

@@ -2,7 +2,7 @@
 title: 'Nav0 v0.1.2 Performance Update: Even Lighter on the Same Hardware'
 description: 'We re-ran our Nav0 vs Chrome performance benchmark on the same MacBook Pro M1 with Nav0 v0.1.2. Memory dropped up to 21%, CPU dropped up to 36%, and Nav0 still uses 45% less memory and 77% less CPU than Chrome.'
 date: 2026-04-05
-author: Ketan
+author: Ketan Patil
 category: performance
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-04-05'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: performance
@@ -45,7 +45,7 @@ head:
         "headline": "Nav0 v0.1.2 Performance Update: Even Lighter on the Same Hardware",
         "description": "We re-ran our Nav0 vs Chrome performance benchmark on the same MacBook Pro M1 with Nav0 v0.1.2. Memory dropped up to 21%, CPU dropped up to 36%, and Nav0 still uses 45% less memory and 77% less CPU than Chrome.",
         "datePublished": "2026-04-05",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-v012-performance-update",
         "keywords": ["Nav0 v0.1.2 performance", "browser benchmark update", "Nav0 vs chrome", "chrome memory usage", "lightweight browser", "browser CPU benchmark"]
@@ -103,7 +103,7 @@ head:
 
 # Nav0 v0.1.2 Performance Update: Even Lighter on the Same Hardware
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 5, 2026 &middot; 4 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; April 5, 2026 &middot; 4 min read</p>
 
 > **Update:** These figures are from Nav0 **v0.1.2**. Nav0 has kept improving since; the current build is [v0.3.0](/releases/). The numbers below remain a v0.1.2 snapshot against the original [v0.0.6 benchmark](/blog/nav0-vs-chrome-performance-benchmark).
 

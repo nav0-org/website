@@ -2,7 +2,7 @@
 title: 'Nav0 vs Microsoft Edge: The Browser That Reports Everything to Redmond'
 description: 'Microsoft Edge ships with more telemetry than almost any browser on the market. It sends your browsing data to Microsoft, pushes Bing, Copilot AI, shopping tools, and news feeds you never asked for. Nav0 sends nothing to anyone.'
 date: 2026-04-04
-author: Ketan
+author: Ketan Patil
 category: comparisons
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-04-04'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: edge
@@ -42,7 +42,7 @@ head:
         "headline": "Nav0 vs Microsoft Edge: The Browser That Reports Everything to Redmond",
         "description": "Microsoft Edge ships with more telemetry than almost any browser on the market. It sends your browsing data to Microsoft, pushes Bing, Copilot AI, shopping tools, and news feeds you never asked for. Nav0 sends nothing to anyone.",
         "datePublished": "2026-04-04",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-edge",
         "keywords": ["Nav0 vs edge", "microsoft edge privacy", "edge telemetry", "edge copilot", "edge bloat", "edge tracking", "minimal browser", "private browser", "edge alternative"]
@@ -100,7 +100,7 @@ head:
 
 # Nav0 vs Microsoft Edge: The Browser That Reports Everything to Redmond
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 4, 2026 &middot; 11 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; April 4, 2026 &middot; 11 min read</p>
 
 Microsoft Edge is the browser that came pre-installed on your Windows PC and immediately asked you to sign in with your Microsoft account, set Bing as your default search engine, enable Copilot AI, and turn on a news feed full of clickbait. It did all of this before you opened a single web page.
 
