@@ -12,10 +12,7 @@ const emailUrl = 'mailto:ketan@nav0.org';
       <img class="ab-avatar" src="/ketan-patil.jpg" alt="Portrait of Ketan Patil, the creator of Nav0" width="120" height="120" />
       <h1 class="ab-name">Ketan Patil</h1>
       <p class="ab-role">Creator &amp; maintainer of Nav0</p>
-      <p class="ab-location">Based in India</p>
-      <div class="ab-links">
-        <a class="ab-btn" :href="githubUrl" rel="me noopener">GitHub</a>
-      </div>
+      <p class="ab-location">Mumbai, India</p>
     </section>
 
     <section class="ab-body">
