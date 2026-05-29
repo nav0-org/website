@@ -123,7 +123,7 @@ const authorName = 'Ketan Patil';
 const authorUrl = `${siteUrl}/about`;
 const authorSameAs = [
   'https://github.com/ketansp',
-  'https://x.com/ketansp',
+  'https://x.com/ketnsp',
   'https://linkedin.com/in/ketansp',
   'https://github.com/nav0-org',
 ];
