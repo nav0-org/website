@@ -2,7 +2,7 @@
 title: 'Incognito Mode Is Not Private: The Biggest Lie Your Browser Tells You'
 description: "Private browsing modes like Chrome's Incognito don't make you private. They hide your history from your device — not from your ISP, employer, or the websites you visit. Here's what they actually do."
 date: 2026-03-15
-author: Ketan
+author: Ketan Patil
 category: privacy
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-03-15'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: privacy
@@ -39,7 +39,7 @@ head:
         "headline": "Incognito Mode Is Not Private: The Biggest Lie Your Browser Tells You",
         "description": "Private browsing modes like Chrome's Incognito don't make you private. They hide your history from your device — not from your ISP, employer, or the websites you visit. Here's what they actually do.",
         "datePublished": "2026-03-15",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/incognito-mode-is-not-private",
         "keywords": ["privacy", "incognito mode", "private browsing", "browser privacy", "online tracking"]
@@ -97,7 +97,7 @@ head:
 
 # Incognito Mode Is Not Private: The Biggest Lie Your Browser Tells You
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 15, 2026 &middot; 8 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; March 15, 2026 &middot; 8 min read</p>
 
 Open a new Incognito window in Chrome. You'll see a little spy icon and a reassuring message: "You've gone Incognito." Firefox calls it "Private Browsing." Safari calls it "Private." Edge calls it "InPrivate." The naming is deliberate. It's designed to make you feel invisible.
 

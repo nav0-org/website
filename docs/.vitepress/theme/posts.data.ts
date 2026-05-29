@@ -184,7 +184,7 @@ export default createContentLoader('blog/*.md', {
           readTime: calculateReadTime(page.src || ''),
           shortReadTime: shortReadTime(page.src || ''),
           wordCount: approxWordCount(page.src || ''),
-          author: page.frontmatter.author || 'Ketan',
+          author: page.frontmatter.author || 'Ketan Patil',
           artGradient: art.gradient,
           artGlyph: art.glyph,
           artInk: art.ink,

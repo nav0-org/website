@@ -1,13 +1,18 @@
 <script setup lang="ts">
 const githubUrl = 'https://github.com/nav0-org';
+const githubPersonal = 'https://github.com/ketansp';
+const twitterUrl = 'https://x.com/ketansp';
+const linkedinUrl = 'https://linkedin.com/in/ketansp';
+const emailUrl = 'mailto:ketan@nav0.org';
 </script>
 
 <template>
   <div class="about-page">
     <section class="ab-hero">
-      <img class="ab-avatar" src="/author.jpg" alt="Portrait of Ketan, the creator of Nav0" width="120" height="120" />
-      <h1 class="ab-name">Ketan</h1>
+      <img class="ab-avatar" src="/ketan-patil.jpg" alt="Portrait of Ketan Patil, the creator of Nav0" width="120" height="120" />
+      <h1 class="ab-name">Ketan Patil</h1>
       <p class="ab-role">Creator &amp; maintainer of Nav0</p>
+      <p class="ab-location">Based in India</p>
       <div class="ab-links">
         <a class="ab-btn" :href="githubUrl" rel="me noopener">GitHub</a>
       </div>
@@ -47,6 +52,12 @@ const githubUrl = 'https://github.com/nav0-org';
         <a :href="githubUrl" rel="me noopener">GitHub</a>. That's the best place to report a bug,
         request a feature, or read the code that backs up every privacy claim on this site.
       </p>
+      <ul class="ab-find">
+        <li><a :href="githubPersonal" rel="me noopener">GitHub</a> — <span>github.com/ketansp</span></li>
+        <li><a :href="twitterUrl" rel="me noopener">X / Twitter</a> — <span>@ketansp</span></li>
+        <li><a :href="linkedinUrl" rel="me noopener">LinkedIn</a> — <span>in/ketansp</span></li>
+        <li><a :href="emailUrl" rel="me">Email</a> — <span>ketan@nav0.org</span></li>
+      </ul>
     </section>
   </div>
 </template>
@@ -86,6 +97,12 @@ const githubUrl = 'https://github.com/nav0-org';
 
 .ab-role {
   font-size: 18px;
+  color: var(--ds-ink-3, var(--vp-c-text-2));
+  margin: 0 0 4px;
+}
+
+.ab-location {
+  font-size: 15px;
   color: var(--ds-ink-3, var(--vp-c-text-2));
   margin: 0 0 24px;
 }
@@ -148,5 +165,20 @@ const githubUrl = 'https://github.com/nav0-org';
 
 .ab-body a:hover {
   text-decoration: underline;
+}
+
+.ab-find {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.ab-find li {
+  margin: 0 0 8px;
+}
+
+.ab-find span {
+  color: var(--ds-ink-3, var(--vp-c-text-2));
+  font-size: 15px;
 }
 </style>

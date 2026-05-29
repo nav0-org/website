@@ -1,18 +1,12 @@
 ---
-title: 'About Ketan — The Person Behind Nav0'
-description: 'Ketan is the creator and maintainer of Nav0, a minimal, privacy-focused web browser that collects zero data. Here is why Nav0 exists and where to find the project.'
+title: 'About Ketan Patil — The Person Behind Nav0'
+description: 'Ketan Patil is the creator and maintainer of Nav0, a minimal, privacy-focused web browser that collects zero data. Here is why Nav0 exists and where to find the project.'
 layout: page
 aside: false
 head:
   - - meta
     - property: og:type
       content: profile
-  - - meta
-    - property: og:title
-      content: 'About Ketan — The Person Behind Nav0'
-  - - meta
-    - property: og:description
-      content: 'The creator and maintainer of Nav0, a minimal, privacy-focused web browser that collects zero data.'
   - - script
     - type: application/ld+json
     - |
@@ -21,12 +15,18 @@ head:
         "@type": "ProfilePage",
         "mainEntity": {
           "@type": "Person",
-          "name": "Ketan",
+          "name": "Ketan Patil",
           "url": "https://nav0.org/about",
-          "image": "https://nav0.org/author.jpg",
+          "image": "https://nav0.org/ketan-patil.jpg",
           "description": "Creator and maintainer of Nav0, a minimal, privacy-focused web browser that collects zero data.",
           "knowsAbout": ["web browsers", "online privacy", "open-source software"],
-          "sameAs": ["https://github.com/nav0-org"]
+          "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+          "sameAs": [
+            "https://github.com/ketansp",
+            "https://x.com/ketansp",
+            "https://linkedin.com/in/ketansp",
+            "https://github.com/nav0-org"
+          ]
         }
       }
 ---

@@ -2,7 +2,7 @@
 title: "Your Browser Doesn't Need a Built-In VPN"
 description: "Browsers are shipping with built-in VPN services and calling it a privacy feature. It's not. Here's why browser VPNs are security theater and what you should use instead."
 date: 2026-02-06
-author: Ketan
+author: Ketan Patil
 category: security
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-02-06'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: vpn
@@ -36,7 +36,7 @@ head:
         "headline": "Your Browser Doesn't Need a Built-In VPN",
         "description": "Browsers are shipping with built-in VPN services and calling it a privacy feature. It's not. Here's why browser VPNs are security theater and what you should use instead.",
         "datePublished": "2026-02-06",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/your-browser-doesnt-need-a-vpn",
         "keywords": ["browser VPN", "VPN security", "Opera VPN", "Edge VPN", "privacy", "security theater", "is browser VPN safe", "built-in VPN privacy risk", "chrome VPN vs standalone VPN", "does a VPN make you anonymous", "free VPN data collection", "browser VPN vs system VPN", "VPN does not protect from browser tracking", "do I need a VPN for browsing", "Opera free VPN privacy", "Edge secure network privacy", "Google One VPN Chrome", "minimal browser no VPN"]
@@ -94,7 +94,7 @@ head:
 
 # Your Browser Doesn't Need a Built-In VPN
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 6, 2026 &middot; 7 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; February 6, 2026 &middot; 7 min read</p>
 
 Opera has one. Edge has one. Chrome is testing one through Google One. Brave offers one through a paid subscription. The latest trend in browser bloat is built-in VPN services, marketed as essential privacy tools that protect you from prying eyes.
 

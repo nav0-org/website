@@ -78,6 +78,7 @@ const indieMarks = ['M', 'H', 'L', 'Z', 'O', 'Q', 'S', 'F', 'LF', 'B', 'N0', '+'
             <h3>{{ post.title }}</h3>
             <p>{{ post.excerpt }}</p>
             <div class="bl-post-foot">
+              <span>By {{ post.author }}</span>
               <span>{{ post.date }}</span>
               <span>{{ post.shortReadTime }}</span>
             </div>

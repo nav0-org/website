@@ -2,7 +2,7 @@
 title: 'Nav0 vs DuckDuckGo Browser: When Your Privacy Brand Has a Microsoft Exception'
 description: "DuckDuckGo's browser is a solid privacy option — until you learn about the Microsoft tracking exception, the remote config system, and the AI features. Nav0 takes the simpler path: collect nothing, period."
 date: 2026-04-04
-author: Ketan
+author: Ketan Patil
 category: comparisons
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-04-04'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: duckduckgo
@@ -42,7 +42,7 @@ head:
         "headline": "Nav0 vs DuckDuckGo Browser: When Your Privacy Brand Has a Microsoft Exception",
         "description": "DuckDuckGo's browser is a solid privacy option — until you learn about the Microsoft tracking exception, the remote config system, and the AI features. Nav0 takes the simpler path: collect nothing, period.",
         "datePublished": "2026-04-04",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-duckduckgo",
         "keywords": ["Nav0 vs duckduckgo", "duckduckgo browser privacy", "duckduckgo microsoft tracking", "duck browser", "minimal browser", "private browser", "duckduckgo browser alternative"]
@@ -100,7 +100,7 @@ head:
 
 # Nav0 vs DuckDuckGo Browser: When Your Privacy Brand Has a Microsoft Exception
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; April 4, 2026 &middot; 10 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; April 4, 2026 &middot; 10 min read</p>
 
 DuckDuckGo built its reputation on a search engine that doesn't track you. Then they built a browser with the same promise. On the surface, it's a compelling story: the privacy search company making a privacy browser.
 

@@ -2,7 +2,7 @@
 title: 'Stop Forcing AI Into My Browser'
 description: "Every major browser is cramming AI features into their product. Nobody asked for this. Here's why forced AI integration is bad for users, bad for privacy, and bad for the web."
 date: 2026-02-08
-author: Ketan
+author: Ketan Patil
 category: privacy
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-02-08'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: ai
@@ -36,7 +36,7 @@ head:
         "headline": "Stop Forcing AI Into My Browser",
         "description": "Every major browser is cramming AI features into their product. Nobody asked for this. Here's why forced AI integration is bad for users, bad for privacy, and bad for the web.",
         "datePublished": "2026-02-08",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/stop-forcing-ai-into-browsers",
         "keywords": ["AI in browsers", "browser bloat", "privacy", "browser AI features", "Copilot", "disable AI in browser", "chrome AI features privacy", "edge copilot data collection", "browser without AI", "why browsers have AI now", "AI sidebar browser privacy risk", "minimal browser no AI", "browser feature creep", "stop browser AI tracking", "AI summarize page privacy", "lightweight browser no bloat", "browser AI sends data to cloud"]
@@ -94,7 +94,7 @@ head:
 
 # Stop Forcing AI Into My Browser
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; February 8, 2026 &middot; 7 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; February 8, 2026 &middot; 7 min read</p>
 
 Open your browser. Notice anything new lately? Maybe it's a sparkle icon in the toolbar. Maybe it's a sidebar that wants to "summarize" the page you're reading. Maybe it's a chatbot hovering in the corner, eager to "assist" you.
 

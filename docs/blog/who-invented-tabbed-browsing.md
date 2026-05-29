@@ -2,7 +2,7 @@
 title: 'Who Really Invented Tabbed Browsing? The Messy, Forgotten History'
 description: 'InternetWorks, NetCaptor, SimulBrowse — the real, messy history of tabbed browsing, and why the popular story that Opera invented the browser tab is a myth.'
 date: 2026-05-25
-author: Ketan
+author: Ketan Patil
 category: open-web
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-05-25'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: indie-browsers
@@ -42,7 +42,7 @@ head:
         "headline": "Who Really Invented Tabbed Browsing? The Messy, Forgotten History",
         "description": "InternetWorks, NetCaptor, SimulBrowse — the real, messy history of tabbed browsing, and why the popular story that Opera invented the browser tab is a myth.",
         "datePublished": "2026-05-25",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/who-invented-tabbed-browsing",
         "keywords": ["who invented tabbed browsing", "browser tab history", "InternetWorks", "BookLink Technologies", "NetCaptor", "SimulBrowse", "Adam Stiles", "Opera tabs myth", "MultiZilla", "Mozilla tabs", "Firefox tabs", "Internet Explorer 7 tabs", "history of web browsers"]
@@ -51,7 +51,7 @@ head:
 
 # Who Really Invented Tabbed Browsing? The Messy, Forgotten History
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; May 25, 2026 &middot; 12 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; May 25, 2026 &middot; 12 min read</p>
 
 There's a tidy version of this story that gets repeated everywhere: Opera invented tabbed browsing around 2000, and then everyone else copied it. It's clean, it's memorable, and it's wrong.
 

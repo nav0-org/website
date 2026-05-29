@@ -2,7 +2,7 @@
 title: "Nav0 vs Brave: Privacy Shouldn't Come with a Business Model"
 description: "Brave markets itself as the privacy browser, but it ships with a crypto wallet, its own ad network, an AI assistant, and a VPN upsell. Nav0 has none of that. Here's why true privacy means no monetization layer touching your browser."
 date: 2026-03-21
-author: Ketan
+author: Ketan Patil
 category: comparisons
 lastReviewed: 2026-05-27
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-03-21'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: brave
@@ -42,7 +42,7 @@ head:
         "headline": "Nav0 vs Brave: Privacy Shouldn't Come with a Business Model",
         "description": "Brave markets itself as the privacy browser, but it ships with a crypto wallet, its own ad network, an AI assistant, and a VPN upsell. Nav0 has none of that. Here's why true privacy means no monetization layer touching your browser.",
         "datePublished": "2026-03-21",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": { "@type": "Organization", "name": "Nav0", "url": "https://nav0.org", "logo": { "@type": "ImageObject", "url": "https://nav0.org/logo.svg" } },
         "mainEntityOfPage": "https://nav0.org/blog/nav0-vs-brave",
         "keywords": ["Nav0 vs brave", "brave browser privacy", "brave ads", "BAT token", "brave crypto wallet", "private browser", "minimal browser"]
@@ -100,7 +100,7 @@ head:
 
 # Nav0 vs Brave: Privacy Shouldn't Come with a Business Model
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 21, 2026 &middot; 10 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; March 21, 2026 &middot; 10 min read</p>
 
 Brave is the browser that promises to fix advertising. It blocks third-party ads, replaces them with its own, and pays you in cryptocurrency for viewing them. It ships with a built-in crypto wallet, a VPN, an AI assistant, a news feed, video calling, and its own search engine.
 

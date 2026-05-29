@@ -2,7 +2,7 @@
 title: 'Honest UA vs Spoofed UA: A Field Report on What Actually Breaks'
 description: 'A concrete list of what breaks when an indie browser lies about being Chromium — Client Hints, bot defenses, passkeys, DRM, Web Push, store installs, analytics, and more — written for other indie browser teams.'
 date: 2026-05-28
-author: Ketan
+author: Ketan Patil
 category: open-web
 lastReviewed: 2026-05-28
 tldr: >-
@@ -17,7 +17,7 @@ head:
       content: '2026-05-28'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: indie-browsers
@@ -42,7 +42,7 @@ head:
         "headline": "Honest UA vs Spoofed UA: A Field Report on What Actually Breaks",
         "description": "A concrete list of what breaks when an indie browser lies about being Chromium — Client Hints, bot defenses, passkeys, DRM, Web Push, store installs, analytics, and more — written for other indie browser teams.",
         "datePublished": "2026-05-28",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": {
           "@type": "Organization",
           "name": "Nav0",
@@ -56,7 +56,7 @@ head:
 
 # Honest UA vs Spoofed UA: A Field Report on What Actually Breaks
 
-<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; May 28, 2026 &middot; 12 min read</p>
+<p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; May 28, 2026 &middot; 12 min read</p>
 
 Every indie browser team eventually has the same argument. Should our User-Agent string be honest — naming the product the user actually installed — or should it pretend to be Chrome to make sites work?
 

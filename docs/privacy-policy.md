@@ -1,417 +1,72 @@
 ---
 title: 'Privacy Policy — Nav0 Browser'
-description: 'The official privacy policy for Nav0 Browser. We collect nothing. No telemetry, no personal data, no browsing history, no analytics. Your privacy is absolute.'
+description: 'How Nav0 collects zero data, with links to the source code that proves it. No telemetry, no phoning home, fully verifiable.'
 eyebrow: Legal
-tagline: "How Nav0 handles your information — which, in short, is that we don't. No telemetry, no analytics, no accounts, no servers that have anything to give away."
-effective: 'March 7, 2026'
-lastUpdated: 'March 7, 2026'
-version: 'v1.0'
-versionIcon: file
+tagline: "What Nav0 does and doesn't do with your data — and the exact source code that proves each claim."
 ---
 
 # Privacy Policy
 
-This Privacy Policy describes how Nav0 ("we," "us," or "our") handles information in connection with the Nav0 Browser application ("the Browser") and the Nav0 website at [https://nav0.org](https://nav0.org) ("the Website"). We are committed to being transparent about our practices — which, in short, means we collect nothing.
+_Last reviewed: May 29, 2026_
 
-## Our Core Principle
+This page documents what Nav0 does and does not do with your data, and links to the specific source code that proves each claim. Nav0 collects nothing. Here is how to verify that.
 
-<div class="doc-callout">
+## What Nav0 does not collect
 
-Nav0 does not collect, store, transmit, or process any personal data. Period.
+I built Nav0 so there is no telemetry to switch off — there is none to begin with. None of the following is collected, logged, or transmitted, and because the browser is open source you can confirm each absence yourself with a code search that turns up no collection code:
 
-</div>
+- **Telemetry and usage analytics** — search the repository for [`telemetry`](https://github.com/search?q=repo%3Anav0-org%2Fnav0-browser+telemetry&type=code) and [`analytics`](https://github.com/search?q=repo%3Anav0-org%2Fnav0-browser+analytics&type=code). There is no event pipeline, no metrics, and no experiment identifiers.
+- **Browsing data** — visited URLs, search queries, and navigation are never sent anywhere. The only history that exists is the local record in [`browsing-history-manager.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/browser/browsing-history-manager.ts), and it is skipped entirely in private mode.
+- **Device and system fingerprints** — search for [`fingerprint`](https://github.com/search?q=repo%3Anav0-org%2Fnav0-browser+fingerprint&type=code). Nav0 has no code that catalogs your hardware, OS, fonts, or screen to build an identifier. The [user-agent switcher](https://github.com/nav0-org/nav0-browser/blob/main/src/main/browser/ua-switcher.ts) exists to reduce what *sites* can fingerprint, not to profile you.
+- **Network identifiers** — your IP address, location, and connection details are never recorded by Nav0, because there is no server of mine for them to reach.
+- **Crash reports** — search for [`crashReporter`](https://github.com/search?q=repo%3Anav0-org%2Fnav0-browser+crashReporter&type=code). There is no crash-reporting or error-tracking dependency in [`package.json`](https://github.com/nav0-org/nav0-browser/blob/main/package.json), and the reporter is never enabled.
 
-This is not a simplified summary. This is the complete policy. Nav0 was built from the ground up with the belief that privacy is not a feature to be toggled — it is the foundation of the entire product. Every architectural decision in Nav0 is made with one question in mind: "Does this protect the user's privacy?" If the answer is anything other than an unequivocal "yes," we don't ship it.
+## Where your data lives
 
+Everything Nav0 stores stays on your machine, inside your operating system's per-user application-data directory:
 
-## Information We Do NOT Collect
+- **Windows:** `%APPDATA%\Nav0\`
+- **macOS:** `~/Library/Application Support/Nav0/`
+- **Linux:** `~/.config/Nav0/`
 
-### No Telemetry or Analytics
+| Data | Where it lives | Source |
+| ---- | -------------- | ------ |
+| Bookmarks | `database.db` (SQLite) | [`bookmark-manager.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/browser/bookmark-manager.ts) |
+| History | `database.db` — held in memory only, never written to disk, in private mode | [`browsing-history-manager.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/browser/browsing-history-manager.ts) |
+| Download records | `database.db`; the downloaded files go to the folder you choose | [`download-manager.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/browser/download-manager.ts) |
+| Settings and preferences | `config.json` in the same directory | [`settings-enforcer.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/settings/settings-enforcer.ts) |
 
-Nav0 does not include any telemetry, analytics, or usage-tracking code. We do not collect:
+The database file is created with `better-sqlite3` at `path.join(app.getPath('userData'), 'database.db')` — see [`database-manager.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/database/database-manager.ts). Delete that folder and the data is gone, because it was never anywhere else.
 
-- Usage statistics or behavioral data
-- Crash reports or error logs
-- Feature usage or engagement metrics
-- A/B testing data or experiment identifiers
-- Session duration or frequency of use
-- Click patterns, scroll behavior, or interaction data
-- Performance metrics or benchmarks from your device
+## What network requests Nav0 makes
 
-### No Personal Information
+Apart from loading the pages you navigate to, Nav0 initiates no network requests of its own:
 
-Nav0 does not collect, request, or store any personal information, including but not limited to:
+- **Ad and tracker blocking is fully local.** The blocklist is compiled into the app as a static list — Nav0 does *not* download or update filter lists from EasyList or anywhere else. See [`ad-block-lists.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/ad-blocker/ad-block-lists.ts).
+- **No certificate phone-home from Nav0.** [`ssl-manager.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/browser/ssl-manager.ts) only renders a local warning page and remembers your choice; certificate validation for the sites you visit is handled by Chromium's native verifier, not by a Nav0 server.
+- **Fewer background connections, not more.** On startup Nav0 disables Chromium's cast/mDNS discovery features (`MediaRouter`, `DialMediaRouteProvider`, `GlobalMediaControls`) — see [`index.ts`](https://github.com/nav0-org/nav0-browser/blob/main/src/main/index.ts) — so the browser does not chatter on your local network.
 
-- Names, usernames, or display names
-- Email addresses or phone numbers
-- Mailing addresses or geographic location
-- Date of birth, gender, or demographic information
-- Government-issued identification numbers
-- Payment information, billing details, or financial data
-- Photographs, avatars, or biometric data
+The only traffic is between you and the sites you choose to open.
 
-### No Browsing Data
+## What Nav0 does not phone home for
 
-Nav0 does not monitor, log, or transmit any information about your browsing activity:
+- **No auto-update server.** There is no `electron-updater`, `update-electron-app`, or Electron `autoUpdater` in [`package.json`](https://github.com/nav0-org/nav0-browser/blob/main/package.json); Nav0 never checks for updates in the background. You update by downloading a new build when you choose to.
+- **No analytics or telemetry endpoint.** Search the repo for [`analytics`](https://github.com/search?q=repo%3Anav0-org%2Fnav0-browser+analytics&type=code) or [`telemetry`](https://github.com/search?q=repo%3Anav0-org%2Fnav0-browser+telemetry&type=code) — there is no endpoint to send anything to.
+- **No crash-reporting service.** No Sentry, no upload — search [`crashReporter`](https://github.com/search?q=repo%3Anav0-org%2Fnav0-browser+crashReporter&type=code).
+- **No accounts or sync.** There is no sign-in, so there is no identity to transmit and nothing to synchronize to a server.
 
-- URLs visited or pages viewed
-- Search queries entered in the address bar or search engines
-- Browsing history or navigation patterns
-- Form data, autofill information, or input content
-- Downloaded files or download history
-- Bookmarks, reading lists, or saved pages
-- Tab activity, tab count, or tab order
+## How to verify this yourself
 
-### No Device or System Information
+You do not have to take my word for any of it:
 
-Nav0 does not fingerprint, catalog, or transmit any information about your device:
+1. **Read the source** — every line is public at [github.com/nav0-org/nav0-browser](https://github.com/nav0-org/nav0-browser).
+2. **Build it yourself** — reproduce the binaries from source by following [Build from source](/install#source).
+3. **Watch the wire** — run Nav0 behind Wireshark (any OS) or Little Snitch (macOS) and confirm that, apart from the sites you open, nothing leaves your machine.
 
-- Hardware model, CPU, GPU, or RAM specifications
-- Operating system type, version, or patch level
-- Screen resolution, display density, or monitor configuration
-- Installed software, fonts, or browser extensions
-- Battery status or charging state
-- Storage capacity or disk usage
-- Peripheral devices or accessories
+## What this means legally
 
-### No Network Information
+Because Nav0 collects no personal data, it complies with the GDPR, CCPA/CPRA, and COPPA by construction rather than by policy. There is no data to access, delete, export, or sell, so there is nothing to request and nothing to hand to law enforcement. That is an architectural fact, not a promise I could quietly walk back.
 
-Nav0 does not collect, intercept, or store any network-level data:
+## Changes and contact
 
-- IP addresses (neither local nor public)
-- Geographic location or geolocation data
-- Internet service provider (ISP) details
-- Network type (Wi-Fi, cellular, ethernet)
-- Connection speed or bandwidth metrics
-- DNS queries or resolver information
-- MAC addresses or network interface identifiers
-
-
-## How Nav0 Achieves Zero Data Collection
-
-### No User Accounts
-
-Most data collection begins with account creation. Nav0 has no accounts, no sign-in, no registration, and no user profiles. There is nothing to authenticate and no identity to track. You download the browser, and you use it — no strings attached.
-
-### No Cloud Services
-
-All data generated by your use of Nav0 stays entirely on your local device:
-
-- **Bookmarks** are stored in a local file on your machine
-- **Browsing history** is stored in a local SQLite database
-- **Settings and preferences** are saved in a local configuration file
-- **Downloads** are saved to the folder you choose on your device
-- **Cookies** are stored locally and managed by the Chromium engine
-
-There is no cloud sync, no remote backup, and no server-side storage of any kind. If you uninstall Nav0 or delete its data folder, your data is gone — because it was never anywhere else.
-
-### No Phone-Home Connections
-
-Nav0 makes zero unsolicited network requests. The browser does not:
-
-- Ping analytics or telemetry servers
-- Send heartbeat or keep-alive signals to any server
-- Transmit "anonymous" or "aggregated" usage data
-- Check in with a central server on startup or shutdown
-- Perform background synchronization of any kind
-- Fetch remote configuration or feature flags
-
-The only network requests Nav0 makes are the ones you explicitly initiate — by navigating to a website, performing a search, or downloading a file.
-
-### No Auto-Update Phoning Home
-
-Nav0 does not silently check for updates in the background. You choose when and how to update. We publish release notes and downloads on our website and GitHub repository, and you are free to update at your own pace — or not at all.
-
-### Open Source Verification
-
-Nav0 is fully open-source under the MIT License. Every line of code is publicly available for inspection at [https://github.com/nav0-org/nav0-browser](https://github.com/nav0-org/nav0-browser). You can:
-
-- Audit the source code for any data collection mechanisms
-- Build the browser from source to ensure the binary matches the code
-- Monitor network traffic with tools like Wireshark to verify that no unexpected connections are made
-- Fork the project and modify it to suit your needs
-
-We encourage users, security researchers, and privacy advocates to audit our code. We have nothing to hide.
-
-
-## Local Data Storage
-
-While Nav0 does not collect or transmit data, the browser does store certain data locally on your device to function properly. This data never leaves your machine.
-
-### Browsing History
-
-If you are not using Private Browsing mode, Nav0 stores a local record of visited URLs and page titles to provide the history feature. This data is stored in a local SQLite database and is never transmitted. You can clear your history at any time from the browser settings.
-
-### Bookmarks
-
-Bookmarks you create are stored in a local file. They are never synced, uploaded, or shared with any server.
-
-### Cookies and Site Data
-
-Websites you visit may set cookies in your browser. Nav0 provides controls to manage cookies:
-
-- Block third-party cookies
-- Clear cookies on demand
-- Use Private Browsing mode to prevent cookie persistence
-
-Cookies are stored locally by the Chromium engine and are never accessed, read, or transmitted by Nav0 itself.
-
-### Download Records
-
-Nav0 maintains a local record of files you have downloaded (file name, source URL, download date) to populate the Downloads page. The actual downloaded files are stored wherever you choose to save them. These records are stored locally and are never transmitted.
-
-### Browser Settings
-
-Your preferences and settings (e.g., default search engine, ad-blocking preferences, appearance settings) are stored in a local configuration file. These settings are never transmitted or synced.
-
-### Private Browsing Mode
-
-When you use Private Browsing mode, Nav0 does not persist any browsing history, cookies, or site data after the private window is closed. Data generated during a private session exists only in memory and is discarded when the window is closed.
-
-
-## Third-Party Interactions
-
-While Nav0 itself does not collect data, your interactions with third-party services through the browser are governed by those services' own privacy policies.
-
-### Search Engines
-
-When you perform a search, your query is sent to your chosen search engine. Nav0 does not intercept, log, or modify these queries. We recommend using privacy-respecting search engines such as:
-
-- DuckDuckGo
-- Startpage
-- Brave Search
-
-Your choice of search engine and the data it collects is governed by that search engine's privacy policy, not ours.
-
-### Websites You Visit
-
-Websites you visit through Nav0 may collect data about your visit through their own tracking mechanisms, including:
-
-- First-party and third-party cookies
-- JavaScript-based analytics and tracking scripts
-- Server-side logging of IP addresses and request data
-- Browser fingerprinting techniques
-
-Nav0 provides built-in tools to mitigate these risks:
-
-- **Ad and tracker blocking** using curated filter lists (EasyList and custom lists)
-- **Third-party cookie blocking** to limit cross-site tracking
-- **HTTPS auto-upgrade** to enforce encrypted connections where possible
-- **Private Browsing mode** to limit data persistence
-- **Fingerprint protection** to reduce browser fingerprinting surface
-
-However, we cannot fully control what websites do on their end. We encourage you to be mindful of the sites you visit and the information you share.
-
-### Extensions
-
-Nav0 supports browser extensions. Third-party extensions operate under their own privacy policies and may collect data independently of Nav0. We strongly recommend:
-
-- Reviewing the permissions requested by each extension before installation
-- Preferring open-source extensions that can be audited
-- Limiting the number of installed extensions to reduce your attack surface
-- Removing extensions you no longer use
-
-Nav0 is not responsible for data collection performed by third-party extensions.
-
-### Content Blocking Filter Lists
-
-Nav0's built-in ad and tracker blocker downloads and uses publicly available filter lists (such as EasyList) to block known tracking domains and advertising scripts. These filter lists are fetched from their respective public repositories. Nav0 does not send any user data, browsing data, or device information when fetching these lists.
-
-
-## Data Requests and Law Enforcement
-
-### Law Enforcement Requests
-
-If law enforcement agencies, government authorities, or courts request user data from Nav0:
-
-<div class="doc-callout">
-
-We have nothing to provide.
-
-</div>
-
-We do not possess, store, or have access to any user data. We cannot comply with data requests because there is no data to produce. This is not a policy choice — it is an architectural reality.
-
-### Subpoenas and Court Orders
-
-The same applies to subpoenas, court orders, national security letters, or any other legal instruments compelling data disclosure. We physically cannot produce data we do not have.
-
-### No Backdoors
-
-Nav0 does not implement and will never implement backdoors, secret data collection mechanisms, or hidden surveillance capabilities. Our open-source codebase ensures that any such attempt would be immediately visible to the public.
-
-
-## Children's Privacy
-
-Nav0 does not collect personal information from anyone, including children under the age of 13 (or the applicable age of digital consent in your jurisdiction). Since we collect no data whatsoever, there is no risk of inadvertent collection of children's data. Nav0 complies with the Children's Online Privacy Protection Act (COPPA), the General Data Protection Regulation (GDPR), and all applicable child privacy laws by virtue of collecting no data at all.
-
-
-## International Data Transfers
-
-Nav0 does not transfer data internationally — or at all. Since no data is collected, there is nothing to transfer across borders. Regardless of where you are located, your data stays on your device and is never sent to any server in any jurisdiction.
-
-
-## Data Security
-
-### Local Data Protection
-
-While Nav0 does not transmit data, we take the security of locally stored data seriously:
-
-- All local data is stored using standard file system protections provided by your operating system
-- Private Browsing mode ensures session data is held only in memory and discarded on window close
-- The browser uses Chromium's process sandboxing to isolate web content from your system
-- HTTPS is auto-upgraded where possible to protect data in transit between your browser and websites
-
-### Open Source Security
-
-Our open-source model provides security through transparency:
-
-- Vulnerabilities can be discovered and reported by anyone
-- Security patches are developed and reviewed publicly
-- Users can audit the code and build from source
-- The community acts as a continuous security review team
-
-### Reporting Security Issues
-
-If you discover a security vulnerability in Nav0, please report it responsibly through our GitHub repository at [https://github.com/nav0-org/nav0-browser](https://github.com/nav0-org/nav0-browser). We take all security reports seriously and will work to address confirmed vulnerabilities promptly.
-
-
-## Compliance with Privacy Regulations
-
-Because Nav0 collects no personal data, it inherently complies with major privacy regulations worldwide:
-
-### General Data Protection Regulation (GDPR)
-
-- **No data processing:** Nav0 does not process personal data as defined by the GDPR
-- **No data controller/processor relationship:** Since no data is collected, there are no data controller or data processor roles
-- **No consent required:** Since no data is collected, no consent mechanisms are needed
-- **Right to erasure:** There is nothing to erase from our end (local data can be deleted by the user at any time)
-- **Data portability:** All data is already on the user's device in accessible formats
-
-### California Consumer Privacy Act (CCPA) / California Privacy Rights Act (CPRA)
-
-- **No sale of personal information:** Nav0 does not sell, share, or disclose personal information
-- **No data collection categories:** None of the CCPA-defined categories of personal information are collected
-- **No financial incentive programs:** Nav0 offers no incentive for sharing personal data
-
-### Other Regulations
-
-Nav0's zero-collection approach ensures compliance with privacy regulations globally, including but not limited to:
-
-- Personal Information Protection and Electronic Documents Act (PIPEDA) — Canada
-- Privacy Act 1988 — Australia
-- Protection of Personal Information Act (POPIA) — South Africa
-- Lei Geral de Protecao de Dados (LGPD) — Brazil
-- Personal Data Protection Act (PDPA) — Singapore
-- Information Technology Act and Digital Personal Data Protection Act — India
-
-
-## Changes to This Privacy Policy
-
-### Transparency Guarantee
-
-Because Nav0 is open source, any change to our privacy practices would require:
-
-1. **Code changes** — visible in our public GitHub repository
-2. **A new release** — you control when and whether you update
-3. **Community review** — our contributors and users actively review all changes
-
-We will not and cannot silently change our privacy practices. The open-source model ensures accountability.
-
-### Notification of Changes
-
-If we ever update this Privacy Policy, we will:
-
-- Update the "Last Updated" date at the top of this page
-- Document the changes in our release notes
-- Make the changes visible in our public Git history
-
-### Historical Versions
-
-All previous versions of this Privacy Policy are available in our Git history. You can review the complete history of changes to this document at any time.
-
-
-## The Nav0 Website
-
-### Website Analytics
-
-The Nav0 website at [https://nav0.org](https://nav0.org) does not use any analytics, tracking scripts, or cookies. The website is a static site generated with VitePress and hosted without server-side tracking.
-
-### Website Hosting
-
-The website is hosted as a static site. The hosting provider may collect standard server access logs (IP addresses, request timestamps, user agent strings) as part of normal server operation. Nav0 does not access, use, or analyze these logs.
-
-### External Links
-
-The website may contain links to external services (e.g., GitHub). These external services have their own privacy policies that govern your interaction with them.
-
-
-## Open Source and Community
-
-### GitHub Interactions
-
-If you interact with our GitHub repository (filing issues, submitting pull requests, commenting), your activity is governed by [GitHub's Privacy Policy](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). Nav0 does not collect or process data from GitHub interactions beyond what is publicly visible on the platform.
-
-### Community Communications
-
-Any communications you initiate with us (e.g., bug reports, feature requests via GitHub Issues) are voluntary and governed by the platform's privacy policies. We do not harvest email addresses or contact information from these interactions for any purpose other than responding to your inquiry.
-
-
-## Comparison with Other Browsers
-
-To illustrate how Nav0 differs from mainstream browsers:
-
-| Data Category      | Mainstream Browsers                  | Nav0                                   |
-| ------------------ | ------------------------------------ | -------------------------------------- |
-| Browsing history   | Often synced to cloud servers        | Stored locally only, never transmitted |
-| Search queries     | Logged and analyzed for ad targeting | Never intercepted or logged            |
-| Crash reports      | Automatically sent to vendor         | Never collected or transmitted         |
-| Usage patterns     | Tracked for "product improvement"    | Not tracked at all                     |
-| Device information | Collected for "compatibility"        | Not collected                          |
-| IP address         | Logged on vendor servers             | Never seen by us                       |
-| User accounts      | Required or strongly encouraged      | Do not exist                           |
-| Telemetry          | On by default, hard to disable       | Does not exist in the codebase         |
-| Ad profiles        | Built from browsing behavior         | No profiling of any kind               |
-| Data sales         | Common with "free" browsers          | Nothing to sell                        |
-
-
-## Your Responsibilities
-
-While Nav0 protects your privacy from the browser level, complete online privacy requires awareness on your part:
-
-- **Use Private Browsing** for sensitive activities to prevent local data persistence
-- **Choose privacy-respecting search engines** (DuckDuckGo, Startpage, Brave Search)
-- **Be cautious with extensions** — review permissions and prefer open-source options
-- **Keep Nav0 updated** to benefit from the latest security fixes
-- **Understand website tracking** — websites can still track you through their own mechanisms
-- **Use a VPN** if you want to obscure your IP address from the websites you visit
-- **Review cookie settings** and clear cookies regularly
-
-
-## Contact Information
-
-If you have questions, concerns, or feedback about this Privacy Policy or Nav0's privacy practices:
-
-- **GitHub:** [https://github.com/nav0-org/nav0-browser](https://github.com/nav0-org/nav0-browser)
-- **Issues:** [https://github.com/nav0-org/nav0-browser/issues](https://github.com/nav0-org/nav0-browser/issues)
-
-
-## Summary
-
-| Question                                   | Answer                                 |
-| ------------------------------------------ | -------------------------------------- |
-| Does Nav0 collect personal data?           | No                                     |
-| Does Nav0 use analytics or telemetry?      | No                                     |
-| Does Nav0 track browsing activity?         | No                                     |
-| Does Nav0 sell or share data?              | No — there is no data to sell or share |
-| Does Nav0 have user accounts?              | No                                     |
-| Does Nav0 sync data to the cloud?          | No                                     |
-| Does Nav0 phone home?                      | No                                     |
-| Where is my data stored?                   | Locally on your device, nowhere else   |
-| Can law enforcement get my data from Nav0? | No — we don't have it                  |
-| Is Nav0 open source?                       | Yes — verify everything yourself       |
-
-
-<div class="doc-bottomline">
-  <strong>Bottom line: Your browsing is your business. Not ours. Not anyone's.</strong>
-</div>
+All changes to this document are public in the Git history: [privacy-policy.md history](https://github.com/nav0-org/website/commits/main/docs/privacy-policy.md). Questions or concerns go to [GitHub Issues](https://github.com/nav0-org/nav0-browser/issues).
