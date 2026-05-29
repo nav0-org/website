@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const githubUrl = 'https://github.com/nav0-org';
 const githubPersonal = 'https://github.com/ketansp';
-const twitterUrl = 'https://x.com/ketansp';
+const twitterUrl = 'https://x.com/ketnsp';
 const linkedinUrl = 'https://linkedin.com/in/ketansp';
 const emailUrl = 'mailto:ketan@nav0.org';
 </script>
@@ -54,7 +54,7 @@ const emailUrl = 'mailto:ketan@nav0.org';
       </p>
       <ul class="ab-find">
         <li><a :href="githubPersonal" rel="me noopener">GitHub</a> — <span>github.com/ketansp</span></li>
-        <li><a :href="twitterUrl" rel="me noopener">X / Twitter</a> — <span>@ketansp</span></li>
+        <li><a :href="twitterUrl" rel="me noopener">X / Twitter</a> — <span>@ketnsp</span></li>
         <li><a :href="linkedinUrl" rel="me noopener">LinkedIn</a> — <span>in/ketansp</span></li>
         <li><a :href="emailUrl" rel="me">Email</a> — <span>ketan@nav0.org</span></li>
       </ul>

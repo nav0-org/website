@@ -23,7 +23,7 @@ head:
           "address": { "@type": "PostalAddress", "addressCountry": "IN" },
           "sameAs": [
             "https://github.com/ketansp",
-            "https://x.com/ketansp",
+            "https://x.com/ketnsp",
             "https://linkedin.com/in/ketansp",
             "https://github.com/nav0-org"
           ]
