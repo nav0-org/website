@@ -158,7 +158,7 @@ do not hardcode them anywhere else.
 
 ### Author voice & topical scope
 
-- Author is **always** "Ketan" — this is the byline name on every post. It must
+- Author is **always** "Ketan Patil" — this is the byline name on every post. It must
   appear in the frontmatter `author`, the `article:author` meta, the visible body
   byline, and the Article JSON-LD `author` (as a `Person` linked to `/about`).
   Never use "Nav0 Team".
@@ -179,7 +179,7 @@ do not hardcode them anywhere else.
 
 These are hard requirements — a post is not done until all of them are met:
 
-1. **Byline is "Ketan"** everywhere (see above). Never "Nav0 Team".
+1. **Byline is "Ketan Patil"** everywhere (see above). Never "Nav0 Team".
 2. **Unique `tldr`** frontmatter — a 40–80 word direct answer to the post's title
    question. It renders as the TL;DR callout at the top of the post (via
    `BlogPostTldr`). Do not reuse another post's TL;DR.
@@ -207,7 +207,7 @@ These are hard requirements — a post is not done until all of them are met:
 title: 'Your Post Title Here'
 description: 'A concise description for SEO and social sharing (~155 chars).'
 date: 2026-03-21
-author: Ketan
+author: Ketan Patil
 category: comparisons          # privacy | comparisons | performance | open-web | security
 lastReviewed: 2026-03-21       # bump whenever you re-read the post, even if unchanged
 tldr: >-
@@ -223,7 +223,7 @@ head:
       content: '2026-03-21'
   - - meta
     - property: article:author
-      content: Ketan
+      content: Ketan Patil
   - - meta
     - property: article:tag
       content: privacy
@@ -239,7 +239,7 @@ head:
         "headline": "Your Post Title Here",
         "description": "A concise description for SEO and social sharing.",
         "datePublished": "2026-03-21",
-        "author": { "@type": "Person", "name": "Ketan", "url": "https://nav0.org/about" },
+        "author": { "@type": "Person", "name": "Ketan Patil", "url": "https://nav0.org/about" },
         "publisher": {
           "@type": "Organization",
           "name": "Nav0",
@@ -276,7 +276,7 @@ Notes:
    ```md
    # Your Post Title Here
 
-   <p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan &middot; March 21, 2026 &middot; 8 min read</p>
+   <p style="color: var(--vp-c-text-2); font-size: 0.9rem;">By Ketan Patil &middot; March 21, 2026 &middot; 8 min read</p>
    ```
 
    The read-time count is also derived automatically by `posts.data.ts` for
