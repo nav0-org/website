@@ -74,8 +74,10 @@ const emailUrl = 'mailto:ketan@nav0.org';
 }
 
 .ab-avatar {
+  display: block;
   width: 120px;
   height: 120px;
+  margin: 0 auto;
   border-radius: 999px;
   object-fit: cover;
   border: 1px solid var(--ds-rule-soft, var(--vp-c-divider));
