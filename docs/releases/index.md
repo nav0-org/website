@@ -13,15 +13,15 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-A maintenance release focused on tab handling, session restore, and ad-blocker accuracy — accurate address-bar URLs across sub-frames, no more stray helper-frame tabs, exact tab-order and pinned-tab restore, and a first-party exemption applied across every blocklist.
+A focused release that adds Chrome-style page zoom, sharpens tab and search behaviour, and ships a handful of privacy and platform fixes — drag-to-reorder tabs in Command-O, "Search the web" promoted to the top of every result list, and an end to the macOS "Local Network" prompt.
 
 <template #summary>
 
-- The address bar no longer updates from sub-frame in-page navigations, and gapi helper frames and other invisible popups no longer spawn stray empty tabs
-- Session restore preserves tab order exactly and keeps pinned tabs pinned across restarts
-- The first-party / navigation exemption now applies across all blocklists, so domains that merely appear on tracker lists no longer block legitimate page loads
-- Ad-blocker toggles are right-aligned inline with their labels, with corrected permission favicon sizing and a tidied allow-list and custom search-engine form
-- Downloads with duplicate filenames are suffixed (e.g. `file (1).pdf`) instead of overwriting, plus smoother tab-strip resizing
+- Chrome-style page zoom — zoom any page in or out and reset to 100% from the menu, the options menu, or `Cmd`/`Ctrl` + `+` / `-` / `0`
+- Reorder tabs by dragging them within the Command-O switcher, and the installer now skips the download when the latest version is already installed
+- "Search the web" is promoted to the top of URL-bar autocomplete, Command-K, and new-tab results, and page-spawned tabs open next to their opener
+- Nav0 is categorized as a Web Browser in Linux menus and opens maximized on Linux and Windows
+- Stopped the macOS "Local Network" prompt caused by WebRTC mDNS, and top-level navigations are never treated as third-party for cookie purposes, fixing logins that were wrongly blocked
 
 </template>
 </ReleasesLatestHero>
@@ -29,10 +29,18 @@ A maintenance release focused on tab handling, session restore, and ad-blocker a
 <div class="releases-timeline">
 
 <div class="release-list-item">
+  <a href="/releases/v0.3.2">
+    <h2>v0.3.2</h2>
+  </a>
+  <div class="release-meta">June 28, 2026 <span class="release-badge latest">Latest</span></div>
+  <p class="release-excerpt">Adds Chrome-style page zoom and drag-to-reorder tabs in Command-O, promotes "Search the web" to the top of every result list, opens page-spawned tabs next to their opener, and stops the macOS "Local Network" prompt while fixing third-party cookie handling on top-level navigations.</p>
+</div>
+
+<div class="release-list-item">
   <a href="/releases/v0.3.1">
     <h2>v0.3.1</h2>
   </a>
-  <div class="release-meta">May 27, 2026 <span class="release-badge latest">Latest</span></div>
+  <div class="release-meta">May 27, 2026</div>
   <p class="release-excerpt">A maintenance release fixing sub-frame address-bar updates and stray helper-frame tabs, preserving exact tab order and pinned tabs on session restore, applying the first-party ad-blocker exemption across all blocklists, and suffixing duplicate downloads.</p>
 </div>
 
