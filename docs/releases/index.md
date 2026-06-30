@@ -13,15 +13,14 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-A focused release that adds Chrome-style page zoom, sharpens tab and search behaviour, and ships a handful of privacy and platform fixes — drag-to-reorder tabs in Command-O, "Search the web" promoted to the top of every result list, and an end to the macOS "Local Network" prompt.
+A release that refines the tab bar and toolbar — content-sized tabs, a hover-only close button, clearer scroll chevrons, and brand-red icon hovers — and fixes camera and microphone capture in packaged macOS builds.
 
 <template #summary>
 
-- Chrome-style page zoom — zoom any page in or out and reset to 100% from the menu, the options menu, or `Cmd`/`Ctrl` + `+` / `-` / `0`
-- Reorder tabs by dragging them within the Command-O switcher, and the installer now skips the download when the latest version is already installed
-- "Search the web" is promoted to the top of URL-bar autocomplete, Command-K, and new-tab results, and page-spawned tabs open next to their opener
-- Nav0 is categorized as a Web Browser in Linux menus and opens maximized on Linux and Windows
-- Stopped the macOS "Local Network" prompt caused by WebRTC mDNS, and top-level navigations are never treated as third-party for cookie purposes, fixing logins that were wrongly blocked
+- Tabs now size to their content (min-width down to 72px) with tighter, symmetric favicon spacing, restoring the fill-the-bar model so the strip never looks sparse
+- The tab close (×) button is now hover-only, the tab-strip scroll chevrons are larger and more prominent, and nav-bar and address-bar icon buttons tint Nav0 brand-red on hover
+- Packaged macOS builds are now code-signed with hardened-runtime camera/microphone entitlements, so macOS can attribute capture requests to Nav0
+- The app drives the native macOS camera/mic permission prompt itself for `getUserMedia` requests, so granting the in-app permission actually delivers frames and audio
 
 </template>
 </ReleasesLatestHero>
@@ -29,10 +28,18 @@ A focused release that adds Chrome-style page zoom, sharpens tab and search beha
 <div class="releases-timeline">
 
 <div class="release-list-item">
+  <a href="/releases/v0.4.0">
+    <h2>v0.4.0</h2>
+  </a>
+  <div class="release-meta">June 30, 2026 <span class="release-badge latest">Latest</span></div>
+  <p class="release-excerpt">Refines the tab bar and toolbar with content-sized tabs, a hover-only close button, larger scroll chevrons, and brand-red icon hovers, and fixes camera and microphone capture in packaged macOS builds by code-signing with hardened-runtime entitlements and driving the native capture prompt.</p>
+</div>
+
+<div class="release-list-item">
   <a href="/releases/v0.3.2">
     <h2>v0.3.2</h2>
   </a>
-  <div class="release-meta">June 28, 2026 <span class="release-badge latest">Latest</span></div>
+  <div class="release-meta">June 28, 2026</div>
   <p class="release-excerpt">Adds Chrome-style page zoom and drag-to-reorder tabs in Command-O, promotes "Search the web" to the top of every result list, opens page-spawned tabs next to their opener, and stops the macOS "Local Network" prompt while fixing third-party cookie handling on top-level navigations.</p>
 </div>
 
