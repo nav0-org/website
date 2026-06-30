@@ -160,6 +160,8 @@ With just 10 tabs open, Chrome spawned 67 processes. Nav0 ran with 22. Every add
 
 Chrome's process-per-tab architecture, combined with its various utility processes (GPU, network, storage, audio, extension service workers, renderer processes), means the process count scales aggressively. Nav0's architecture keeps process count substantially lower while still maintaining tab isolation where it matters.
 
+<BlogAnimation scene="processes" />
+
 ## Testing Methodology
 
 We're engineers, not marketers. We didn't cherry-pick numbers to make ourselves look good. Here's exactly how the tests were run so you can reproduce them yourself.

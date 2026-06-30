@@ -155,6 +155,8 @@ Nav0 uses a dual database system: one SQLite database for normal browsing and a 
 
 Without access to Comet Browser's source code, we can't make equivalent claims about its privacy architecture. Comet may be equally private. It may collect some data. It may have telemetry. We simply don't know, and neither do you. That's the problem with closed source — not that the software is necessarily bad, but that its privacy properties are unverifiable.
 
+<BlogAnimation scene="versus" opponent="Comet" />
+
 ## The Engine Under the Hood
 
 Nav0 is built on Electron, using Chromium's rendering engine through Electron's framework. This gives Nav0 excellent web compatibility — sites render the same way they do in Chrome. Electron also provides the multi-process architecture that keeps the browser stable: a crash in one tab doesn't bring down the whole browser.

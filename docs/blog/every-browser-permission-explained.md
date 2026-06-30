@@ -242,6 +242,8 @@ The privacy edge is the device enumeration: MIDI device names are unusual and hi
 
 **Revoke:** Site settings → MIDI devices.
 
+<BlogAnimation scene="permissions" />
+
 ## Motion sensors
 
 **API:** `DeviceMotionEvent`, `DeviceOrientationEvent`, plus the newer Generic Sensor API (`Accelerometer`, `Gyroscope`, `Magnetometer`, `LinearAccelerationSensor`, `GravitySensor`, `AbsoluteOrientationSensor`).

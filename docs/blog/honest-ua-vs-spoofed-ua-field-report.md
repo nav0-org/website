@@ -92,6 +92,8 @@ Every item below is a variant of the same underlying problem. The User-Agent hea
 
 Modern fingerprinting and modern feature detection both depend on cross-checking. The UA is the easiest part of that to fake. Everything else is much harder.
 
+<BlogAnimation scene="fingerprint" />
+
 ## What breaks
 
 ### 1. Sec-CH-UA Client Hints

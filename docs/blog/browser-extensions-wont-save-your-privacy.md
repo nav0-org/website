@@ -159,6 +159,8 @@ The problem is structural:
 
 You're trusting a review process that has repeatedly failed to catch extensions actively stealing data from millions of users.
 
+<BlogAnimation scene="extensions" />
+
 ## More Extensions, More Attack Surface
 
 Every extension you install increases your attack surface. This is a basic security principle: more code means more potential vulnerabilities.

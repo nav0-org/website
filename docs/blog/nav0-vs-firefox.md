@@ -196,6 +196,8 @@ Some of these are genuinely useful. Translation and PDF viewing are reasonable b
 
 Nav0 includes the features necessary for browsing: tabs, bookmarks, history, downloads, a reader mode, a PDF viewer, an ad blocker, and find-in-page. That's the complete list. We don't add features to justify release cycles or to create new monetization surfaces. The feature list is intentionally short and intentionally stable.
 
+<BlogAnimation scene="versus" opponent="Firefox" />
+
 ## The Google Revenue Dependency
 
 This is the elephant in Mozilla's room.

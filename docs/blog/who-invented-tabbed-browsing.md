@@ -117,6 +117,8 @@ The distinction between MDI and tabs isn't pedantry. An MDI gives you draggable,
 
 Line the dates up and the myth has nowhere to stand. Opera's true tabs (2003) arrived after NetCaptor (1997), after the open-source world had them (2001), and nine years after InternetWorks (1994). Opera was a latecomer to tabs that happened to be an early mover on a lot of other good ideas — and memory blurred the two together.
 
+<BlogAnimation scene="tabs" />
+
 ## 2001: tabs go open source
 
 The next leap came from the Mozilla project, and again it started outside the official browser.

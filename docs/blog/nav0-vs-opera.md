@@ -166,6 +166,8 @@ We've [explained why AI doesn't belong in browsers](/blog/stop-forcing-ai-into-b
 
 Nav0 has zero AI features. Your pages are yours. Nothing reads them, processes them, or sends them to any server. If you want AI, open ChatGPT or Claude in a tab — where you consciously choose what to share.
 
+<BlogAnimation scene="versus" opponent="Opera" />
+
 ## Messengers Inside Your Browser
 
 Opera embeds WhatsApp, Facebook Messenger, Telegram, and Instagram directly into the browser sidebar. You can chat without opening separate tabs or applications.

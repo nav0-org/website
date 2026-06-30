@@ -127,6 +127,8 @@ When browser vendors announce AI features, they describe solutions to problems t
 
 The AI features aren't there to help you. They're there to keep you inside the browser vendor's ecosystem, generating data that feeds their models and their ad networks.
 
+<BlogAnimation scene="aiBloat" />
+
 ## The Privacy Cost
 
 Every AI feature in your browser comes with a hidden cost: your data.

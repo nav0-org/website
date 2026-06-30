@@ -154,6 +154,8 @@ Privacy Sandbox was Google's proposed replacement for third-party cookies: a set
 
 So the flags and the `chrome://settings/adPrivacy` controls tied to those APIs aren't a privacy win you should go enable; they're scaffolding being torn down. A few narrower pieces survive — CHIPS (partitioned cookies), FedCM, Private State Tokens — but those are plumbing, not toggles you visit chrome://flags to manage. If you want third-party cookies off today, the real control is in **Settings → Privacy and security → Third-party cookies**, not on the experiments page.
 
+<BlogAnimation scene="flags" />
+
 ## The flags that still change something
 
 After you set aside the graduated protections and the dying ad APIs, a handful of flags genuinely still affect privacy-adjacent behavior. Here's what they do, their default, and what flipping them costs you. Exact availability shifts between Chrome versions — treat the flag IDs as "as of mid-2026."

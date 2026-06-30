@@ -189,6 +189,8 @@ Arc positions these features as productivity enhancements. And they might genuin
 
 Nav0 has zero AI features. Not because we couldn't add them. Because adding them would require sending your browsing data to third-party servers, and we've decided that's not a tradeoff we're willing to make for you.
 
+<BlogAnimation scene="versus" opponent="Arc" />
+
 ## The VC Question
 
 The Browser Company, Arc's parent, has raised over $50 million in venture capital. This isn't a criticism — building a browser is expensive, and VC funding is a legitimate way to finance it. But it creates a structural reality that every Arc user should understand.

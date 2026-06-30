@@ -157,6 +157,8 @@ HTTPS encrypts the _content_ of your connection, but the destination is visible.
 
 Incognito mode changes absolutely nothing about this. Your network traffic looks identical whether you're in Incognito or not.
 
+<BlogAnimation scene="incognito" />
+
 ## Websites Still Know Who You Are
 
 Every website you visit in Incognito mode sees your IP address, your browser's user agent string, your screen resolution, your timezone, your language settings, and dozens of other signals. Together, these create a browser fingerprint that is unique to your device in most cases.

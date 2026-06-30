@@ -135,6 +135,8 @@ Here's the fundamental problem: when your browser vendor offers you a VPN, they'
 
 **Brave VPN** requires a paid subscription and is powered by Guardian. While Brave's implementation is more principled than most, it still adds complexity and another trust relationship to an application that should be doing less, not more.
 
+<BlogAnimation scene="vpn" />
+
 ## Shifting Trust to the Wrong Place
 
 The core issue with any VPN is trust. You're routing all your traffic through a single point. If you trust that point less than your ISP, you've made things worse.

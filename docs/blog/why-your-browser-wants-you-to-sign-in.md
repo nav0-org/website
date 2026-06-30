@@ -144,6 +144,8 @@ So why do browser vendors want this data so bad? Because for most of them, it fe
 
 The sign-in button isn't a feature. It's a business strategy.
 
+<BlogAnimation scene="signin" />
+
 ## Cross-Device Tracking Made Easy
 
 Before browser sign-in was a thing, tracking users across devices was genuinely hard for data collectors. Cookies on your laptop didn't connect to cookies on your phone. Different IP addresses, different device fingerprints, different browsers — it was a fragmented picture.

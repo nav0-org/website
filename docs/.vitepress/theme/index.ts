@@ -14,6 +14,7 @@ import ReleasesLatestHero from './components/ReleasesLatestHero.vue';
 import FaqPage from './components/FaqPage.vue';
 import AboutPage from './components/AboutPage.vue';
 import TopicHub from './components/TopicHub.vue';
+import BlogAnimation from './components/BlogAnimation.vue';
 import './tokens.css';
 import './custom.css';
 
@@ -34,5 +35,6 @@ export default {
     app.component('FaqPage', FaqPage);
     app.component('AboutPage', AboutPage);
     app.component('TopicHub', TopicHub);
+    app.component('BlogAnimation', BlogAnimation);
   },
 } satisfies Theme;

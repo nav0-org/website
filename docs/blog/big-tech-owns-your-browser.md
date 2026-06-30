@@ -166,6 +166,8 @@ The consequences are real:
 
 The only meaningful alternatives to Chromium are WebKit (controlled by Apple) and Gecko (maintained by Mozilla, funded by Google). This is not a healthy ecosystem.
 
+<BlogAnimation scene="surveillance" />
+
 ## What Platform Control Means for Users
 
 When your browser is made by a company with other business interests, those interests shape every decision:

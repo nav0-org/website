@@ -155,6 +155,8 @@ CPU dropped at every tab count. The average across all tests went from 13.1% to 
 
 Slightly fewer processes across the board, with the biggest reduction at lower tab counts.
 
+<BlogAnimation scene="processes" />
+
 ## Nav0 v0.1.2 vs Chrome: The Updated Comparison
 
 Here's how v0.1.2 stacks up against the current version of Chrome on the same M1 hardware.
