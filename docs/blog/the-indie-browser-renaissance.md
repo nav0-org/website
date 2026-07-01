@@ -108,6 +108,8 @@ Three projects that take Firefox in three very different directions.
 
 **[Beaker](https://beakerbrowser.com/)** — It's only fair to acknowledge that Beaker's active development has wound down, but it deserves a place on any honest tour of the indie scene. Beaker was a Chromium-based browser with first-class support for the DAT protocol, letting users host websites peer-to-peer from their own machines. It was a real attempt to make the browser a publishing tool, not just a reading tool. The code and ideas still ship elsewhere, and they're still worth knowing about.
 
+<BlogAnimation scene="constellation" />
+
 ## What They Share
 
 Walk through the list and a pattern emerges.

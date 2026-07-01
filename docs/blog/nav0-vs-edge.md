@@ -183,6 +183,8 @@ That's fifteen features on top of a web browser. Each one is code running in you
 
 Nav0 ships with tabs, bookmarks, history, downloads, an ad blocker, reader mode, and a PDF viewer. Every feature exists because it helps you browse the web. Nothing exists because it helps a corporation sell advertising or AI subscriptions.
 
+<BlogAnimation scene="versus" opponent="Edge" />
+
 ## Microsoft Account Integration
 
 Edge constantly nudges you to sign in with your Microsoft account. Once signed in, your browsing data syncs across devices through Microsoft's cloud infrastructure. Your bookmarks, history, passwords, settings, and open tabs are stored on Microsoft's servers.

@@ -172,6 +172,8 @@ Brave's VPN is less cynical than Opera's or Edge's. It uses a reputable third-pa
 
 Nav0 doesn't include a VPN. If you need a VPN, use a standalone provider. Your browser and your VPN should be separate tools from separate vendors so you can evaluate and audit each one independently.
 
+<BlogAnimation scene="versus" opponent="Brave" />
+
 ## The Brave Feature Inventory
 
 Let's count what Brave ships that has nothing to do with browsing the web:

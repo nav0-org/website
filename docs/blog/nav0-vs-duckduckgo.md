@@ -155,6 +155,8 @@ There are good reasons for this approach — tracker lists need frequent updates
 
 Nav0's ad blocker uses locally bundled lists that update with the application. There's no phone-home system. No remote configuration. No feature flags. Your browser behaves the same way whether or not any server is reachable. You control what runs on your machine.
 
+<BlogAnimation scene="versus" opponent="DuckDuckGo" />
+
 ## Duck AI: Privacy-Washing AI Integration
 
 DuckDuckGo added "Duck AI" — an AI chat feature accessible from the browser and search results. It offers anonymous access to AI models from OpenAI, Anthropic, and Meta. DuckDuckGo says it acts as a proxy, stripping identifying information before forwarding your queries to AI providers.

@@ -140,6 +140,8 @@ Consider what the major browsers are known to collect:
 
 **Opera** was acquired by a Chinese consortium in 2016 and has faced scrutiny over data handling. Its "free VPN" routes traffic through Opera's own servers, and the browser includes multiple built-in monetization features.
 
+<BlogAnimation scene="surveillance" />
+
 ## Why This Matters
 
 You might think: "I have nothing to hide." But that misses the point entirely.

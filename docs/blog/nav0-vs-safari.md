@@ -193,6 +193,8 @@ The App Store model also requires developers to pay for an Apple Developer accou
 
 Nav0 doesn't support extensions — but for a different reason. Extensions are a privacy and security risk regardless of the store they come from. We've [written about this](/blog/browser-extensions-wont-save-your-privacy). Nav0 builds privacy protections directly into the browser so you don't need extensions to be safe. If we ever add extension support, it won't be controlled by a gatekeeper.
 
+<BlogAnimation scene="versus" opponent="Safari" />
+
 ## Privacy Reports: Transparency Theater
 
 Safari's Privacy Report is a feature that shows users how many trackers were blocked and which websites attempted to track them. It's a nice dashboard. Users like seeing big numbers.

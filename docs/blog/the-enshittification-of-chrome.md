@@ -154,6 +154,8 @@ What a coincidence that the world's largest advertising company decided to cripp
 
 uBlock Origin, probably the most popular ad blocker on the planet, had to be completely rewritten. And even the rewritten version (uBlock Origin Lite) is less effective than the original because of the artificial limitations Google baked into the new API. Raymond Hill, the developer behind uBlock Origin, didn't mince words about why this was happening.
 
+<BlogAnimation scene="bloat" />
+
 ## Phase Three: Full Enshittification (2021–Present)
 
 This is where we're at now, and honestly its pretty grim.

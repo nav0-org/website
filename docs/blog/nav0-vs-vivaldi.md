@@ -175,6 +175,8 @@ Nav0 is built on Electron, uses minimal resources, and runs nothing in the backg
 
 Lightweight software isn't just a nice-to-have. On older hardware, constrained devices, or systems running many applications, the difference between a browser that uses 400 MB at rest and one that uses 100 MB is the difference between usable and unusable.
 
+<BlogAnimation scene="versus" opponent="Vivaldi" />
+
 ## Privacy: Good Intentions, Complicated Execution
 
 Vivaldi deserves credit for its privacy stance. The company is based in Iceland (with offices in Norway), explicitly rejects behavioral advertising, and doesn't sell user data. Their privacy policy is more respectful than Chrome, Edge, or Opera. Vivaldi has publicly criticized Google's tracking practices and refused to implement certain Chromium features that compromise privacy.

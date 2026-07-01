@@ -159,6 +159,8 @@ A typical site can still:
 
 We covered the depth of this problem in [Your Browser Is Watching You](/blog/your-browser-is-watching-you). Cookie banners pretend the tracking ecosystem is a cookie problem. It isn't. Cookies are a symptom. The disease is a web that treats every visitor as raw material.
 
+<BlogAnimation scene="cookies" />
+
 ## The Cost of Theater
 
 If cookie banners didn't actually protect anyone, you might shrug and move on. But they aren't free. They cost something real.

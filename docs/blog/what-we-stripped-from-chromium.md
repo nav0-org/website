@@ -125,6 +125,8 @@ The recommendation engine is also the largest single source of per-user identifi
 
 **What users lose.** The feed. If you actively used "Articles for you" in Chrome, you'll miss it. Most people we've asked turn it off in Chrome and Edge by reflex, which is why replacing it was never a priority. If you want a feed, install a feed reader and choose what's in it. We're not going to choose for you, and we don't want the infrastructure for choosing for you to exist in the browser.
 
+<BlogAnimation scene="strip" />
+
 ## What we kept (and why)
 
 Three things people assume we'd cut, that we didn't:

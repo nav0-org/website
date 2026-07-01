@@ -155,6 +155,8 @@ For our purposes, HTTP/3 matters because it's the vehicle that brought QUIC to t
 
 But HTTP/3 and QUIC alone don't close the **biggest** leak. The SNI hostname was still being sent so the server knew which site to serve. That required one more piece.
 
+<BlogAnimation scene="quic" />
+
 ## ECH: sealing the last plaintext leak
 
 **Encrypted Client Hello (ECH)** is the change that closes the SNI hole — and it's the one that genuinely moves the needle on ISP-level tracking.

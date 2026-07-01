@@ -192,6 +192,8 @@ Script and image data show meaningful reductions too — 3.4 MB less JavaScript 
 
 Documents, fonts, and stylesheets — the things that actually make web pages work — were nearly identical between both browsers. Nav0 isn't breaking websites. It's cutting the fat.
 
+<BlogAnimation scene="versus" opponent="Chrome" />
+
 ## The Idle Test
 
 After loading all 15 pages, we let both browsers sit idle for 20 seconds with every tab still open. No scrolling, no clicking, no interaction. Just sitting there.

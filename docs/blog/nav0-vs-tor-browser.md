@@ -176,6 +176,8 @@ If you want a fast, clean browser that doesn't phone home, doesn't track you, do
 
 Most people's daily threat model is not "state-level adversary performing traffic analysis." It's "[my browser is sending my data](/blog/your-browser-is-watching-you) to Google/Microsoft/Apple." Nav0 solves that problem completely, without the performance costs of Tor.
 
+<BlogAnimation scene="versus" opponent="Tor Browser" />
+
 ## Usability: Friction by Design vs. Zero Friction
 
 Tor Browser is deliberately restrictive. It disables many browser features to prevent fingerprinting and tracking. JavaScript is limited. Browser window sizes are standardized. Many websites break or look wrong. Extensions are discouraged (and most are blocked) because they can compromise anonymity. You can't maximize the window without a warning — because your screen resolution could fingerprint you.
