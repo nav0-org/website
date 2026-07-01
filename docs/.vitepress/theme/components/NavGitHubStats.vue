@@ -132,7 +132,10 @@ onMounted(async () => {
 .nav-gh-stats {
   display: none;
   align-items: center;
-  margin-right: 4px;
+  box-sizing: border-box;
+  /* Match the 20px GitHub social icon height, with a 2px gap after it. */
+  height: 20px;
+  margin-left: 2px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 999px;
   background-color: var(--vp-c-bg-alt);
@@ -149,11 +152,11 @@ onMounted(async () => {
 .nav-gh-stat {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  height: 30px;
-  padding: 0 11px;
+  gap: 4px;
+  height: 100%;
+  padding: 0 8px;
   color: var(--vp-c-text-2);
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 500;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -173,8 +176,8 @@ onMounted(async () => {
 }
 
 .nav-gh-stat svg {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
   opacity: 0.85;
 }
