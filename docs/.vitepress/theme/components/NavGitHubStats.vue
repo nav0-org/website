@@ -83,7 +83,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="nav-gh-stats">
+  <div class="nav-gh-stats" v-if="stars !== null || downloads !== null">
     <a
       v-if="stars !== null"
       class="nav-gh-stat"
@@ -126,49 +126,59 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+/* One segmented capsule (star | downloads) rather than two floating pills, so
+   it reads as a single deliberate control next to the GitHub icon and echoes
+   the pill-shaped appearance toggle already in the nav. */
 .nav-gh-stats {
   display: none;
   align-items: center;
-  gap: 8px;
-  margin-right: 4px;
+  box-sizing: border-box;
+  /* Match the 20px GitHub social icon height, with a 2px gap after it. */
+  height: 20px;
+  margin-left: 2px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background-color: var(--vp-c-bg-alt);
+  overflow: hidden;
 }
 
 /* Match VitePress: social links (and thus these counts) only show >= 768px. */
 @media (min-width: 768px) {
   .nav-gh-stats {
-    display: flex;
+    display: inline-flex;
   }
 }
 
 .nav-gh-stat {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  height: 28px;
-  padding: 0 10px;
-  border-radius: 999px;
-  border: 1px solid var(--vp-c-divider);
-  background-color: var(--vp-c-bg-soft);
+  gap: 4px;
+  height: 100%;
+  padding: 0 8px;
   color: var(--vp-c-text-2);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11.5px;
+  font-weight: 500;
   line-height: 1;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   transition:
     color 0.25s,
-    border-color 0.25s,
     background-color 0.25s;
 }
 
+.nav-gh-stat + .nav-gh-stat {
+  border-left: 1px solid var(--vp-c-divider);
+}
+
 .nav-gh-stat:hover {
-  color: var(--vp-c-brand-1);
-  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-bg-soft);
 }
 
 .nav-gh-stat svg {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
+  opacity: 0.85;
 }
 </style>
