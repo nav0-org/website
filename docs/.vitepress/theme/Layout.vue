@@ -10,6 +10,7 @@ import ReleaseDetailHero from './components/ReleaseDetailHero.vue';
 import ReleaseDetailSidebar from './components/ReleaseDetailSidebar.vue';
 import LegalPageHero from './components/LegalPageHero.vue';
 import LegalPageTOC from './components/LegalPageTOC.vue';
+import NavGitHubStats from './components/NavGitHubStats.vue';
 
 const { Layout } = DefaultTheme;
 const { page } = useData();
@@ -38,6 +39,9 @@ const showDocHero = computed(() => isLegalPage.value || isGuidePage.value);
 <template>
   <div class="nav0-bg">
     <Layout>
+      <template #nav-bar-content-after>
+        <NavGitHubStats />
+      </template>
       <template #doc-top>
         <BlogPostHero v-if="isBlogPost" />
         <LegalPageHero v-if="showDocHero" />
