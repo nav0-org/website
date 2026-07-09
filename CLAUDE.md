@@ -513,19 +513,29 @@ others — read the file before adding a new top-level category.
 - Canonical URLs and `og:url` are injected for every page in
   `transformPageData`.
 - Open Graph images are generated per route by `scripts/generate-og.mjs`
-  (run on the `predocs:build` hook). Every blog post gets `/og/<slug>.png`
-  (keyed off the post slug in `POSTS`), and the main site pages — home,
-  install, FAQ, about, the blog/releases indexes, every `/guide/*` page, the
-  `/blog/topic/*` hubs, and the legal pages — get their own card from the
-  `PAGES` list. `transformPageData` wires each route to its card: blog posts in
-  the `blog/` branch, everything else via `pageOgName()`. Release detail pages
-  share the `releases` card. Anything with no card falls back to the default
-  `/og-image.png`.
+  (run on the `predocs:build` hook). Every card uses one shared **split-lockup
+  template** (from the `OG Images.dc.html` Claude Design project): a dark panel
+  with a diagonal hairline texture and a blue corner glow, split down the
+  middle — the left half is the Nav0 brand lockup (logo + wordmark + URL) and
+  the right half carries the message. Site pages (4a) show an eyebrow, headline,
+  and one-line subtitle; blog posts (4b) show a category pill, the title (its
+  last line brushed with the accent gradient), and a byline. Fonts (Inter +
+  JetBrains Mono) are bundled under `scripts/fonts/` as `.woff2`, so rendering
+  is deterministic.
+- Every blog post gets `/og/<slug>.png`, derived straight from its frontmatter
+  (`title`, `category`, `author`, `date`) — no per-post config. The main site
+  pages — home, install, FAQ, about, the blog/releases indexes, every
+  `/guide/*` page, the `/blog/topic/*` hubs, and the legal pages — get their
+  own card from the `PAGES` list. `transformPageData` wires each route to its
+  card: blog posts in the `blog/` branch, everything else via `pageOgName()`.
+  Release detail pages share the `releases` card. Anything with no card falls
+  back to the default `/og-image.png` (also rendered from the template, mirroring
+  the home card).
 - **Adding a new page card.** Add an entry to `PAGES` in
-  `scripts/generate-og.mjs` (pick a Lucide icon, a short display title, and a
-  label) and a matching route in `pageOgName()` in `config.ts`, then run
-  `npm run docs:build` and commit the new `docs/public/og/<name>.png`. To
-  override a single page by hand instead, push
+  `scripts/generate-og.mjs` (`out` filename, `label` eyebrow, `title` headline,
+  and a short `sub` subtitle) and a matching route in `pageOgName()` in
+  `config.ts`, then run `npm run docs:build` and commit the new
+  `docs/public/og/<name>.png`. To override a single page by hand instead, push
   `['meta', { property: 'og:image', content: '/<image>.png' }]` in that page's
   `head` frontmatter.
 - `SoftwareApplication` JSON-LD only renders on `index.md`, `install.md`,
