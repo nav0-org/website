@@ -429,6 +429,47 @@ function drawBlogContent(ctx, entry, logo) {
   }
 }
 
+// Rasterize the brand logo into a notched bitmap. @napi-rs/canvas's SVG
+// backend mis-renders the source logo's luminance <mask> (it leaves a ghosted
+// second ring), so we reproduce the mask ourselves: draw the ring, punch the
+// two wedge notches with destination-out, then lay the needles on top — the
+// same paint order as the source, minus the buggy mask.
+async function buildLogo(path) {
+  const raw = readFileSync(path, 'utf-8');
+  const ringSvg =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">' +
+    '<ellipse cx="256" cy="256" rx="138" ry="208" stroke="#94a3b8" stroke-width="56" fill="none"/></svg>';
+  const needleSvg = raw.replace(/<ellipse\b[^>]*\/>/, ''); // ring drawn separately below
+  const [ringImg, needleImg] = await Promise.all([
+    loadImage(Buffer.from(ringSvg)),
+    loadImage(Buffer.from(needleSvg)),
+  ]);
+  // The notch wedges live inside the source <mask>, rotated -22° about center.
+  const wedges = [...raw.matchAll(/<polygon points="([^"]+)"/g)].map((m) =>
+    m[1].trim().split(/\s+/).map((p) => p.split(',').map(Number)),
+  );
+  const S = 512;
+  const off = createCanvas(S, S);
+  const o = off.getContext('2d');
+  o.drawImage(ringImg, 0, 0, S, S);
+  o.save();
+  o.globalCompositeOperation = 'destination-out';
+  o.translate(256, 256);
+  o.rotate((-22 * Math.PI) / 180);
+  o.translate(-256, -256);
+  o.fillStyle = '#000';
+  for (const poly of wedges) {
+    o.beginPath();
+    poly.forEach(([x, y], i) => (i ? o.lineTo(x, y) : o.moveTo(x, y)));
+    o.closePath();
+    o.fill();
+  }
+  o.restore();
+  o.globalCompositeOperation = 'source-over';
+  o.drawImage(needleImg, 0, 0, S, S);
+  return off;
+}
+
 async function render(entry, logo) {
   const canvas = createCanvas(WIDTH, HEIGHT);
   const ctx = canvas.getContext('2d');
@@ -441,7 +482,7 @@ async function render(entry, logo) {
 
 async function main() {
   mkdirSync(OUT_DIR, { recursive: true });
-  const logo = existsSync(LOGO_PATH) ? await loadImage(LOGO_PATH).catch(() => null) : null;
+  const logo = existsSync(LOGO_PATH) ? await buildLogo(LOGO_PATH).catch(() => null) : null;
 
   const files = readdirSync(BLOG_DIR).filter((f) => f.endsWith('.md') && f !== 'index.md');
   let count = 0;
