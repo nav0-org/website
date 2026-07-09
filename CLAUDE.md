@@ -519,9 +519,9 @@ others — read the file before adding a new top-level category.
   middle — the left half is the Nav0 brand lockup (logo + wordmark + URL) and
   the right half carries the message. Site pages (4a) show an eyebrow, headline,
   and one-line subtitle; blog posts (4b) show a category pill, the title (its
-  last line brushed with the accent gradient), and a byline. Fonts (Inter +
-  JetBrains Mono) are bundled under `scripts/fonts/` as `.woff2`, so rendering
-  is deterministic.
+  last line brushed with the accent gradient), and a byline. The Inter font
+  family is bundled under `scripts/fonts/` as `.woff2`, so rendering is
+  deterministic.
 - Every blog post gets `/og/<slug>.png`, derived straight from its frontmatter
   (`title`, `category`, `author`, `date`) — no per-post config. The main site
   pages — home, install, FAQ, about, the blog/releases indexes, every

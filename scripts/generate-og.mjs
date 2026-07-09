@@ -25,16 +25,14 @@ const BLOG_DIR = join(ROOT, 'docs/blog');
 const OUT_DIR = join(ROOT, 'docs/public/og');
 const LOGO_PATH = join(ROOT, 'docs/public/logo.svg');
 
-// The template's typefaces: Inter for everything, JetBrains Mono for the URL.
-// Each weight is registered under its own family name so canvas never has to
-// synthesize a weight or italic.
+// The template's typeface is Inter throughout. Each weight is registered under
+// its own family name so canvas never has to synthesize a weight or italic.
 const FONTS = [
   ['Inter-Regular.woff2', 'InterRegular'],
   ['Inter-Medium.woff2', 'InterMedium'],
   ['Inter-SemiBold.woff2', 'InterSemiBold'],
   ['Inter-Bold.woff2', 'InterBold'],
   ['Inter-SemiBoldItalic.woff2', 'InterSemiBoldItalic'],
-  ['JetBrainsMono-Regular.woff2', 'JBMono'],
 ];
 for (const [file, family] of FONTS) {
   GlobalFonts.registerFromPath(join(__dirname, 'fonts', file), family);
@@ -44,6 +42,7 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 const HALF = WIDTH / 2; // vertical split line
 const PAD_X = 78; // horizontal padding inside the message (right) half
+const SUBTITLE_SIZE = 40; // right-half subtitle; the lockup URL matches it
 
 // Palette lifted straight from the design.
 const C = {
@@ -233,7 +232,7 @@ function drawLockup(ctx, logo, url) {
   const cx = HALF / 2;
   const logoSize = 360;
   const wordSize = 112;
-  const urlSize = 24;
+  const urlSize = SUBTITLE_SIZE;
   const gap = 26;
   const wordBox = wordSize * 0.8;
   const urlBox = urlSize;
@@ -253,7 +252,7 @@ function drawLockup(ctx, logo, url) {
   y += wordBox + gap;
 
   ctx.fillStyle = C.mono;
-  ctx.font = `${urlSize}px JBMono`;
+  ctx.font = `${urlSize}px InterRegular`;
   ctx.fillText(url, cx, y + urlBox / 2);
 
   ctx.textAlign = 'left';
@@ -298,7 +297,7 @@ function drawPageContent(ctx, entry) {
   const tLH = Math.round(tSize * 1.06);
   const nTitle = titleLines.length + accentLines.length;
 
-  const subSize = 40;
+  const subSize = SUBTITLE_SIZE;
   ctx.font = `${subSize}px InterRegular`;
   const subLines = entry.sub ? wrapLines(ctx, entry.sub, maxW, 3) : [];
   const sLH = 56;
@@ -345,7 +344,10 @@ function drawPageContent(ctx, entry) {
 }
 
 // Right half for a blog post: category pill / title (accent gradient on the
-// last line) / byline row.
+// last line) / byline. The pill and byline — the text above and below the
+// title — are set at 2x to match the enlarged site-page cards. At that size
+// the byline no longer fits on one line, so the date stacks under the name
+// beside a larger avatar.
 function drawBlogContent(ctx, entry, logo) {
   const x = HALF + PAD_X;
   const maxW = HALF - PAD_X * 2;
@@ -354,9 +356,10 @@ function drawBlogContent(ctx, entry, logo) {
   ctx.textBaseline = 'middle';
 
   const badgeText = entry.badge || 'Blog';
-  const badgeH = 30;
-  const badgePadX = 14;
-  ctx.font = '14px InterSemiBold';
+  const badgeSize = 28;
+  const badgeH = 60;
+  const badgePadX = 28;
+  ctx.font = `${badgeSize}px InterSemiBold`;
   const badgeW = ctx.measureText(badgeText).width + badgePadX * 2;
 
   let tSize = 44;
@@ -370,9 +373,13 @@ function drawBlogContent(ctx, entry, logo) {
     if (titleLines.length <= 3) break;
   }
   const tLH = Math.round(tSize * 1.12);
-  const authorH = 38;
 
-  const total = badgeH + gap + titleLines.length * tLH + gap + authorH;
+  const nameSize = 36;
+  const bLine = 44;
+  const avatar = 72;
+  const bylineH = Math.max(avatar, entry.date ? bLine * 2 : bLine);
+
+  const total = badgeH + gap + titleLines.length * tLH + gap + bylineH;
   let top = (HEIGHT - total) / 2;
 
   // pill
@@ -380,7 +387,7 @@ function drawBlogContent(ctx, entry, logo) {
   ctx.fillStyle = C.badgeBg;
   ctx.fill();
   ctx.fillStyle = C.accent;
-  ctx.font = '14px InterSemiBold';
+  ctx.font = `${badgeSize}px InterSemiBold`;
   ctx.fillText(badgeText, x + badgePadX, top + badgeH / 2 + 0.5);
   top += badgeH + gap;
 
@@ -405,29 +412,30 @@ function drawBlogContent(ctx, entry, logo) {
   setTracking(ctx, 0);
   top += titleLines.length * tLH + gap;
 
-  // byline
-  const acy = top + authorH / 2;
-  circle(ctx, x + authorH / 2, acy, authorH / 2);
+  // byline (avatar + stacked name/date)
+  const bcy = top + bylineH / 2;
+  circle(ctx, x + avatar / 2, bcy, avatar / 2);
   ctx.fillStyle = 'rgba(255,255,255,0.06)';
   ctx.fill();
   ctx.lineWidth = 1;
   ctx.strokeStyle = 'rgba(255,255,255,0.12)';
-  circle(ctx, x + authorH / 2, acy, authorH / 2 - 0.5);
+  circle(ctx, x + avatar / 2, bcy, avatar / 2 - 0.5);
   ctx.stroke();
-  if (logo) ctx.drawImage(logo, x + authorH / 2 - 12, acy - 12, 24, 24);
+  const inner = 46;
+  if (logo) ctx.drawImage(logo, x + avatar / 2 - inner / 2, bcy - inner / 2, inner, inner);
 
-  let tx = x + authorH + 12;
-  ctx.font = '18px InterSemiBold';
-  ctx.fillStyle = C.ink;
-  ctx.fillText(entry.author, tx, acy);
-  tx += ctx.measureText(entry.author).width + 12;
+  const tx = x + avatar + 16;
   if (entry.date) {
-    ctx.font = '18px InterRegular';
-    ctx.fillStyle = C.mono;
-    ctx.fillText('·', tx, acy);
-    tx += ctx.measureText('·').width + 12;
+    ctx.font = `${nameSize}px InterSemiBold`;
+    ctx.fillStyle = C.ink;
+    ctx.fillText(entry.author, tx, bcy - bLine / 2);
+    ctx.font = `${nameSize}px InterRegular`;
     ctx.fillStyle = C.dim;
-    ctx.fillText(entry.date, tx, acy);
+    ctx.fillText(entry.date, tx, bcy + bLine / 2);
+  } else {
+    ctx.font = `${nameSize}px InterSemiBold`;
+    ctx.fillStyle = C.ink;
+    ctx.fillText(entry.author, tx, bcy);
   }
 }
 
