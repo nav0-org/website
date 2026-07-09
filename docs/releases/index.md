@@ -13,14 +13,14 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-A release that refines the tab bar and toolbar — content-sized tabs, a hover-only close button, clearer scroll chevrons, and brand-red icon hovers — and fixes camera and microphone capture in packaged macOS builds.
+A small quality-of-life release focused on navigation polish and platform-specific window behavior — a hover URL preview, Alt+1–9 tab switching, pinch-to-zoom, and fixes for new-tab URL handling, macOS fullscreen controls, and Linux window decorations.
 
 <template #summary>
 
-- Tabs now size to their content (min-width down to 72px) with tighter, symmetric favicon spacing, restoring the fill-the-bar model so the strip never looks sparse
-- The tab close (×) button is now hover-only, the tab-strip scroll chevrons are larger and more prominent, and nav-bar and address-bar icon buttons tint Nav0 brand-red on hover
-- Packaged macOS builds are now code-signed with hardened-runtime camera/microphone entitlements, so macOS can attribute capture requests to Nav0
-- The app drives the native macOS camera/mic permission prompt itself for `getUserMedia` requests, so granting the in-app permission actually delivers frames and audio
+- Hovering a link now shows a Chrome-style status bar at the bottom-left of the page with the destination URL, rendered reliably in the page's main world and excluded from ad-blocker hiding rules
+- Press `Alt` + `1` through `9` to jump directly to a tab by position, and two-finger pinch gestures now zoom page content on macOS trackpads
+- URLs typed on the new-tab page now navigate directly instead of being sent to the search engine
+- The macOS traffic-light controls are available in fullscreen, and Linux launches maximized with native window controls so the taskbar stays visible
 
 </template>
 </ReleasesLatestHero>
@@ -28,10 +28,18 @@ A release that refines the tab bar and toolbar — content-sized tabs, a hover-o
 <div class="releases-timeline">
 
 <div class="release-list-item">
+  <a href="/releases/v0.4.1">
+    <h2>v0.4.1</h2>
+  </a>
+  <div class="release-meta">July 9, 2026 <span class="release-badge latest">Latest</span></div>
+  <p class="release-excerpt">A quality-of-life release adding a Chrome-style hover URL preview, Alt+1–9 keyboard tab switching, and pinch-to-zoom for macOS trackpads, and fixing new-tab page URL handling, macOS fullscreen window controls, and borderless-fullscreen window behavior on Linux.</p>
+</div>
+
+<div class="release-list-item">
   <a href="/releases/v0.4.0">
     <h2>v0.4.0</h2>
   </a>
-  <div class="release-meta">June 30, 2026 <span class="release-badge latest">Latest</span></div>
+  <div class="release-meta">June 30, 2026</div>
   <p class="release-excerpt">Refines the tab bar and toolbar with content-sized tabs, a hover-only close button, larger scroll chevrons, and brand-red icon hovers, and fixes camera and microphone capture in packaged macOS builds by code-signing with hardened-runtime entitlements and driving the native capture prompt.</p>
 </div>
 
