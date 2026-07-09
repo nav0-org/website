@@ -344,11 +344,9 @@ function drawPageContent(ctx, entry) {
 }
 
 // Right half for a blog post: category pill / title (accent gradient on the
-// last line) / byline. The pill and byline — the text above and below the
-// title — are set at 2x to match the enlarged site-page cards. At that size
-// the byline no longer fits on one line, so the date stacks under the name
-// beside a larger avatar.
-function drawBlogContent(ctx, entry, logo) {
+// last line) / date. The pill and date — the text above and below the title —
+// are set at 2x to match the enlarged site-page cards.
+function drawBlogContent(ctx, entry) {
   const x = HALF + PAD_X;
   const maxW = HALF - PAD_X * 2;
   const gap = 24;
@@ -374,12 +372,10 @@ function drawBlogContent(ctx, entry, logo) {
   }
   const tLH = Math.round(tSize * 1.12);
 
-  const nameSize = 36;
-  const bLine = 44;
-  const avatar = 72;
-  const bylineH = Math.max(avatar, entry.date ? bLine * 2 : bLine);
+  const dateSize = 36;
+  const bylineH = entry.date ? 44 : 0;
 
-  const total = badgeH + gap + titleLines.length * tLH + gap + bylineH;
+  const total = badgeH + gap + titleLines.length * tLH + (entry.date ? gap + bylineH : 0);
   let top = (HEIGHT - total) / 2;
 
   // pill
@@ -410,32 +406,14 @@ function drawBlogContent(ctx, entry, logo) {
     cy += tLH;
   });
   setTracking(ctx, 0);
-  top += titleLines.length * tLH + gap;
+  top += titleLines.length * tLH;
 
-  // byline (avatar + stacked name/date)
-  const bcy = top + bylineH / 2;
-  circle(ctx, x + avatar / 2, bcy, avatar / 2);
-  ctx.fillStyle = 'rgba(255,255,255,0.06)';
-  ctx.fill();
-  ctx.lineWidth = 1;
-  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
-  circle(ctx, x + avatar / 2, bcy, avatar / 2 - 0.5);
-  ctx.stroke();
-  const inner = 46;
-  if (logo) ctx.drawImage(logo, x + avatar / 2 - inner / 2, bcy - inner / 2, inner, inner);
-
-  const tx = x + avatar + 16;
+  // byline (date only)
   if (entry.date) {
-    ctx.font = `${nameSize}px InterSemiBold`;
-    ctx.fillStyle = C.ink;
-    ctx.fillText(entry.author, tx, bcy - bLine / 2);
-    ctx.font = `${nameSize}px InterRegular`;
+    top += gap;
+    ctx.font = `${dateSize}px InterRegular`;
     ctx.fillStyle = C.dim;
-    ctx.fillText(entry.date, tx, bcy + bLine / 2);
-  } else {
-    ctx.font = `${nameSize}px InterSemiBold`;
-    ctx.fillStyle = C.ink;
-    ctx.fillText(entry.author, tx, bcy);
+    ctx.fillText(entry.date, x, top + bylineH / 2);
   }
 }
 
@@ -485,7 +463,7 @@ async function render(entry, logo) {
   const ctx = canvas.getContext('2d');
   drawBackground(ctx);
   drawLockup(ctx, logo, entry.url || 'nav0.org');
-  if (entry.kind === 'blog') drawBlogContent(ctx, entry, logo);
+  if (entry.kind === 'blog') drawBlogContent(ctx, entry);
   else drawPageContent(ctx, entry);
   return canvas.encode('png');
 }
