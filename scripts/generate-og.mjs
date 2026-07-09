@@ -277,7 +277,8 @@ function drawPageContent(ctx, entry) {
   ctx.textBaseline = 'middle';
 
   const eyebrow = (entry.label || '').toUpperCase();
-  const eyeLH = 18;
+  const eyeSize = 26;
+  const eyeLH = 36;
 
   let tSize = 56;
   let titleLines;
@@ -297,15 +298,16 @@ function drawPageContent(ctx, entry) {
   const tLH = Math.round(tSize * 1.06);
   const nTitle = titleLines.length + accentLines.length;
 
-  ctx.font = '20px InterRegular';
+  const subSize = 40;
+  ctx.font = `${subSize}px InterRegular`;
   const subLines = entry.sub ? wrapLines(ctx, entry.sub, maxW, 3) : [];
-  const sLH = 28;
+  const sLH = 56;
 
   const total = eyeLH + gap + nTitle * tLH + (subLines.length ? gap + subLines.length * sLH : 0);
   let top = (HEIGHT - total) / 2;
 
-  ctx.font = '13px InterMedium';
-  setTracking(ctx, 13 * 0.08);
+  ctx.font = `${eyeSize}px InterMedium`;
+  setTracking(ctx, eyeSize * 0.08);
   ctx.fillStyle = C.faint;
   ctx.fillText(eyebrow, x, top + eyeLH / 2);
   setTracking(ctx, 0);
@@ -334,7 +336,7 @@ function drawPageContent(ctx, entry) {
     top += gap;
     let sy = top + sLH / 2;
     ctx.fillStyle = C.dim;
-    ctx.font = '20px InterRegular';
+    ctx.font = `${subSize}px InterRegular`;
     for (const line of subLines) {
       ctx.fillText(line, x, sy);
       sy += sLH;
