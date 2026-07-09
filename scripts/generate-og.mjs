@@ -48,6 +48,7 @@ import {
   Rocket,
   Fingerprint,
   FlaskConical,
+  CloudOff,
 } from 'lucide';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -115,6 +116,7 @@ const POSTS = {
   'your-browser-is-watching-you': { icon: Eye },
   'honest-ua-vs-spoofed-ua-field-report': { icon: Fingerprint },
   'what-chrome-flags-actually-does': { icon: FlaskConical },
+  'the-case-against-browser-sync': { icon: CloudOff },
 };
 
 // Non-blog site pages. `out` is the og/<out>.png filename, matched by route in
