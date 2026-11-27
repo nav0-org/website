@@ -13,14 +13,14 @@ description: "Release notes and changelog for Nav0 Browser. See what's new in ev
 <ReleasesStats />
 
 <ReleasesLatestHero>
-A small quality-of-life release focused on navigation polish and platform-specific window behavior — a hover URL preview, Alt+1–9 tab switching, pinch-to-zoom, and fixes for new-tab URL handling, macOS fullscreen controls, and Linux window decorations.
+A redesign release — a neutral design system with cool-grey chrome, white pages and one blue accent replaces the v0.3.0 "paper and red" look, alongside privacy, security and tab-lifecycle fixes found during the work.
 
 <template #summary>
 
-- Hovering a link now shows a Chrome-style status bar at the bottom-left of the page with the destination URL, rendered reliably in the page's main world and excluded from ad-blocker hiding rules
-- Press `Alt` + `1` through `9` to jump directly to a tab by position, and two-finger pinch gestures now zoom page content on macOS trackpads
-- URLs typed on the new-tab page now navigate directly instead of being sent to the search engine
-- The macOS traffic-light controls are available in fullscreen, and Linux launches maximized with native window controls so the taskbar stays visible
+- Red now appears only for danger; menus, palettes and Settings share one blue selection style and a frosted material, and private windows switch from a red chip to a lavender strip with a "Private" label
+- Built-in pages no longer request remote favicons — they show only local copies from an on-device cache — and private-window favicons stay in memory
+- Page data is escaped on Downloads, History, Bookmarks and Settings, the certificate warning can no longer be skipped by revisiting a URL, and CAPTCHA challenges are no longer hidden by the ad blocker
+- Downloads keep running when a window closes, and pages that close themselves no longer leave a dead tab behind
 
 </template>
 </ReleasesLatestHero>
@@ -28,10 +28,18 @@ A small quality-of-life release focused on navigation polish and platform-specif
 <div class="releases-timeline">
 
 <div class="release-list-item">
+  <a href="/releases/v0.5.0">
+    <h2>v0.5.0</h2>
+  </a>
+  <div class="release-meta">November 27, 2026 <span class="release-badge latest">Latest</span></div>
+  <p class="release-excerpt">Replaces the v0.3.0 "paper and red" look with a neutral design system across every window, menu and built-in page, stops built-in pages from requesting remote favicons, escapes page data on the built-in pages, keeps downloads running when a window closes, and stops the ad blocker hiding CAPTCHA challenges.</p>
+</div>
+
+<div class="release-list-item">
   <a href="/releases/v0.4.1">
     <h2>v0.4.1</h2>
   </a>
-  <div class="release-meta">July 9, 2026 <span class="release-badge latest">Latest</span></div>
+  <div class="release-meta">July 9, 2026</div>
   <p class="release-excerpt">A quality-of-life release adding a Chrome-style hover URL preview, Alt+1–9 keyboard tab switching, and pinch-to-zoom for macOS trackpads, and fixing new-tab page URL handling, macOS fullscreen window controls, and borderless-fullscreen window behavior on Linux.</p>
 </div>
 
