@@ -6,8 +6,8 @@ const version = ref(packageJson.version);
 const releasedAt = ref<string | null>(null);
 const loading = ref(true);
 
-const macCommand =
-  'curl -fsSL https://raw.githubusercontent.com/nav0-org/nav0-browser/main/install.sh | bash';
+const installScriptUrl = 'https://raw.githubusercontent.com/nav0-org/nav0-browser/main/install.sh';
+const macCommand = `curl -fsSL ${installScriptUrl} | bash`;
 const buildCommand =
   'git clone https://github.com/nav0-org/nav0-browser.git\ncd nav0-browser\nnpm install\nnpm run make';
 
@@ -198,13 +198,18 @@ async function copyText(text: string, target: 'curl' | 'build') {
             </button>
           </div>
           <div class="ip-terminal-body">
+            <!--
+              The spaces between the coloured spans are explicit {{ ' ' }} on purpose.
+              Vue drops whitespace between two tags when it contains a newline, so a
+              line-wrapped space here renders (and copies) as "-fsSLhttps://…install.sh|",
+              which makes curl print its help text into bash.
+            -->
             <div>
               <span class="ip-prompt">$ </span><span class="ip-cmd"
-                >curl <span class="ip-flag">-fsSL</span>
-                <span class="ip-url"
-                  >https://raw.githubusercontent.com/nav0-org/nav0-browser/main/install.sh</span
-                >
-                <span class="ip-pipe">|</span> bash</span
+                >curl <span class="ip-flag">-fsSL</span>{{ ' ' }}<span class="ip-url">{{
+                  installScriptUrl
+                }}</span
+                >{{ ' ' }}<span class="ip-pipe">|</span> bash</span
               >
             </div>
             <span class="ip-out"
